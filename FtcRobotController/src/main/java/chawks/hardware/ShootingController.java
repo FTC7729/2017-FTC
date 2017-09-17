@@ -1,6 +1,6 @@
 package chawks.hardware;
 
-import com.google.common.base.Preconditions;
+//import com.google.common.base.Preconditions;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
@@ -11,6 +11,9 @@ import static java.lang.Thread.sleep;
 /**
  * Created by joseph on 2/5/17.
  */
+
+// No shooting for the new challenge Relic Recovery - keeping code as a reference
+
 public class ShootingController implements Runnable {
     /**
      * Maximum speed of motor
@@ -45,8 +48,10 @@ public class ShootingController implements Runnable {
     private double targetPower;
 
     public ShootingController(Dutchess robot, Telemetry telemetry, boolean stopped, double power) {
-        Preconditions.checkArgument(robot != null, "robot must be non-null");
-        Preconditions.checkArgument((power >= -1.0) && (power <= 1.0), "power must be between -1 and 1, inclusive");
+        // Commenting out the Preconditions - not using them for right now
+
+        // Preconditions.checkArgument(robot != null, "robot must be non-null");
+        //Preconditions.checkArgument((power >= -1.0) && (power <= 1.0), "power must be between -1 and 1, inclusive");
         this.robot = robot;
         this.telemetry = telemetry;
         this.stopped = stopped;

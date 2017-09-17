@@ -1,6 +1,6 @@
 package chawks.hardware;
 
-import com.google.common.base.Preconditions;
+//import com.google.common.base.Preconditions;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
@@ -55,19 +55,21 @@ public class MovementController implements Runnable {
 
     public void setWheelPower(double wheelPower) {
         this.wheelPower = Range.clip(Math.abs(wheelPower), 0, 1);
-        Preconditions.checkState(this.wheelPower > 0, "wheelPower must be positive value greater than 0");
+        //Preconditions.checkState(this.wheelPower > 0, "wheelPower must be positive value greater than 0");
     }
 
+    // Fix later
     private boolean isWheelsInPosition() {
         boolean inPosition = true;
-        for (DcMotor wheel : robot.getWheels()) {
-            if (wheel.isBusy()) {
-                telemetry.addData(robot.getNameOfWheel(wheel), "%7d to %7d", wheel.getCurrentPosition(), wheel.getTargetPosition());
-                inPosition = false;
-            }
-        }
+       // for (DcMotor wheel : robot.getWheels()) {
+        //   if (wheel.isBusy()) {
+         //       telemetry.addData(robot.getNameOfWheel(wheel), "%7d to %7d", wheel.getCurrentPosition(), wheel.getTargetPosition());
+          //     inPosition = false;
+           // }
+        //}
         telemetry.update();
         return inPosition;
+
     }
 
     public void run() {

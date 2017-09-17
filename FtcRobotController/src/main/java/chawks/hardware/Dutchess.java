@@ -1,15 +1,14 @@
 package chawks.hardware;
+//NOTE: no more com.google.common
+//import com.google.common.base.Preconditions;
+//import com.google.common.collect.Lists;
 
-import com.google.common.base.Preconditions;
-import com.google.common.collect.Lists;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import java.util.List;
 
 public class Dutchess {
     private final WheelConfiguration wheelConfiguration;
@@ -51,18 +50,22 @@ public class Dutchess {
      *
      * @return list of motors that we have configured.
      */
-    public List<DcMotor> getWheelsAndSpinner() {
+
+
+  /*  public List<DcMotor> getWheelsAndSpinner() {
         return Lists.newArrayList(lb, rb, lf, rf, spin);
     }
+    */
 
     /**
      * Returns a list of wheel motors
      *
      * @return list of wheel motors
      */
-    public List<DcMotor> getWheels() {
+    /* public List<DcMotor> getWheels() {
         return Lists.newArrayList(lf, rf, lb, rb);
     }
+    */
 
     public String getNameOfWheel(DcMotor motor) {
         if(motor==lb) {
@@ -83,9 +86,12 @@ public class Dutchess {
      *
      * @return list of continuous rotation servos
      */
+    /*
     public List<CRServo> getCRServos() {
+
         return Lists.newArrayList(s4, s3, s2);
     }
+    */
 
     /**
      * Initialize the hardware
@@ -131,18 +137,26 @@ public class Dutchess {
     }
 
     public final void setWheelsToRunMode(DcMotor.RunMode runMode) {
-        Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
-        for (DcMotor motor : getWheels()) {
-            motor.setMode(runMode);
-        }
+      //  Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
+      //  for (DcMotor motor : geheels()) {
+        lb.setMode(runMode);
+        rb.setMode(runMode);
+        lf.setMode(runMode);
+        rf.setMode(runMode);
+
+      //  }
     }
 
     public final void stopAllServos() {
         // we have three servos: s2, s3, and s4
-        for (CRServo servo : getCRServos()) {
-            servo.setPower(0);
-            servo.setDirection(DcMotorSimple.Direction.REVERSE);
-        }
+       //for (CRServo servo : getCRServos()) {
+            s2.setPower(0);
+            s2.setDirection(DcMotorSimple.Direction.REVERSE);
+            s3.setPower(0);
+            s3.setDirection(DcMotorSimple.Direction.REVERSE);
+            s4.setPower(0);
+            s4.setDirection(DcMotorSimple.Direction.REVERSE);
+        //}
     }
 
     public final void stopAllWheels() {
@@ -150,23 +164,40 @@ public class Dutchess {
     }
 
     public final void setPowerAllWheels(double power) {
-        for (DcMotor motor : getWheels()) {
-            motor.setPower(power);
-        }
+        //for (DcMotor motor : getWheels()) {
+            lb.setPower(power);
+            rb.setPower(power);
+            lf.setPower(power);
+            rf.setPower(power);
+
+        //}
     }
 
     public final void stopWheelsAndSpinner() {
-        for (DcMotor motor : getWheelsAndSpinner()) {
-            motor.setPower(0);
-        }
+        //for (DcMotor motor : getWheelsAndSpinner()) {
+            lb.setPower(0);
+            rb.setPower(0);
+            lf.setPower(0);
+            rf.setPower(0);
+        //}
     }
 
     public final boolean isWheelsStopped() {
-        for (DcMotor motor : getWheels()) {
-            if (motor.getPower() != 0) {
+        //for (DcMotor motor : getWheels()) {
+            if (lb.getPower() != 0) {
                 return false;
             }
-        }
+            if (rb.getPower() != 0) {
+                return false;
+            }
+            if (lf.getPower() != 0) {
+                return false;
+            }
+            if (rf.getPower() != 0) {
+                return false;
+            }
+
+        //}
         return true;
     }
 }
