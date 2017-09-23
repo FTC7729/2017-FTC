@@ -1,0 +1,7 @@
+Hardware Tests Required
+
+WHEELS
+- four wheels, test general movement (teleop)
+- four wheels, test controlled movement (autonomous)
+- four wheels, test strafe left (teleop & autonomous)
+- four wheels, test strafe right (teleop & autonomous)
