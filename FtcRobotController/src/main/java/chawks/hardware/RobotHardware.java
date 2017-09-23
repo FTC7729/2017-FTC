@@ -1,15 +1,12 @@
 package chawks.hardware;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.common.collect.*;
+//import com.google.common.collect.*;
 
 /**
  * This is NOT an opmode.
