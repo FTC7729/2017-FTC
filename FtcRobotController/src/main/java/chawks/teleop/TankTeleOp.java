@@ -9,7 +9,8 @@ import chawks.hardware.DrivingDirection;
 import chawks.hardware.ShootingController;
 
 @TeleOp(name = "Tank", group = "TeleOp")
-public class TankTeleOp extends AbstractTeleOpWithSpinner {
+public class
+TankTeleOp extends AbstractTeleOpWithSpinner {
 
     public float STRAFE_SPEED = 1.0F; //setting to a higher speed
 
