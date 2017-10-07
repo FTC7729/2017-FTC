@@ -15,6 +15,7 @@ import static java.lang.Thread.sleep;
 // No shooting for the new challenge Relic Recovery - keeping code as a reference
 
 public class ShootingController implements Runnable {
+
     /**
      * Maximum speed of motor
      **/
@@ -55,7 +56,7 @@ public class ShootingController implements Runnable {
         this.robot = robot;
         this.telemetry = telemetry;
         this.stopped = stopped;
-        setTargetPower(power);
+      //  setTargetPower(power);
     }
 
     public void setTargetPower(double power) {
@@ -64,7 +65,7 @@ public class ShootingController implements Runnable {
 
     public void stop() {
         telemetry.addData("spin", "currentPower:%s", robot.spin.getPower());
-        setTargetPower(0);
+        //setTargetPower(0);
         this.stopped = true;
     }
 

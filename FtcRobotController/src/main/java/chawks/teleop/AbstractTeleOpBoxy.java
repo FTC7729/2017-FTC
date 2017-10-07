@@ -47,13 +47,13 @@ public abstract class AbstractTeleOpBoxy extends AbstractTeleOpModeWithBoxy {
      */
     @Override
     public void start() {
-        super.start();
-        shootingController.setTargetPower(ShootingController.MAX_SPIN_MOTOR_SPEED);
+        //super.start();
+        //shootingController.setTargetPower(ShootingController.MAX_SPIN_MOTOR_SPEED);
     }
 
     @Override
     public void stop() {
-        super.stop();
-        shootingController.stop();
+        //super.stop();
+        //shootingController.stop();
     }
 }
