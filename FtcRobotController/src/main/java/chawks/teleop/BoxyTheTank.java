@@ -76,7 +76,10 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
             robot.RBMotor.setPower(-rightPower);
             return;
 
+
         }
+
+
 
         // the moment we take our finger off the DPAD, we are using the left and right stick values
         // to determine the power to apply to wheels.
