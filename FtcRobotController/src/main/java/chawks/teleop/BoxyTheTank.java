@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
 import chawks.hardware.DrivingDirection;
-import chawks.hardware.ShootingController;
+//import chawks.hardware.ShootingController;
 
 @TeleOp(name = "BOXY DA TANK", group = "TeleOp")
 public class BoxyTheTank extends AbstractTeleOpBoxy {
@@ -76,10 +76,6 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
             robot.RBMotor.setPower(-rightPower);
             return;
 
-        } else if (isDPADUp) {
-            shootingController.incrementUpSpinner();
-        } else if (isDPADDown) {
-            shootingController.incrementDownSpinner();
         }
 
         // the moment we take our finger off the DPAD, we are using the left and right stick values
