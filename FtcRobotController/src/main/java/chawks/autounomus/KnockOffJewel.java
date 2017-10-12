@@ -28,6 +28,7 @@ public class KnockOffJewel extends LinearOpMode {
         } else {
             return true;
         }
+
     }
 
 }
