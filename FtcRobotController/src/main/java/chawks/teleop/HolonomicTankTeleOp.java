@@ -1,12 +1,11 @@
 package chawks.teleop;
 
-        import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-        import com.qualcomm.robotcore.hardware.Gamepad;
-        import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.Range;
+import chawks.hardware.DrivingDirection;
 
-        import chawks.hardware.DrivingDirection;
-
-@TeleOp(name = "Holonomic Tank", group = "TeleOp")
+@TeleOp(name = "Boxy Holonomic Tank", group = "TeleOp")
 public class HolonomicTankTeleOp extends BoxyTheTank {
     /**
      * The value "K" should never equal or be less than 0 as there will be no clockwise movement
