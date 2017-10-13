@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import java.text.DecimalFormat;
 
 /*
@@ -58,7 +58,7 @@ import java.text.DecimalFormat;
  */
 
 @TeleOp(name = "Concept: navX Drive Straight PID - Linear", group = "Concept")
-//@Disabled
+@Disabled
 public class ConceptNavXDriveStraightPIDLinearOp extends LinearOpMode {
     DcMotor leftMotor;
     DcMotor rightMotor;

@@ -46,7 +46,7 @@ import java.text.DecimalFormat;
  * as telemetry data.
  */
 @TeleOp(name = "Concept: navX Motion Detection", group = "Concept")
-// @Disabled Comment this in to remove this from the Driver Station OpMode List
+@Disabled
 public class ConceptNavXMotionDetectionOp extends OpMode {
 
   /* This is the port on the Core Device Interace Module */
