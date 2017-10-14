@@ -1,13 +1,14 @@
 package chawks.autounomus;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
+import com.qualcomm.robotcore.hardware.ColorSensor;
 /**
  * Created by karahandy on 10/10/17.
  */
 public class KnockOffJewel extends LinearOpMode {
 //Public class means it can be accessed anywhere and private means it can only be acessed in that one class
     //
+ColorSensor colorSensor;
     public void runOpMode() {
 
        // if you don't have an OpMode active the varibles haven't been created, running without varibles will prevent
@@ -22,12 +23,11 @@ public class KnockOffJewel extends LinearOpMode {
     }
 
     private boolean isRed(){
-        int rand = (int) (Math.random() * 100);
-        if (rand < 50) {
-            return false;
-        } else {
-            return true;
-        }
+       if (colorSensor.red() >= 100 && colorSensor.blue() <= 50) {
+           return true;
+       } else {
+           return false;
+       }
 
     }
 
