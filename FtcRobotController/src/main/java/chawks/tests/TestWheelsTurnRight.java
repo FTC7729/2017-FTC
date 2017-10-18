@@ -35,14 +35,14 @@ public class TestWheelsTurnRight extends OpMode {
     }
 
     //Is not quite a dutchess
-    private Boxy robot = new Boxy();
+    private Boxy robot = new Boxy(hardwareMap);
 
     private final static int THRESHOLD = 10;
 
-    private final int leftFrontTarget;
-    private final int leftBackTarget;
-    private final int rightFrontTarget;
-    private final int rightBackTarget;
+   // private final int leftFrontTarget;
+    //private final int leftBackTarget;
+   // private final int rightFrontTarget;
+   // private final int rightBackTarget;
 
     public TestWheelsTurnRight() {
         this(1,-1);
@@ -53,19 +53,19 @@ public class TestWheelsTurnRight extends OpMode {
     }
 
     public TestWheelsTurnRight(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget) {
-        int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
-        this.leftFrontTarget = leftFrontTarget * encoderCpr;
-        this.leftBackTarget = leftBackTarget * encoderCpr;
-        this.rightFrontTarget = rightFrontTarget * encoderCpr;
-        this.rightBackTarget = rightBackTarget * encoderCpr;
+       // int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
+      //  this.leftFrontTarget = leftFrontTarget * encoderCpr;
+      //  this.leftBackTarget = leftBackTarget * encoderCpr;
+       // this.rightFrontTarget = rightFrontTarget * encoderCpr;
+      //  this.rightBackTarget = rightBackTarget * encoderCpr;
     }
 
     public TestWheelsTurnRight(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget, double strafeFactor) {
-        int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
-        this.leftFrontTarget = (int) (leftFrontTarget * encoderCpr * strafeFactor);
-        this.leftBackTarget = (int) (leftBackTarget * encoderCpr * strafeFactor);
-        this.rightFrontTarget = (int) (rightFrontTarget * encoderCpr * strafeFactor);
-        this.rightBackTarget = (int) (rightBackTarget * encoderCpr * strafeFactor);
+      //  int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
+     //   this.leftFrontTarget = (int) (leftFrontTarget * encoderCpr * strafeFactor);
+       // this.leftBackTarget = (int) (leftBackTarget * encoderCpr * strafeFactor);
+      //  this.rightFrontTarget = (int) (rightFrontTarget * encoderCpr * strafeFactor);
+       // this.rightBackTarget = (int) (rightBackTarget * encoderCpr * strafeFactor);
     }
 
     private State state;
@@ -86,10 +86,10 @@ public class TestWheelsTurnRight extends OpMode {
                 break;
             case StartEncoders:
 
-                robot.LFMotor.setTargetPosition(leftFrontTarget);
-                robot.LBMotor.setTargetPosition(leftBackTarget);
-                robot.RFMotor.setTargetPosition(rightFrontTarget);
-                robot.RBMotor.setTargetPosition(rightBackTarget);
+             //   robot.LFMotor.setTargetPosition(leftFrontTarget);
+             //   robot.LBMotor.setTargetPosition(leftBackTarget);
+              //  robot.RFMotor.setTargetPosition(rightFrontTarget);
+             //   robot.RBMotor.setTargetPosition(rightBackTarget);
 
                 robot.setWheelsToRunMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -105,16 +105,16 @@ public class TestWheelsTurnRight extends OpMode {
                 int currRightFrontPos = robot.RFMotor.getCurrentPosition();
 
                 //Check if the motors are close enough to being in position
-                boolean leftBackIsInPos = isAtTargetThreshold(leftBackTarget, currLeftBackPos, THRESHOLD);
-                boolean rightBackIsInPos = isAtTargetThreshold(rightBackTarget, currRightBackPos, THRESHOLD);
-                boolean leftFrontIsInPos = isAtTargetThreshold(leftFrontTarget, currLeftFrontPos, THRESHOLD);
-                boolean rightFrontIsInPos = isAtTargetThreshold(rightFrontTarget, currRightFrontPos, THRESHOLD);
+             //   boolean leftBackIsInPos = isAtTargetThreshold(leftBackTarget, currLeftBackPos, THRESHOLD);
+              //  boolean rightBackIsInPos = isAtTargetThreshold(rightBackTarget, currRightBackPos, THRESHOLD);
+              //  boolean leftFrontIsInPos = isAtTargetThreshold(leftFrontTarget, currLeftFrontPos, THRESHOLD);
+             //   boolean rightFrontIsInPos = isAtTargetThreshold(rightFrontTarget, currRightFrontPos, THRESHOLD);
 
                 //Display if each motor is in position
-                telemetry.addLine("leftBackIsInPos: " + leftBackIsInPos + " (" + robot.LBMotor.isBusy() + ")");
-                telemetry.addLine("rightBackIsInPos: " + rightBackIsInPos + " (" + robot.RBMotor.isBusy() + ")");
-                telemetry.addLine("leftFrontIsInPos: " + leftFrontIsInPos + " (" + robot.LFMotor.isBusy() + ")");
-                telemetry.addLine("rightFrontIsInPos: " + rightFrontIsInPos + " (" + robot.RFMotor.isBusy() + ")");
+              //  telemetry.addLine("leftBackIsInPos: " + leftBackIsInPos + " (" + robot.LBMotor.isBusy() + ")");
+              //  telemetry.addLine("rightBackIsInPos: " + rightBackIsInPos + " (" + robot.RBMotor.isBusy() + ")");
+              //  telemetry.addLine("leftFrontIsInPos: " + leftFrontIsInPos + " (" + robot.LFMotor.isBusy() + ")");
+              //  telemetry.addLine("rightFrontIsInPos: " + rightFrontIsInPos + " (" + robot.RFMotor.isBusy() + ")");
 
                 //If the motors are in position, transition to the next state
                 if(!robot.LBMotor.isBusy() && !robot.RBMotor.isBusy() && !robot.LFMotor.isBusy() && !robot.RFMotor.isBusy()) {

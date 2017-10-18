@@ -7,20 +7,22 @@ package chawks.hardware;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Boxy {
-    private final WheelConfiguration wheelConfiguration;
+    //private final WheelConfiguration wheelConfiguration;
     private final ElapsedTime period = new ElapsedTime();
     public DcMotor LFMotor;
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
+    public Servo lGrabberServo;
+    public Servo rGrabberServo;
 
 
 
-    public Boxy() {
+    public Boxy(HardwareMap hwMap) {
         // these settings are for AndyMark Motor Encoder with Mecanum wheels
         // see: http://www.handhgraphicsorlando.com/STEM/BabyBot_DriveEncoderB.pdf
         final int countsPerMotorRev = 1120;
@@ -34,13 +36,17 @@ public class Boxy {
         final double radiusRightBack = 8.6245d;
 
         // store the wheel configuration
-        this.wheelConfiguration = new WheelConfiguration(countsPerMotorRev, driveGearReduction, wheelDiameterInches,
-                radiusLeftFront, radiusRightFront, radiusLeftBack, radiusRightBack);
+        //this.wheelConfiguration = new WheelConfiguration(countsPerMotorRev, driveGearReduction, wheelDiameterInches,
+                //radiusLeftFront, radiusRightFront, radiusLeftBack, radiusRightBack);
+
+        //initializes servos for grabber
+        lGrabberServo = hwMap.servo.get("lGrabber");
+        rGrabberServo = hwMap.servo.get("rGrabber");
     }
 
-    public WheelConfiguration getWheelConfiguration() {
-        return wheelConfiguration;
-    }
+    //public WheelConfiguration getWheelConfiguration() {
+    //    return wheelConfiguration;
+    //}
 
     /**
      * Returns a list of motors that we have configured.

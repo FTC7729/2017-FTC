@@ -9,7 +9,7 @@ public abstract class AbstractTeleOpModeWithBoxy extends OpMode {
     /**
      * Robot hardware configuration
      */
-    protected final Boxy robot = new Boxy();
+    protected final Boxy robot = new Boxy(hardwareMap);
 
     /**
      * This code is run ONCE when the driver hits INIT
