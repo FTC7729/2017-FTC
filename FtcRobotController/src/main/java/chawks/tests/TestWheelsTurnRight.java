@@ -79,7 +79,7 @@ public class TestWheelsTurnRight extends OpMode {
         switch (state) {
             case ResetEncoders:
 
-                robot.setWheelsToRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+             //   robot.setWheelsToRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
                 state = State.StartEncoders;
 
@@ -91,18 +91,18 @@ public class TestWheelsTurnRight extends OpMode {
               //  robot.RFMotor.setTargetPosition(rightFrontTarget);
              //   robot.RBMotor.setTargetPosition(rightBackTarget);
 
-                robot.setWheelsToRunMode(DcMotor.RunMode.RUN_TO_POSITION);
+              //  robot.setWheelsToRunMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-                robot.setPowerAllWheels(0.4D);
+             //   robot.setPowerAllWheels(0.4D);
 
                 state = State.WaitUntilInPosition;
 
                 break;
             case WaitUntilInPosition:
-                int currLeftBackPos = robot.LBMotor.getCurrentPosition();
+               /* int currLeftBackPos = robot.LBMotor.getCurrentPosition();
                 int currRightBackPos = robot.RBMotor.getCurrentPosition();
                 int currLeftFrontPos = robot.LFMotor.getCurrentPosition();
-                int currRightFrontPos = robot.RFMotor.getCurrentPosition();
+                int currRightFrontPos = robot.RFMotor.getCurrentPosition(); */
 
                 //Check if the motors are close enough to being in position
              //   boolean leftBackIsInPos = isAtTargetThreshold(leftBackTarget, currLeftBackPos, THRESHOLD);
@@ -117,14 +117,14 @@ public class TestWheelsTurnRight extends OpMode {
               //  telemetry.addLine("rightFrontIsInPos: " + rightFrontIsInPos + " (" + robot.RFMotor.isBusy() + ")");
 
                 //If the motors are in position, transition to the next state
-                if(!robot.LBMotor.isBusy() && !robot.RBMotor.isBusy() && !robot.LFMotor.isBusy() && !robot.RFMotor.isBusy()) {
+              /*  if(!robot.LBMotor.isBusy() && !robot.RBMotor.isBusy() && !robot.LFMotor.isBusy() && !robot.RFMotor.isBusy()) {
                     //Change this to State.OptionalStopMotors if you want the robot to
                     //just stop moving the motors instead of holding position
                     state = State.StopMotors;
-                }
+                } */
                 break;
             case StopMotors:
-                robot.stopAllWheels();
+              //  robot.stopAllWheels();
                 state = State.Done;
                 break;
         }

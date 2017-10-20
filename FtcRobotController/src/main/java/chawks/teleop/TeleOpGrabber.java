@@ -7,9 +7,13 @@ import chawks.hardware.ArmController;
 import chawks.hardware.Boxy;
 import chawks.hardware.DrivingDirection;
 import chawks.hardware.ShootingController;
-@TeleOp(name = "GrabberTest")
+@TeleOp(name = "GrabberTest", group="TeleOp")
 public class TeleOpGrabber extends AbstractTeleOpModeWithBoxy {
-
+    @Override
+    public void init() {
+        robot.init(hardwareMap);
+    }
+    @Override
     public void handleGamePad1(Gamepad gamepad) {
         robot.rGrabberServo.setPosition(0);
         robot.lGrabberServo.setPosition(0);

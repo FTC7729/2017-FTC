@@ -51,10 +51,10 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
                     rightPower = -STRAFE_SPEED;
                     break;
             }
-            robot.LFMotor.setPower(leftPower);
+         /*   robot.LFMotor.setPower(leftPower);
             robot.RFMotor.setPower(rightPower);
             robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
+            robot.RBMotor.setPower(-rightPower);*/
             return;
         } else if (isDPADRight) {
             float leftPower;
@@ -70,10 +70,10 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
                     rightPower = STRAFE_SPEED;
                     break;
             }
-            robot.LFMotor.setPower(leftPower);
+         /*   robot.LFMotor.setPower(leftPower);
             robot.RFMotor.setPower(rightPower);
             robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
+            robot.RBMotor.setPower(-rightPower); */
             return;
 
 
@@ -97,10 +97,10 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
                 break;
         }
 
-        robot.LBMotor.setPower(leftPower);
+     /*   robot.LBMotor.setPower(leftPower);
         robot.LFMotor.setPower(leftPower);
         robot.RFMotor.setPower(rightPower);
-        robot.RBMotor.setPower(rightPower);
+        robot.RBMotor.setPower(rightPower); */
     }
 
     @Override

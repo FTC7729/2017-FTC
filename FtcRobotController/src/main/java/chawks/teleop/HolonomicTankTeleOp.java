@@ -93,9 +93,9 @@ public class HolonomicTankTeleOp extends BoxyTheTank {
         }
 
         // Sets the power of each motor to their respective powers
-        robot.LBMotor.setPower(lb_pow);
+      /*  robot.LBMotor.setPower(lb_pow);
         robot.RBMotor.setPower(rb_pow);
         robot.RFMotor.setPower(rf_pow);
-        robot.LFMotor.setPower(lf_pow);
+        robot.LFMotor.setPower(lf_pow); */
     }
 }

@@ -13,10 +13,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Boxy {
     //private final WheelConfiguration wheelConfiguration;
     private final ElapsedTime period = new ElapsedTime();
-    public DcMotor LFMotor;
-    public DcMotor LBMotor;
-    public DcMotor RFMotor;
-    public DcMotor RBMotor;
+//    public DcMotor LFMotor;
+  //  public DcMotor LBMotor;
+  //  public DcMotor RFMotor;
+ //   public DcMotor RBMotor;
     public Servo lGrabberServo;
     public Servo rGrabberServo;
 
@@ -70,7 +70,7 @@ public class Boxy {
     }
     */
 
-    public String getNameOfWheel(DcMotor motor) {
+  /*  public String getNameOfWheel(DcMotor motor) {
         if(motor==LBMotor) {
             return "LBMotor";
         } else if(motor==RBMotor) {
@@ -83,7 +83,7 @@ public class Boxy {
             return "";
         }
     }
-
+*/
     /**
      * Returns a list of continuous rotation servos
      *
@@ -103,64 +103,63 @@ public class Boxy {
      */
     public void init(HardwareMap hardwareMap) {
         // grab wheels
-        LBMotor = hardwareMap.dcMotor.get("LBMotor");
-        RBMotor = hardwareMap.dcMotor.get("RBMotor");
-        LFMotor = hardwareMap.dcMotor.get("LFMotor");
-        RFMotor = hardwareMap.dcMotor.get("RFMotor");
+     //   LBMotor = hardwareMap.dcMotor.get("LBMotor");
+     //   RBMotor = hardwareMap.dcMotor.get("RBMotor");
+      //  LFMotor = hardwareMap.dcMotor.get("LFMotor");
+     //   RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
 
         // Set all motors to zero power
-        stopWheelsAndSpinner();
+       // stopWheelsAndSpinner();
 
         // configure the wheels so that if we apply +1.0 power to all of the wheels,
         // the robot moves forward
-        LFMotor.setDirection(DcMotor.Direction.FORWARD);
-        LBMotor.setDirection(DcMotor.Direction.FORWARD);
-        RFMotor.setDirection(DcMotor.Direction.REVERSE);
-        RBMotor.setDirection(DcMotor.Direction.REVERSE);
-        setWheelsToRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+     //   LFMotor.setDirection(DcMotor.Direction.FORWARD);
+     //   LBMotor.setDirection(DcMotor.Direction.FORWARD);
+      //  RFMotor.setDirection(DcMotor.Direction.REVERSE);
+      //  RBMotor.setDirection(DcMotor.Direction.REVERSE);
+      //  setWheelsToRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
 
     }
 
-    public final void setWheelsToRunMode(DcMotor.RunMode runMode) {
+  /*  public final void setWheelsToRunMode(DcMotor.RunMode runMode) {
       //  Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
       //  for (DcMotor motor : geheels()) {
-        LBMotor.setMode(runMode);
-        RBMotor.setMode(runMode);
-        LFMotor.setMode(runMode);
-        RFMotor.setMode(runMode);
+      //  LBMotor.setMode(runMode);
+      //  RBMotor.setMode(runMode);
+      //  LFMotor.setMode(runMode);
+      //  RFMotor.setMode(runMode);
 
       //  }
+    } */
+
+
+
+ //   public final void stopAllWheels() {
+    //    setPowerAllWheels(0);
     }
 
-
-
-    public final void stopAllWheels() {
-        setPowerAllWheels(0);
-    }
-
-    public final void setPowerAllWheels(double power) {
+  /*  public final void setPowerAllWheels(double power) {
         //for (DcMotor motor : getWheels()) {
             LBMotor.setPower(power);
             RBMotor.setPower(power);
             LFMotor.setPower(power);
             RFMotor.setPower(power);
 
-        //}
-    }
+        //} */
+ //   }
 
-    public final void stopWheelsAndSpinner() {
+   /* public final void stopWheelsAndSpinner() {
         //for (DcMotor motor : getWheelsAndSpinner()) {
             LBMotor.setPower(0);
             RBMotor.setPower(0);
             LFMotor.setPower(0);
             RFMotor.setPower(0);
         //}
-    }
-
-    public final boolean isWheelsStopped() {
+    } */
+  /*  public final boolean isWheelsStopped() {
         //for (DcMotor motor : getWheels()) {
             if (LBMotor.getPower() != 0) {
                 return false;
@@ -174,9 +173,9 @@ public class Boxy {
             if (RFMotor.getPower() != 0) {
                 return false;
             }
-
+*/
         //}
-        return true;
-    }
-}
+     //   return true;
+  //  }
+//}
 
