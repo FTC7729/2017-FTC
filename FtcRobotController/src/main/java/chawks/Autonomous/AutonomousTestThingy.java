@@ -2,13 +2,12 @@ package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
 import chawks.hardware.Boxy;
 
-import chawks.hardware.Dutchess;
+public abstract class AutonomousTestThingy extends LinearOpMode {
 
-public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
     /**
      * Robot configuration
      **/
@@ -98,7 +97,8 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
             robot.RFMotor.setPower(Math.abs(speed) + .05);
             robot.LBMotor.setPower(Math.abs(speed));
             robot.RBMotor.setPower(Math.abs(speed) + .05);
-            while (opModeIsActive() &&
+
+            /*while (opModeIsActive() &&
                     (elapsedTime.seconds() < timeoutS) && (robot.LFMotor.isBusy() && robot.RFMotor.isBusy()) && !isWheelsInPosition()) {
 
                 // Display it for the driver.		                 // Display it for the driver.
@@ -111,7 +111,7 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
                         robot.RBMotor.getCurrentPosition()
                 );
                 telemetry.update();
-            }
+            }*/
 
             // Stop all motion;		             // Stop all motion;
             robot.stopAllWheels();
@@ -123,14 +123,14 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
 
     //PLEASE ADD LATER PLEASE
 
-   // public boolean isWheelsInPosition() {
+    // public boolean isWheelsInPosition() {
     //    for (DcMotor wheel : robot.getWheels()) {
     //        if (wheel.getCurrentPosition() < wheel.getTargetPosition()) {
-     //           return false;
-   //         }
-   //     }
-  //      return true;
-   // }
+    //           return false;
+    //         }
+    //     }
+    //      return true;
+    // }
 
     public void encoderDriveDirect(double speed, double leftFeet, double rightFeet, double leftBackFeet, double rightBackFeet, double timeoutS) {
         leftFeet /= 5;
@@ -163,7 +163,8 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
             robot.RFMotor.setPower(Math.abs(speed));
             robot.LBMotor.setPower(Math.abs(speed));
             robot.RBMotor.setPower(Math.abs(speed));
-            while (opModeIsActive() &&
+
+            /*while (opModeIsActive() &&
                     (elapsedTime.seconds() < timeoutS) && (robot.LFMotor.isBusy() && robot.RFMotor.isBusy()) && !isWheelsInPosition()) {
 
                 // Display it for the driver.		                 // Display it for the driver.
@@ -171,12 +172,12 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
                 telemetry.addData("Path1", "Going to %7d :%7d :%7d :%7d", newLeftTarget, newRightTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path2", "Currently at %7d :%7d :%7d :%7d",
                         robot.LFMotor.getCurrentPosition(),
-                        robot.RFMotorMotor.getCurrentPosition(),
+                        robot.RFMotor.getCurrentPosition(),
                         robot.LBMotor.getCurrentPosition(),
                         robot.RBMotor.getCurrentPosition()
                 );
                 telemetry.update();
-            }
+            }*/
 
             robot.stopAllWheels();
             robot.setWheelsToRunMode(DcMotor.RunMode.RUN_USING_ENCODER);

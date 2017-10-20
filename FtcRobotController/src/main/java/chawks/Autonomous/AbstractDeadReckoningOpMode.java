@@ -2,17 +2,17 @@ package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import chawks.hardware.Dutchess;
+import chawks.hardware.Boxy;
+//import chawks.hardware.Dutchess;
 
 public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
     /**
      * Robot configuration
      **/
 
-    private final Dutchess robot = new Dutchess();
+    private final Boxy robot = new Boxy();
 
     private ElapsedTime elapsedTime = new ElapsedTime();
 
@@ -25,23 +25,31 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");    //
         telemetry.update();
 
-        robot.lf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.lb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.LFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.LBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.RBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         idle();
 
-        robot.lf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.lb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.LFMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.RFMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.LBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.RBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d",
-                robot.lf.getCurrentPosition(),
-                robot.rf.getCurrentPosition(),
-                robot.lb.getCurrentPosition(),
-                robot.rb.getCurrentPosition()
+                robot.LFMotor.getCurrentPosition(),
+                robot.RFMotor.getCurrentPosition(),
+                robot.LBMotor.getCurrentPosition(),
+                robot.RBMotor.getCurrentPosition()
+        );
+
+        // send telemetry message to indicate successful Encoder reset
+        telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d",
+                robot.LFMotor.getCurrentPosition(),
+                robot.RFMotor.getCurrentPosition(),
+                robot.LBMotor.getCurrentPosition(),
+                robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
 
@@ -49,8 +57,6 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
         waitForStart();
 
         initMovement();
-
-        shoot();
 
         runMovement();
 
@@ -67,7 +73,7 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
 
     }
 
-    public void shoot() {
+    /*public void shoot() {
         robot.spin.setPower(0.1);
         sleep(250);
 
@@ -123,12 +129,13 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
                 }
             }
 
-            robot.spin.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+            robot.spin.setZeroPoweRBMotorehavior(DcMotor.ZeroPoweRBMotorehavior.FLOAT);
             robot.s4.setPower(0);
             robot.s3.setPower(0);
             robot.s2.setPower(0);
         }
-    }
+    }*/
+
 
     public void encoderDrive(double speed, double feetDistance, double timeoutS) {
         feetDistance /= 5;
@@ -141,35 +148,35 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
             robot.setWheelsToRunMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             final double countsPerInch = robot.getWheelConfiguration().getCountsPerInch();
-            newLeftTarget = robot.lf.getCurrentPosition() + (int) (feetDistance * countsPerInch);
-            newRightTarget = robot.rf.getCurrentPosition() + (int) (feetDistance * countsPerInch);
-            newLeftBackTarget = robot.lb.getCurrentPosition() + (int) (feetDistance * countsPerInch);
-            newRightBackTarget = robot.rb.getCurrentPosition() + (int) (feetDistance * countsPerInch);
+            newLeftTarget = robot.LFMotor.getCurrentPosition() + (int) (feetDistance * countsPerInch);
+            newRightTarget = robot.RFMotor.getCurrentPosition() + (int) (feetDistance * countsPerInch);
+            newLeftBackTarget = robot.LBMotor.getCurrentPosition() + (int) (feetDistance * countsPerInch);
+            newRightBackTarget = robot.RBMotor.getCurrentPosition() + (int) (feetDistance * countsPerInch);
 
-            robot.lf.setTargetPosition(newLeftTarget);
-            robot.rf.setTargetPosition(newRightTarget);
-            robot.lb.setTargetPosition(newLeftBackTarget);
-            robot.rb.setTargetPosition(newRightBackTarget);
+            robot.LFMotor.setTargetPosition(newLeftTarget);
+            robot.RFMotor.setTargetPosition(newRightTarget);
+            robot.LBMotor.setTargetPosition(newLeftBackTarget);
+            robot.RBMotor.setTargetPosition(newRightBackTarget);
 
             elapsedTime.reset();
-            robot.lf.setPower(Math.abs(speed));
-            robot.rf.setPower(Math.abs(speed) + .05);
-            robot.lb.setPower(Math.abs(speed));
-            robot.rb.setPower(Math.abs(speed) + .05);
-            while (opModeIsActive() &&
-                    (elapsedTime.seconds() < timeoutS) && (robot.lf.isBusy() && robot.rf.isBusy()) && !isWheelsInPosition()) {
+            robot.LFMotor.setPower(Math.abs(speed));
+            robot.RFMotor.setPower(Math.abs(speed) + .05);
+            robot.LBMotor.setPower(Math.abs(speed));
+            robot.RBMotor.setPower(Math.abs(speed) + .05);
+            /*while (opModeIsActive() &&
+                    (elapsedTime.seconds() < timeoutS) && (robot.LFMotor.isBusy() && robot.RFMotor.isBusy()) && !isWheelsInPosition()) {
 
                 // Display it for the driver.		                 // Display it for the driver.
                 telemetry.addData("Path1", "Going to %7d :%7d :%7d :%7d", newLeftTarget, newRightTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path1", "Going to %7d :%7d :%7d :%7d", newLeftTarget, newRightTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path2", "Currently at %7d :%7d :%7d :%7d",
-                        robot.lf.getCurrentPosition(),
-                        robot.rf.getCurrentPosition(),
-                        robot.lb.getCurrentPosition(),
-                        robot.rb.getCurrentPosition()
+\                       robot.LFMotor.getCurrentPosition(),
+                        robot.RFMotor.getCurrentPosition(),
+                        robot.LBMotor.getCurrentPosition(),
+                        robot.RBMotor.getCurrentPosition()
                 );
                 telemetry.update();
-            }
+            }*/
 
             // Stop all motion;		             // Stop all motion;
             robot.stopAllWheels();
@@ -179,14 +186,14 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
         }
     }
 
-    public boolean isWheelsInPosition() {
+    /*public boolean isWheelsInPosition() {
         for (DcMotor wheel : robot.getWheels()) {
             if (wheel.getCurrentPosition() < wheel.getTargetPosition()) {
                 return false;
             }
         }
         return true;
-    }
+    }*/
 
     public void encoderDriveDirect(double speed, double leftFeet, double rightFeet, double leftBackFeet, double rightBackFeet, double timeoutS) {
         leftFeet /= 5;
@@ -203,36 +210,36 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
             robot.setWheelsToRunMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             final double countsPerInch = robot.getWheelConfiguration().getCountsPerInch();
-            newLeftTarget = robot.lf.getCurrentPosition() + (int) (leftFeet * countsPerInch);
-            newRightTarget = robot.rf.getCurrentPosition() + (int) (rightFeet * countsPerInch);
-            newLeftBackTarget = robot.lb.getCurrentPosition() + (int) (leftBackFeet * countsPerInch);
-            newRightBackTarget = robot.rb.getCurrentPosition() + (int) (rightBackFeet * countsPerInch);
+            newLeftTarget = robot.LFMotor.getCurrentPosition() + (int) (leftFeet * countsPerInch);
+            newRightTarget = robot.RFMotor.getCurrentPosition() + (int) (rightFeet * countsPerInch);
+            newLeftBackTarget = robot.LBMotor.getCurrentPosition() + (int) (leftBackFeet * countsPerInch);
+            newRightBackTarget = robot.RBMotor.getCurrentPosition() + (int) (rightBackFeet * countsPerInch);
 
             // SetTarget
-            robot.lf.setTargetPosition(newLeftTarget);
-            robot.rf.setTargetPosition(newRightTarget);
-            robot.lb.setTargetPosition(newLeftBackTarget);
-            robot.rb.setTargetPosition(newRightBackTarget);
+            robot.LFMotor.setTargetPosition(newLeftTarget);
+            robot.RFMotor.setTargetPosition(newRightTarget);
+            robot.LBMotor.setTargetPosition(newLeftBackTarget);
+            robot.RBMotor.setTargetPosition(newRightBackTarget);
 
             elapsedTime.reset();
-            robot.lf.setPower(Math.abs(speed));
-            robot.rf.setPower(Math.abs(speed));
-            robot.lb.setPower(Math.abs(speed));
-            robot.rb.setPower(Math.abs(speed));
-            while (opModeIsActive() &&
-                    (elapsedTime.seconds() < timeoutS) && (robot.lf.isBusy() && robot.rf.isBusy()) && !isWheelsInPosition()) {
+            robot.LFMotor.setPower(Math.abs(speed));
+            robot.RFMotor.setPower(Math.abs(speed));
+            robot.LBMotor.setPower(Math.abs(speed));
+            robot.RBMotor.setPower(Math.abs(speed));
+            /*while (opModeIsActive() &&
+                    (elapsedTime.seconds() < timeoutS) && (robot.LFMotor.isBusy() && robot.RFMotor.isBusy()) && !isWheelsInPosition()) {
 
                 // Display it for the driver.		                 // Display it for the driver.
                 telemetry.addData("Path1", "Going to %7d :%7d :%7d :%7d", newLeftTarget, newRightTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path1", "Going to %7d :%7d :%7d :%7d", newLeftTarget, newRightTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path2", "Currently at %7d :%7d :%7d :%7d",
-                        robot.lf.getCurrentPosition(),
-                        robot.rf.getCurrentPosition(),
-                        robot.lb.getCurrentPosition(),
-                        robot.rb.getCurrentPosition()
+                        robot.LFMotor.getCurrentPosition(),
+                        robot.RFMotor.getCurrentPosition(),
+                        robot.LBMotor.getCurrentPosition(),
+                        robot.RBMotor.getCurrentPosition()
                 );
                 telemetry.update();
-            }
+            }*/
 
             robot.stopAllWheels();
             robot.setWheelsToRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
