@@ -9,8 +9,9 @@ public class KnockOffJewel extends LinearOpMode {
 //Public class means it can be accessed anywhere and private means it can only be acessed in that one class
     //
 ColorSensor colorSensor;
-    public void runOpMode() {
 
+    public void runOpMode() {
+        colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
        // if you don't have an OpMode active the varibles haven't been created, running without varibles will prevent
        // code from working
 
