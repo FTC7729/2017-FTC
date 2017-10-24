@@ -14,6 +14,8 @@ ColorSensor colorSensor;
         colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
        // if you don't have an OpMode active the varibles haven't been created, running without varibles will prevent
        // code from working
+        colorSensor.enableLed(true);
+        waitForStart();
 
         while(opModeIsActive()) {
             //use while so the function inside only happens while you are using that OpMode
