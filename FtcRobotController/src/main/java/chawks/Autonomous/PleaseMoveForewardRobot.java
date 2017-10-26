@@ -1,9 +1,9 @@
 package chawks.Autonomous;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import chawks.hardware.Boxy;
 
 /**
@@ -17,7 +17,8 @@ import chawks.hardware.Boxy;
  * - A bad encoder
  *
  * In either case, the "current position" of the encoder will either read as "0", or once started,
- * will continue to return true for the "isBusy" method. NOTE: "isBusy" is not used in this program.
+ * will continue to return
+ * true for the "isBusy" method. NOTE: "isBusy" is not used in this program.
  *
  * To use this class, run the program like a normal tele-op. The result should be four "true" values
  * in the telemetry. For any wheel which is "false" there is a problem. Check the wiring of the bot
@@ -27,8 +28,8 @@ import chawks.hardware.Boxy;
  *
  */
 
-@Autonomous(name = "Test Wheels Turn Right Auto ", group = "Autonomous")
-public class TestWheelsTurnRightAut extends OpMode {
+@Autonomous(name = "Please Move Roreward Robot", group = "Autonomous")
+public class PleaseMoveForewardRobot extends OpMode {
 
     enum State {
         ResetEncoders, StartEncoders, WaitUntilInPosition, StopMotors, Done
@@ -44,15 +45,18 @@ public class TestWheelsTurnRightAut extends OpMode {
     private final int rightFrontTarget;
     private final int rightBackTarget;
 
-    public TestWheelsTurnRightAut() {
-        this(1,-1);
+    public PleaseMoveForewardRobot() {
+        this(3,3);
     }
 
-    public TestWheelsTurnRightAut(int leftTarget, int rightTarget) {
+
+    public PleaseMoveForewardRobot(int leftTarget, int rightTarget) {
         this(leftTarget,leftTarget, rightTarget, rightTarget);
     }
 
-    public TestWheelsTurnRightAut(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget) {
+
+
+    public PleaseMoveForewardRobot(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget) {
         int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
         this.leftFrontTarget = leftFrontTarget * encoderCpr;
         this.leftBackTarget = leftBackTarget * encoderCpr;
@@ -60,7 +64,7 @@ public class TestWheelsTurnRightAut extends OpMode {
         this.rightBackTarget = rightBackTarget * encoderCpr;
     }
 
-    public TestWheelsTurnRightAut(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget, double strafeFactor) {
+    public PleaseMoveForewardRobot(int leftFrontTarget, int leftBackTarget, int rightFrontTarget, int rightBackTarget, double strafeFactor) {
         int encoderCpr = robot.getWheelConfiguration().getCountsPerMotorRev();
         this.leftFrontTarget = (int) (leftFrontTarget * encoderCpr * strafeFactor);
         this.leftBackTarget = (int) (leftBackTarget * encoderCpr * strafeFactor);
