@@ -16,9 +16,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
  */
 @TeleOp(name = "Course Correction: Tank Turn", group = "TeleOp")
 public class TankTurnCourseCorrect extends LinearOpMode {
+    public double degrees;
     NavxMicroNavigationSensor navxMicro;
     IntegratingGyroscope gyro;
     ElapsedTime timer;
+    private final Boxy robot = new Boxy();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -39,7 +41,35 @@ public class TankTurnCourseCorrect extends LinearOpMode {
         waitForStart();
         telemetry.log().clear();
         while (opModeIsActive()) {
+            AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+            Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
+            String heading = formatAngle(angles.angleUnit, angles.firstAngle);
+
+            if (degrees > 5) {
+                robot.LBMotor.setPower(1.0);
+                robot.LFMotor.setPower(1.0);
+                robot.RFMotor.setPower(-1.0);
+                robot.RBMotor.setPower(-1.0);
+
+            } else if (degrees < -5) {
+
+            } else if (degrees > -5 && degrees < 5) {
+                telemetry.addLine()
+                        .addData("On Course! Bearing: ",formatAngle(angles.angleUnit, angles.firstAngle));
+                telemetry.update();
+            }
         }
+    }
+    String formatAngle(AngleUnit angleUnit, double angle) {
+        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
+    }
+    String formatDegrees(double degrees){
+        getNumDegrees(degrees);
+        return String.format("%.1f", AngleUnit.DEGREES.normalize(degrees));
+
+    }
+    void getNumDegrees(double stuff){
+        degrees = stuff;
     }
 }
