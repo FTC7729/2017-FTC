@@ -27,7 +27,7 @@ import chawks.hardware.Boxy;
  *
  */
 
-@Autonomous(name = "Test Wheels Turn Right Auto ", group = "Autonomous")
+@Autonomous(name = "Test Wheels forward", group = "Autonomous")
 public class TestWheelsForwardAut extends OpMode {
 
     enum State {
@@ -45,8 +45,7 @@ public class TestWheelsForwardAut extends OpMode {
     private final int rightBackTarget;
 
     public TestWheelsForwardAut() {
-        this(1,-1);
-    }
+        this(1,-1);   }
 
     public TestWheelsForwardAut(int leftTarget, int rightTarget) {
         this(leftTarget,leftTarget, rightTarget, rightTarget);

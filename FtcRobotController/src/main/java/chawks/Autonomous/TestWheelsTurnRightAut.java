@@ -27,7 +27,7 @@ import chawks.hardware.Boxy;
  *
  */
 
-@Autonomous(name = "Test Wheels Turn Right Auto ", group = "Autonomous")
+@Autonomous(name = "Test Wheels Turn Right Auto nope ", group = "Autonomous")
 public class TestWheelsTurnRightAut extends OpMode {
 
     enum State {
