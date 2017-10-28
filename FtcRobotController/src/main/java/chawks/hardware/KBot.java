@@ -143,7 +143,7 @@ public class KBot {
         // \/                 BE SURE TO TEST
         LiftM.setDirection(DcMotor.Direction.FORWARD);
 
-        
+
         //I think it need to be run with encoder
         setWheelsToRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
