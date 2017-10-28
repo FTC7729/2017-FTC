@@ -27,11 +27,11 @@ import chawks.hardware.Boxy;
  *
  */
 
-<<<<<<< HEAD
+
 @Autonomous(name = "Test Wheels Turn Forward Auto ", group = "Autonomous")
-=======
-@Autonomous(name = "Test Wheels forward", group = "Autonomous")
->>>>>>> 18e5eb68f5c2d74bc33ad236f8e223f1fbe9e51f
+
+
+
 public class TestWheelsForwardAut extends OpMode {
 
     enum State {
