@@ -15,15 +15,20 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
  * Created by ibtro on 10/24/2017.
  */
 @TeleOp(name = "Course Correction: Tank Turn", group = "TeleOp")
-public class TankTurnCourseCorrect extends LinearOpMode {
+public abstract class TankTurnCourseCorrect extends LinearOpMode {
+
     public double degrees;
     NavxMicroNavigationSensor navxMicro;
     IntegratingGyroscope gyro;
-    ElapsedTime timer;
+    ElapsedTime timer = new ElapsedTime();
     private final Boxy robot = new Boxy();
+
+
+
 
     @Override
     public void runOpMode() throws InterruptedException {
+        robot.init(hardwareMap);
         navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope) navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
@@ -39,6 +44,8 @@ public class TankTurnCourseCorrect extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
+
+        start();
         telemetry.log().clear();
         while (opModeIsActive()) {
             AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
@@ -53,7 +60,10 @@ public class TankTurnCourseCorrect extends LinearOpMode {
                 robot.RBMotor.setPower(-1.0);
 
             } else if (degrees < -5) {
-
+                robot.LBMotor.setPower(-1.0);
+                robot.LFMotor.setPower(-1.0);
+                robot.RFMotor.setPower(1.0);
+                robot.RBMotor.setPower(1.0);
             } else if (degrees > -5 && degrees < 5) {
                 telemetry.addLine()
                         .addData("On Course! Bearing: ",formatAngle(angles.angleUnit, angles.firstAngle));
