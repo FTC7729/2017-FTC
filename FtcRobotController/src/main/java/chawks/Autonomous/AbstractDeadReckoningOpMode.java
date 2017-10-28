@@ -3,10 +3,10 @@ package chawks.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import chawks.hardware.Boxy;
 //import chawks.hardware.Dutchess;
-
+@Autonomous(name = "AbstractDeadReckon", group = "Autonomous")
 public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
     /**
      * Robot configuration
@@ -17,7 +17,7 @@ public abstract class AbstractDeadReckoningOpMode extends LinearOpMode {
     private ElapsedTime elapsedTime = new ElapsedTime();
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         // this.setCamera(Cameras.PRIMARY);
 

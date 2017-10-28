@@ -94,7 +94,7 @@ public class OldieAuto extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-         //ep through each leg of the path,
+        //ep through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         // test 1: Drive is too long - we went all the way from starting side to the the wall all the way across
         // Turning Right went to far, did not go 90 degrees that we expected
@@ -142,27 +142,21 @@ public class OldieAuto extends LinearOpMode {
     }
 
     /*public void launchBall(double speedServo, double speedSpinner, double timeoutS) {
-
         robot.crservo2.setDirection(DcMotorSimple.Direction.REVERSE);
         robot.crservo3.setDirection(DcMotorSimple.Direction.REVERSE);
-
         if (opModeIsActive()) {
-
             runtime.reset();
             robot.crservo2.setPower(Math.abs(speedServo));
             robot.crservo3.setPower(Math.abs(speedServo));
-
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS)) {
                 robot.crservo2.setPower(speedServo);
                 robot.crservo3.setPower(speedServo);
                 robot.spinMotor.setPower(speedSpinner);
-
             }
             robot.spinMotor.setPower(0);
             robot.crservo2.setPower(0);
             robot.crservo3.setPower(0);
-
         }
     }*/
 
