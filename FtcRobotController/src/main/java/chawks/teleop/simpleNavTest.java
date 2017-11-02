@@ -39,9 +39,8 @@ public class simpleNavTest extends LinearOpMode{
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         telemetry.clear(); telemetry.update();
-
-        waitForStart();
         telemetry.log().clear();
+        waitForStart();
         //Most of these lines are original, but a few will still be copied
         while (opModeIsActive()) {
             AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);

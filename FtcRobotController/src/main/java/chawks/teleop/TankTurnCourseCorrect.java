@@ -29,6 +29,7 @@ public abstract class TankTurnCourseCorrect extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
+
         navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope) navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
