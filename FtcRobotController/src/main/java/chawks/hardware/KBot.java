@@ -18,7 +18,7 @@ public class KBot {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    public DcMotor LiftM;
+    //public DcMotor LiftM;
 
     public Servo LGServo;
     public Servo RGServo;
@@ -115,7 +115,7 @@ public class KBot {
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
-        LiftM = hardwareMap.dcMotor.get("LiftM");
+        //LiftM = hardwareMap.dcMotor.get("LiftM");
 
         LGServo = hardwareMap.servo.get("LGServo");
         RGServo = hardwareMap.servo.get("RGServo");
@@ -141,7 +141,7 @@ public class KBot {
 
         //  |  <---- Arrow       NOT SURE IF CORRECT
         // \/                 BE SURE TO TEST
-        LiftM.setDirection(DcMotor.Direction.FORWARD);
+        //LiftM.setDirection(DcMotor.Direction.FORWARD);
 
 
         //I think it need to be run with encoder
@@ -159,7 +159,7 @@ public class KBot {
         LFMotor.setMode(runMode);
         RFMotor.setMode(runMode);
 
-        LiftM.setMode(runMode);
+        //LiftM.setMode(runMode);
 
       //  }
     }
@@ -187,18 +187,20 @@ public class KBot {
             LFMotor.setPower(0);
             RFMotor.setPower(0);
 
-            LiftM.setPower(0);
+            //LiftM.setPower(0);
 
 
         //}
     }
 
     public final void ZeroServos(){
-        LGServo.setPosition(0);
-        RGServo.setPosition(0);
 
-        LatGmServo.setPosition(0);
-        VertGmServo.setPosition(0);
+        //Setting them to not zero because they hit the chassis
+        LGServo.setPosition(.23);
+        RGServo.setPosition(.85);
+
+        LatGmServo.setPosition(1);
+        VertGmServo.setPosition(1);
     }
 
     public final void AaaStopEverything(){
@@ -207,7 +209,7 @@ public class KBot {
         LFMotor.setPower(0);
         RFMotor.setPower(0);
 
-        LiftM.setPower(0);
+        //LiftM.setPower(0);
 
         LGServo.setPosition(LGServo.getPosition());
         RGServo.setPosition(RGServo.getPosition());
