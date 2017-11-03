@@ -99,8 +99,8 @@ public class OldieAuto extends LinearOpMode {
         // test 1: Drive is too long - we went all the way from starting side to the the wall all the way across
         // Turning Right went to far, did not go 90 degrees that we expected
         encoderDrive(DRIVE_SPEED,  48,  48, 48,  48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        //encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        //encoderDrive(DRIVE_SPEED, -24, -24, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
         // test 2: driving forward - it went forward but didnt' reach the big ball
         //for test 3 make the robot go farther and modify the angle at which the robot turns
