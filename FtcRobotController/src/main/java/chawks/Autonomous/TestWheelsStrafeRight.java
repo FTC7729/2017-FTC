@@ -1,6 +1,7 @@
 package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /**
  * This class tests the functionality of the wheels encoders.  We control the wheels using the
@@ -22,6 +23,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
  */
 
 @Autonomous(name = "Test Wheels Strafe Right", group = "Autonomous")
+@Disabled
 public class TestWheelsStrafeRight extends TestWheelsTurnRightAut {
     public TestWheelsStrafeRight() {
         super(3, -3, -3, 3);

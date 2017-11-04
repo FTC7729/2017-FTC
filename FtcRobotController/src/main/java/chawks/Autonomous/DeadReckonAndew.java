@@ -1,5 +1,6 @@
 package chawks.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
@@ -9,6 +10,7 @@ import chawks.hardware.Boxy;
  * Created by katie on 10/24/2017.
  */
 @Autonomous(name = "DeadReckonAndewTest", group = "Autonomous")
+@Disabled
 public abstract class DeadReckonAndew extends LinearOpMode {
 
     private final Boxy robot = new Boxy();

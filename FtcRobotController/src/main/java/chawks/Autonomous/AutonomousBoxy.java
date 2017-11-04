@@ -1,6 +1,7 @@
 package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -9,6 +10,7 @@ import chawks.hardware.Boxy;
 
 import chawks.hardware.Dutchess;
 @Autonomous(name = "AutonomousBoxy", group = "Autonomous")
+@Disabled
 public abstract class AutonomousBoxy extends LinearOpMode {
     /**
      * Robot configuration

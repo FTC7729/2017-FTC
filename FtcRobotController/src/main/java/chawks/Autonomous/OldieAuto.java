@@ -34,7 +34,7 @@ import chawks.hardware.Boxy;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Oldie Auto", group="Pushbot")
+//@Autonomous(name="Oldie Auto", group="Pushbot")
 //@Disabled
 public class OldieAuto extends LinearOpMode {
 

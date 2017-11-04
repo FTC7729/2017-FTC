@@ -35,8 +35,8 @@ import chawks.hardware.Boxy;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="AndrewTest?", group="Pushbot")
-//@Disabled
+//@Autonomous(name="AndrewTest?", group="Pushbot")
+//Disabled
 public class AndrewTestAuto extends LinearOpMode {
 
     /* Declare OpMode members. */

@@ -34,7 +34,7 @@ import chawks.hardware.KBot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="KBOT Oldie Auto", group="Pushbot")
+//@Autonomous(name="KBOT Oldie Auto", group="Pushbot")
 //@Disabled
 public class KBotOldieAuto extends LinearOpMode {
 

@@ -1,6 +1,7 @@
 package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -29,7 +30,7 @@ import chawks.hardware.Boxy;
 
 
 @Autonomous(name = "Test Wheels Turn Forward Auto ", group = "Autonomous")
-
+@Disabled
 
 
 public class TestWheelsForwardAut extends OpMode {

@@ -1,12 +1,14 @@
 package chawks.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import chawks.hardware.Boxy;
 @Autonomous(name="Andrew Oldie Auto", group="Testing")
+@Disabled
 public class AndrewOldieAuto extends LinearOpMode {
     Boxy         robot   = new Boxy();
     private ElapsedTime     runtime = new ElapsedTime();

@@ -2,6 +2,7 @@ package chawks.Autonomous;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
 
@@ -12,6 +13,7 @@ import chawks.hardware.Boxy;
  */
 //@Autonomous(name = "BlueBoxyRight", group = "Autonomous")
 @Autonomous(name = "BoxyBlueRightOfDoom", group = "Autonomous")
+@Disabled
 public class BoxyBlueRight extends AbstractDeadReckoningOpMode {
 
     private final Boxy robot = new Boxy();

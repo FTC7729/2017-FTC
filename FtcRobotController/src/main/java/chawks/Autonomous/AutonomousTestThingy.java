@@ -1,11 +1,12 @@
 package chawks.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import chawks.hardware.Boxy;
-
+@Disabled
 public abstract class AutonomousTestThingy extends LinearOpMode {
 
     /**
