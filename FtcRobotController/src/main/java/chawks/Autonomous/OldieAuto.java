@@ -162,7 +162,7 @@ public class OldieAuto extends LinearOpMode {
 
 
         String heading = formatAngle(angles.angleUnit, angles.firstAngle);
-        while (degrees > target + 2 && degrees < target - 2) {
+        while (degrees > target + 2 || degrees < target - 2) {
             rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
