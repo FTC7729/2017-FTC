@@ -6,7 +6,7 @@ package chawks.teleop;
 
         import chawks.hardware.DrivingDirection;
 
-@TeleOp(name = "Holonomic Tank", group = "TeleOp")
+//@TeleOp(name = "Holonomic Tank", group = "TeleOp")
 public class HolonomicTankTeleOp extends BoxyTheTank {
     /**
      * The value "K" should never equal or be less than 0 as there will be no clockwise movement

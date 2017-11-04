@@ -27,7 +27,7 @@ import chawks.hardware.Boxy;
  *
  */
 
-@TeleOp(name = "Test Wheels Turn Right", group = "Test")
+//@TeleOp(name = "Test Wheels Turn Right", group = "Test")
 public class TestWheelsTurnRight extends OpMode {
 
     enum State {

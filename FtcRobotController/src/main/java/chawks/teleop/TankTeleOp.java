@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import chawks.hardware.DrivingDirection;
 import chawks.hardware.ShootingController;
 
-@TeleOp(name = "Tank", group = "TeleOp")
+//@TeleOp(name = "Tank", group = "TeleOp")
 public class
 TankTeleOp extends AbstractTeleOpWithSpinner {
 

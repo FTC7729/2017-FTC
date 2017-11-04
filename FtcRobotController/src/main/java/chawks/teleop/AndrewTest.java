@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
-@TeleOp(name = "AndrewTest", group = "TeleOp")
+//@TeleOp(name = "AndrewTest", group = "TeleOp")
 public class AndrewTest extends AbstractTeleOpBoxy {
 
 

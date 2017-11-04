@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
-@TeleOp(name = "BOXY DA TANK", group = "TeleOp")
+//@TeleOp(name = "BOXY DA TANK", group = "TeleOp")
 public class BoxyTheTank extends AbstractTeleOpBoxy {
 
 
