@@ -134,22 +134,26 @@ public class OldieAuto extends LinearOpMode {
                 telemetry.addLine()
                         .addData("Turning Right!","");
                 telemetry.update();
-                robot.LBMotor.setPower(0.1);
-                robot.LFMotor.setPower(0.1);
-                robot.RFMotor.setPower(-0.1);
-                robot.RBMotor.setPower(-0.1);
+                robot.LBMotor.setPower(0.2);
+                robot.LFMotor.setPower(0.2);
+                robot.RFMotor.setPower(-0.2);
+                robot.RBMotor.setPower(-0.2);
             } else if (degrees < -10) {
                 telemetry.addLine()
                         .addData("Turning Left!","");
                 telemetry.update();
-                robot.LBMotor.setPower(-0.1);
-                robot.LFMotor.setPower(-0.1);
-                robot.RFMotor.setPower(0.1);
-                robot.RBMotor.setPower(0.1);
+                robot.LBMotor.setPower(-0.2);
+                robot.LFMotor.setPower(-0.2);
+                robot.RFMotor.setPower(0.2);
+                robot.RBMotor.setPower(0.2);
             } else  {
                 telemetry.addLine()
                         .addData("Keep Turning!","");
                 telemetry.update();
+                robot.LBMotor.setPower(0);
+                robot.LFMotor.setPower(0);
+                robot.RFMotor.setPower(0);
+                robot.RBMotor.setPower(0);
             }
             idle();
         }
