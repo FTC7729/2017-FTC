@@ -35,9 +35,9 @@ import chawks.hardware.Boxy;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="AndrewTest?", group="Pushbot")
+@Autonomous(name="RedAllianceStone1", group="safezone")
 //@Disabled
-public class AndrewTestAuto extends LinearOpMode {
+public class RedAllianceStone1 extends LinearOpMode {
 
     /* Declare OpMode members. */
     Boxy robot   = new Boxy();   // Use a Pushbot's hardware
@@ -46,20 +46,11 @@ public class AndrewTestAuto extends LinearOpMode {
         waitForStart();
         robot.init(hardwareMap);
 
-        TurnLeftTime(DRIVE_POWER,1150);
-        DriveFowardTime(DRIVE_POWER,1500);
-        /*//For facing the jewel, red alliance
-        StrafeLeftTime(DRIVE_POWER,2000);
-        Thread.sleep(1000);
-        //For facing jewel, blue alliance
-        StrafeRightTime(DRIVE_POWER,2000);
-        /*DriveFowardTime(DRIVE_POWER, SLEEP_TIME);
-        //1000 is
-        TurnRightTime(DRIVE_POWER,SLEEP_TIME);
-        StopRobot();*/
+        TurnLeftTime(DRIVE_POWER,100);
+        DriveFowardTime(DRIVE_POWER,100);
 
     }
-    double DRIVE_POWER = 1;
+    double DRIVE_POWER = .5;
     long SLEEP_TIME = 1000;
     public void StrafeLeftTime(double power, long time) throws InterruptedException
     {
