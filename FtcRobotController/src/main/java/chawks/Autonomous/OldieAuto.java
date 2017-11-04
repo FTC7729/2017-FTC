@@ -122,42 +122,28 @@ public class OldieAuto extends LinearOpMode {
         sleep(250);
         telemetry.clear();
        // encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        while (opModeIsActive()) {
-            AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
-            Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        robot.LBMotor.setPower(-0.3);
+        robot.LFMotor.setPower(-0.3);
+        robot.RFMotor.setPower(-0.3);
+        robot.RBMotor.setPower(-0.3);
+        sleep(1200);
+        robot.LBMotor.setPower(0);
+        robot.LFMotor.setPower(0);
+        robot.RFMotor.setPower(0);
+        robot.RBMotor.setPower(0);
+        navXTurn(-90.0);
+  //      while (opModeIsActive()) {
+            //AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+            //Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
             //Add telemetry data
             //Tells DS to either turn left or right depending on bearing
-            String heading = formatAngle(angles.angleUnit, angles.firstAngle);
+            //String heading = formatAngle(angles.angleUnit, angles.firstAngle);
 
-            if (degrees > 10) {
-                telemetry.addLine()
-                        .addData("Turning Right!","");
-                telemetry.update();
-                robot.LBMotor.setPower(0.2);
-                robot.LFMotor.setPower(0.2);
-                robot.RFMotor.setPower(-0.2);
-                robot.RBMotor.setPower(-0.2);
-            } else if (degrees < -10) {
-                telemetry.addLine()
-                        .addData("Turning Left!","");
-                telemetry.update();
-                robot.LBMotor.setPower(-0.2);
-                robot.LFMotor.setPower(-0.2);
-                robot.RFMotor.setPower(0.2);
-                robot.RBMotor.setPower(0.2);
-            } else  {
-                telemetry.addLine()
-                        .addData("Keep Turning!","");
-                telemetry.update();
-                robot.LBMotor.setPower(0);
-                robot.LFMotor.setPower(0);
-                robot.RFMotor.setPower(0);
-                robot.RBMotor.setPower(0);
-            }
-            idle();
+            //idle();
+
         }
-    }
+  //  }
     String formatAngle(AngleUnit angleUnit, double angle) {
         return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
     }
@@ -169,6 +155,46 @@ public class OldieAuto extends LinearOpMode {
     }
     void getNumDegrees(double stuff){
         degrees = stuff;
+    }
+    void navXTurn(double target) {
+        AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+        Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+
+        String heading = formatAngle(angles.angleUnit, angles.firstAngle);
+        while (degrees > target + 2 && degrees < target - 2) {
+            rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+            angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+
+            heading = formatAngle(angles.angleUnit, angles.firstAngle);
+            if (degrees > target + 2) {
+                telemetry.addLine()
+                        .addData("Turning Right!","");
+                telemetry.update();
+                robot.LBMotor.setPower(0.3);
+                robot.LFMotor.setPower(0.3);
+                robot.RFMotor.setPower(-0.3);
+                robot.RBMotor.setPower(-0.3);
+            } else if (degrees < target - 2) {
+                telemetry.addLine()
+                        .addData("Turning Left!","");
+                telemetry.update();
+                robot.LBMotor.setPower(-0.3);
+                robot.LFMotor.setPower(-0.3);
+                robot.RFMotor.setPower(0.3);
+                robot.RBMotor.setPower(0.3);
+            } else {
+                robot.LBMotor.setPower(0);
+                robot.LFMotor.setPower(0);
+                robot.RFMotor.setPower(0);
+                robot.RBMotor.setPower(0);
+            }
+            idle();
+        }
+        telemetry.addLine()
+                .addData("Done!","");
+        telemetry.update();
     }
 
 
