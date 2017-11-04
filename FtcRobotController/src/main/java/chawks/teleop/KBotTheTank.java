@@ -19,9 +19,10 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         // TODO: would be nice to use exponential scaling of the Y value so that as you move stick further,
         float leftStickY = Range.clip(-gamepad.left_stick_y, -1, 1);
         float rightStickY = Range.clip(-gamepad.right_stick_y, -1, 1);
+
         final boolean isButtonX = gamepad.x;
         final boolean isButtonY = gamepad.y;
-        final boolean isButtonA = gamepad.a;
+
         telemetry.addData("pad1", "left:%.2f, right:%.2f, dir:%s", leftStickY, rightStickY, drivingDirection.name());
 
         final boolean isDPADLeft = gamepad.dpad_left;
@@ -35,12 +36,6 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         } else if (isButtonY) {
             drivingDirection = DrivingDirection.REVERSE;
 
-        } if (isButtonA){
-            robot.RGServo.setPosition(1);
-            robot.LGServo.setPosition(0);
-        } else {
-            robot.RGServo.setPosition(.85);
-            robot.LGServo.setPosition(.23);
         }
 
         // if either the DPAD left/right buttons are depressed, then we are strafing and setting the
@@ -78,6 +73,7 @@ public class KBotTheTank extends AbstractTeleOpKBot {
                     rightPower = STRAFE_SPEED;
                     break;
             }
+
             robot.LFMotor.setPower(leftPower);
             robot.RFMotor.setPower(rightPower);
             robot.LBMotor.setPower(-leftPower);
@@ -112,8 +108,29 @@ public class KBotTheTank extends AbstractTeleOpKBot {
     }
 
     @Override
-    public void handleGamePad2(Gamepad gamepad) {
-    }
+    public void handleGamePad2(Gamepad gamepad) {//
+
+        final boolean isDpadUp = gamepad.dpad_up;
+        final boolean isDpadDown = gamepad.dpad_down;
+        final boolean isButtonA = gamepad.a;
+
+        if (isButtonA){
+            robot.RGServo.setPosition(1);
+            robot.LGServo.setPosition(0);
+        } else {
+            robot.RGServo.setPosition(.85);
+            robot.LGServo.setPosition(.23);
+        }
+
+        if (isDpadUp){
+            robot.LiftM.setPower(.5);
+        }else if (isDpadDown){
+                robot.LiftM.setPower(-.5);
+        }else{
+            robot.LiftM.setPower(0);
+        }
+
+    }//
 
 
 

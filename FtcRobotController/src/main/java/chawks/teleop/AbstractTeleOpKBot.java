@@ -8,12 +8,12 @@ public abstract class AbstractTeleOpKBot extends AbstractTeleOpModeWithKBot {
     /**
      * Arm controller
      */
-    protected ArmController armController;
+   // protected ArmController armController;
 
     /**
      * Spin motor controller
      */
-    protected ShootingController shootingController;
+  //  protected ShootingController shootingController;
 
     /**
      * Driving direction
@@ -23,7 +23,7 @@ public abstract class AbstractTeleOpKBot extends AbstractTeleOpModeWithKBot {
     /**
      * Spin motor thread
      **/
-    private Thread shootingThread;
+    //private Thread shootingThread;
 
     /*
      * Code to run ONCE when the driver hits INIT

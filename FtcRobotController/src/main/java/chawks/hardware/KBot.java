@@ -18,7 +18,7 @@ public class KBot {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    //public DcMotor LiftM;
+    public DcMotor LiftM;
 
     public Servo LGServo;
     public Servo RGServo;
@@ -115,7 +115,7 @@ public class KBot {
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
-        //LiftM = hardwareMap.dcMotor.get("LiftM");
+        LiftM = hardwareMap.dcMotor.get("LiftM");
 
         LGServo = hardwareMap.servo.get("LGServo");
         RGServo = hardwareMap.servo.get("RGServo");
@@ -141,7 +141,7 @@ public class KBot {
 
         //  |  <---- Arrow       NOT SURE IF CORRECT
         // \/                 BE SURE TO TEST
-        //LiftM.setDirection(DcMotor.Direction.FORWARD);
+        LiftM.setDirection(DcMotor.Direction.FORWARD);
 
 
         //I think it need to be run with encoder
@@ -187,7 +187,7 @@ public class KBot {
             LFMotor.setPower(0);
             RFMotor.setPower(0);
 
-            //LiftM.setPower(0);
+            LiftM.setPower(0);
 
 
         //}
@@ -209,7 +209,7 @@ public class KBot {
         LFMotor.setPower(0);
         RFMotor.setPower(0);
 
-        //LiftM.setPower(0);
+        LiftM.setPower(0);
 
         LGServo.setPosition(LGServo.getPosition());
         RGServo.setPosition(RGServo.getPosition());
