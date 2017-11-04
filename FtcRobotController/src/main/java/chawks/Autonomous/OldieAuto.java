@@ -121,7 +121,7 @@ public class OldieAuto extends LinearOpMode {
         waitForStart();
         sleep(250);
         telemetry.clear();
-        encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+       // encoderDrive(TURN_SPEED,   12, -12, 12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         while (opModeIsActive()) {
             AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
@@ -130,22 +130,22 @@ public class OldieAuto extends LinearOpMode {
             //Tells DS to either turn left or right depending on bearing
             String heading = formatAngle(angles.angleUnit, angles.firstAngle);
 
-            if (degrees >= -92 && degrees <= -88) {
+            if (degrees > 10) {
                 telemetry.addLine()
-                        .addData("Stop Turning Right!", "");
+                        .addData("Turning Right!","");
                 telemetry.update();
-            } else if (degrees <= 92 && degrees >= 88) {
+                robot.LBMotor.setPower(0.1);
+                robot.LFMotor.setPower(0.1);
+                robot.RFMotor.setPower(-0.1);
+                robot.RBMotor.setPower(-0.1);
+            } else if (degrees < -10) {
                 telemetry.addLine()
-                        .addData("Stop Turning Left!", "");
+                        .addData("Turning Left!","");
                 telemetry.update();
-            }else if (degrees > 92) {
-                telemetry.addLine()
-                        .addData("Too far left!", "");
-                telemetry.update();
-            } else if (degrees < -92) {
-                telemetry.addLine()
-                        .addData("Too far right!", "");
-                telemetry.update();
+                robot.LBMotor.setPower(-0.1);
+                robot.LFMotor.setPower(-0.1);
+                robot.RFMotor.setPower(0.1);
+                robot.RBMotor.setPower(0.1);
             } else  {
                 telemetry.addLine()
                         .addData("Keep Turning!","");
