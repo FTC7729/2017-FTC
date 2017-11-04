@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import chawks.hardware.Boxy;
-@Autonomous(name="BlueAllianceStone1", group="safezone")
-public class BlueAllianceStone1 extends LinearOpMode {
+@Autonomous(name="BlueAllianceStone2", group="safezone")
+public class BlueAllianceStone2 extends LinearOpMode {
     Boxy         robot   = new Boxy();
     private ElapsedTime     runtime = new ElapsedTime();
 
@@ -58,9 +58,9 @@ public class BlueAllianceStone1 extends LinearOpMode {
         waitForStart();
 
         //Start Code after here
-        encoderDrive(.5,-.5,.5,-.5,.5,4);
+        encoderDrive(.75,.5,-.5,.5,-.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
-        encoderDrive(.5,7,7,7,7,4);
+        encoderDrive(.5,6,6,6,6,4);
 
 
         telemetry.addData("Path", "Complete");
