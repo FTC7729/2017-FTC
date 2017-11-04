@@ -60,7 +60,7 @@ public class BlueAllianceStone1 extends LinearOpMode {
         //Start Code after here
         encoderDrive(.5,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
-        encoderDrive(.5,7,7,7,7,4);
+        encoderDrive(.5,-7,-7,-7,-7,4);
 
 
         telemetry.addData("Path", "Complete");
