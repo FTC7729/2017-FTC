@@ -1,16 +1,29 @@
 package chawks.Autonomous;
 
+import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
 import chawks.hardware.Boxy;
 @Autonomous(name="RedAllianceStone2", group="safezone")
 public class RedAllianceStone2 extends LinearOpMode {
+    IntegratingGyroscope gyro;
+    NavxMicroNavigationSensor navxMicro;
+    public double degrees;
+    ElapsedTime timer = new ElapsedTime();
     Boxy         robot   = new Boxy();
     private ElapsedTime     runtime = new ElapsedTime();
-
+    static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
@@ -22,7 +35,7 @@ public class RedAllianceStone2 extends LinearOpMode {
     static final double     BACKWARDS_SPEED         = -0.6;
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
 
         robot.init(hardwareMap);
 
@@ -53,6 +66,19 @@ public class RedAllianceStone2 extends LinearOpMode {
                 robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
+        navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+        gyro = (IntegratingGyroscope)navxMicro;
+        telemetry.log().add("Gyro Calibrating. Do Not Move!");
+
+        // Wait until the gyro calibration is complete
+        timer.reset();
+        while (navxMicro.isCalibrating())  {
+            telemetry.addData("calibrating", "%s", Math.round(timer.seconds())%2==0 ? "|.." : "..|");
+            telemetry.update();
+            Thread.sleep(50);
+        }
+        telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
+        telemetry.clear(); telemetry.update();
 
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
@@ -61,7 +87,7 @@ public class RedAllianceStone2 extends LinearOpMode {
         encoderDrive(.75,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-5,-5,-5,-5,4);
-
+        navxTurn(0.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -126,5 +152,53 @@ public class RedAllianceStone2 extends LinearOpMode {
             robot.RBMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         }
+    }
+    String formatRate(float rate) {
+        return String.format("%.3f", rate);
+    }
+
+    String formatAngle(AngleUnit angleUnit, double angle) {
+        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
+    }
+
+    String formatDegrees(double degrees){
+        getNumDegrees(degrees);
+        return String.format("%.1f", AngleUnit.DEGREES.normalize(degrees));
+    }
+    void getNumDegrees(double stuff) {
+        degrees = stuff;
+    }
+    void navxTurn(double target) {
+        AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+        Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+        String heading = formatAngle(angles.angleUnit, angles.firstAngle);
+
+        while (degrees > target + 2 || degrees < target - 2) {
+            rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
+            angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
+            heading = formatAngle(angles.angleUnit, angles.firstAngle);
+            if (degrees > target + 2) {
+                robot.RBMotor.setPower(-BOT_SPEED);
+                robot.RFMotor.setPower(-BOT_SPEED);
+                robot.LFMotor.setPower(BOT_SPEED);
+                robot.LBMotor.setPower(BOT_SPEED);
+            } else if (degrees < target - 2) {
+                robot.RBMotor.setPower(BOT_SPEED);
+                robot.RFMotor.setPower(BOT_SPEED);
+                robot.LFMotor.setPower(-BOT_SPEED);
+                robot.LBMotor.setPower(-BOT_SPEED);
+            } else {
+                robot.RBMotor.setPower(0);
+                robot.RFMotor.setPower(0);
+                robot.LFMotor.setPower(0);
+                robot.LBMotor.setPower(0);
+            }
+            idle();
+        }
+        telemetry.addData("Done Turning","");
+        sleep(1500);
+        telemetry.log().clear();
     }
 }
