@@ -22,8 +22,8 @@ public class KBot {
 
     public Servo LGServo;
     public Servo RGServo;
-    public Servo LatGmServo;
-    public Servo VertGmServo;
+    //public Servo LatGmServo;
+    //public Servo VertGmServo;
 
 
 
@@ -120,8 +120,8 @@ public class KBot {
         LGServo = hardwareMap.servo.get("LGServo");
         RGServo = hardwareMap.servo.get("RGServo");
 
-        LatGmServo = hardwareMap.servo.get("LatGmServo");
-        VertGmServo = hardwareMap.servo.get("VertGmServo");
+        //LatGmServo = hardwareMap.servo.get("LatGmServo");
+        //VertGmServo = hardwareMap.servo.get("VertGmServo");
 
 
 
@@ -199,8 +199,8 @@ public class KBot {
         LGServo.setPosition(.23);
         RGServo.setPosition(.85);
 
-        LatGmServo.setPosition(1);
-        VertGmServo.setPosition(1);
+        //LatGmServo.setPosition(1);
+        //VertGmServo.setPosition(1);
     }
 
     public final void AaaStopEverything(){
@@ -214,8 +214,8 @@ public class KBot {
         LGServo.setPosition(LGServo.getPosition());
         RGServo.setPosition(RGServo.getPosition());
 
-        LatGmServo.setPosition(LatGmServo.getPosition());
-        VertGmServo.setPosition(VertGmServo.getPosition());
+        //LatGmServo.setPosition(LatGmServo.getPosition());
+        //VertGmServo.setPosition(VertGmServo.getPosition());
     }
 
     public final boolean areWheelsStopped() {

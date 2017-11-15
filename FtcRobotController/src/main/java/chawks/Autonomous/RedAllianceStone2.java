@@ -175,6 +175,10 @@ public class RedAllianceStone2 extends LinearOpMode {
         String heading = formatAngle(angles.angleUnit, angles.firstAngle);
 
         while (degrees > target + 2 || degrees < target - 2) {
+            if (!opModeIsActive())
+            {
+                return;
+            }
             rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
