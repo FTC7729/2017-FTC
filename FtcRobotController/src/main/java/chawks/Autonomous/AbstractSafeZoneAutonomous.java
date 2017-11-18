@@ -1,10 +1,10 @@
 package chawks.Autonomous;
 
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
+import chawks.hardware.Robot;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -13,14 +13,12 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-import chawks.hardware.Boxy;
-
 abstract class AbstractSafeZoneAutonomous extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    Boxy         robot   = new Boxy();
+    Robot robot   = new Robot();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
@@ -67,7 +65,7 @@ abstract class AbstractSafeZoneAutonomous extends LinearOpMode {
         telemetry.update();
 
         navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
-        gyro = (IntegratingGyroscope)navxMicro;
+        gyro = navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
         // Wait until the gyro calibration is complete

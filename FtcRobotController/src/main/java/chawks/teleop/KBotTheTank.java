@@ -7,108 +7,48 @@ import com.qualcomm.robotcore.util.Range;
 
 import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
+import chawks.hardware.KBot;
+import chawks.hardware.Robot;
 
 @TeleOp(name = "KBOT DA TANK", group = "TeleOp")
-public class KBotTheTank extends AbstractTeleOpKBot {
+public class KBotTheTank extends AbstractTeleOp {
 
+    public KBotTheTank() {
+        super(new KBot());
+    }
 
     public float STRAFE_SPEED = 1.0F; //setting to a higher speed
 
-    @Override
     public void handleGamePad1(Gamepad gamepad) {
         // TODO: would be nice to use exponential scaling of the Y value so that as you move stick further,
-        float leftStickY = Range.clip(-gamepad.left_stick_y, -1, 1);
-        float rightStickY = Range.clip(-gamepad.right_stick_y, -1, 1);
+        double y_axis = -Range.clip(-gamepad.left_stick_y, -1, 1);
+        double x_axis = Range.clip(-gamepad.left_stick_x, -1, 1);
+        double clockwise = Range.clip(-gamepad.right_stick_x, -1, 1);
 
-        final boolean isButtonX = gamepad.x;
-        final boolean isButtonY = gamepad.y;
+        double K = 0.4;
+        clockwise = K * clockwise;
 
-        telemetry.addData("pad1", "left:%.2f, right:%.2f, dir:%s", leftStickY, rightStickY, drivingDirection.name());
+        double front_left = y_axis + clockwise + x_axis;
+        double front_right = y_axis - clockwise - x_axis;
+        double rear_left = y_axis + clockwise - x_axis;
+        double rear_right = y_axis - clockwise + x_axis;
 
-        final boolean isDPADLeft = gamepad.dpad_left;
-        final boolean isDPADRight = gamepad.dpad_right;
-        final boolean isDPADUp = gamepad1.dpad_up;
-        final boolean isDPADDown = gamepad1.dpad_down;
+        double max = Math.abs(front_left);
+        if (Math.abs(front_right)>max) max = Math.abs(front_right);
+        if (Math.abs(rear_left)>max) max = Math.abs(rear_left);
+        if (Math.abs(rear_right)>max) max = Math.abs(rear_right);
+        if (max>1)
+        {front_left/=max; front_right/=max; rear_left/=max; rear_right/=max;}
 
-        // switch driving directions
-        if (isButtonX) {
-            drivingDirection = DrivingDirection.FORWARD;
-        } else if (isButtonY) {
-            drivingDirection = DrivingDirection.REVERSE;
+        robot.LFMotor.setPower(front_left);
+        robot.LBMotor.setPower(rear_left);
+        robot.RFMotor.setPower(front_right);
+        robot.LBMotor.setPower(rear_right);
 
-        }
-
-        // if either the DPAD left/right buttons are depressed, then we are strafing and setting the
-        // wheel power to move left or right
-        if (isDPADLeft) {
-            float leftPower;
-            float rightPower;
-            switch (drivingDirection) {
-                case FORWARD:
-                default:
-                    leftPower = -STRAFE_SPEED;
-                    rightPower = STRAFE_SPEED;
-                    break;
-                case REVERSE:
-                    leftPower = STRAFE_SPEED;
-                    rightPower = -STRAFE_SPEED;
-                    break;
-            }
-            robot.LFMotor.setPower(leftPower);
-            robot.RFMotor.setPower(rightPower);
-            robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
-            return;
-        } else if (isDPADRight) {
-            float leftPower;
-            float rightPower;
-            switch (drivingDirection) {
-                case FORWARD:
-                default:
-                    leftPower = STRAFE_SPEED;
-                    rightPower = -STRAFE_SPEED;
-                    break;
-                case REVERSE:
-                    leftPower = -STRAFE_SPEED;
-                    rightPower = STRAFE_SPEED;
-                    break;
-            }
-
-            robot.LFMotor.setPower(leftPower);
-            robot.RFMotor.setPower(rightPower);
-            robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
-            return;
-
-
-        }
-
-
-
-        // the moment we take our finger off the DPAD, we are using the left and right stick values
-        // to determine the power to apply to wheels.
-        final float leftPower;
-        final float rightPower;
-        switch (drivingDirection) {
-            case FORWARD:
-            default:
-                leftPower = leftStickY;
-                rightPower = rightStickY;
-                break;
-            case REVERSE:
-                leftPower = -rightStickY;
-                rightPower = -leftStickY;
-                break;
-        }
-
-        robot.LBMotor.setPower(leftPower);
-        robot.LFMotor.setPower(leftPower);
-        robot.RFMotor.setPower(rightPower);
-        robot.RBMotor.setPower(rightPower);
     }
 
     @Override
-    public void handleGamePad2(Gamepad gamepad) {//
+    public void handleGamePad2(Gamepad gamepad) {
 
         final boolean isDpadUp = gamepad.dpad_up;
         final boolean isDpadDown = gamepad.dpad_down;
@@ -130,10 +70,6 @@ public class KBotTheTank extends AbstractTeleOpKBot {
             robot.LiftM.setPower(0);
         }
 
-    }//
-
-
-
-
+    }
 
 }

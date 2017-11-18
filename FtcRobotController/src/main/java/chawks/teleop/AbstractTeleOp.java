@@ -3,11 +3,17 @@ package chawks.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-public abstract class AbstractTeleOpMode extends OpMode {
+import chawks.hardware.Robot;
+
+public abstract class AbstractTeleOp extends OpMode {
     /**
      * Robot hardware configuration
      */
-    protected final Dutchess robot = new Dutchess();
+    protected final Robot robot;
+
+    public AbstractTeleOp(Robot robot) {
+        this.robot = robot;
+    }
 
     /**
      * This code is run ONCE when the driver hits INIT
