@@ -1,21 +1,25 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
 import chawks.hardware.DrivingDirection;
+import chawks.hardware.Boxy;
 //import chawks.hardware.ShootingController;
 
-//@TeleOp(name = "BOXY DA TANK", group = "TeleOp")
+@TeleOp(name = "BOXY DA TANK", group = "TeleOp")
 public class BoxyTheTank extends AbstractTeleOpBoxy {
 
 
     public float STRAFE_SPEED = 1.0F; //setting to a higher speed
-
+    public Servo HoriServo;
+    public Servo VertServo;
     @Override
     public void handleGamePad1(Gamepad gamepad) {
+
         // TODO: would be nice to use exponential scaling of the Y value so that as you move stick further,
         float leftStickY = Range.clip(-gamepad.left_stick_y, -1, 1);
         float rightStickY = Range.clip(-gamepad.right_stick_y, -1, 1);
@@ -27,6 +31,22 @@ public class BoxyTheTank extends AbstractTeleOpBoxy {
         final boolean isDPADRight = gamepad.dpad_right;
         final boolean isDPADUp = gamepad1.dpad_up;
         final boolean isDPADDown = gamepad1.dpad_down;
+        final boolean isButtonA = gamepad.a;
+        final boolean isButtonB = gamepad.b;
+        if(isButtonA)
+        {
+            HoriServo.setPosition(1);
+
+        } else {
+            HoriServo.setPosition(0);
+        }
+
+        if (isButtonB)
+        {
+            VertServo.setPosition(1);
+        } else {
+            VertServo.setPosition(0);
+        }
 
         // switch driving directions
         if (isButtonX) {

@@ -99,5 +99,6 @@ public class HolonomicTankKBottt extends KBotTheTank {
         robot.RBMotor.setPower(rb_pow * .5);
         robot.RFMotor.setPower(rf_pow * .5);
         robot.LFMotor.setPower(lf_pow * .5);
+
     }
 }
