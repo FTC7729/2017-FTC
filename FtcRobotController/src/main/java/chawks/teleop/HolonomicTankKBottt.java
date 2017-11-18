@@ -22,6 +22,7 @@ public class HolonomicTankKBottt extends KBotTheTank {
         float rightStickY = Range.clip(-gamepad.right_stick_y, -1, 1);
         final boolean isButtonX = gamepad.x;
         final boolean isButtonY = gamepad.y;
+        double powerMod;
         telemetry.addData("pad1", "left:%.2f, right:%.2f, dir:%s", leftStickY, rightStickY, drivingDirection.name());
 
         final boolean isDPADLeft = gamepad.dpad_left;
@@ -62,7 +63,6 @@ public class HolonomicTankKBottt extends KBotTheTank {
 
         // push left forward and right backwards to turn right, and vice versa to turn left :: This type is used to rotate the robot without conflict
         float clockwise = directionControl * ((gamepad.right_stick_y - gamepad.left_stick_y) / 2);
-
         /**
          * We multiply by "K" in order to manipulate the speed of turning
          * If turn speed is too high, go above and change the value of "K" to something lower
@@ -94,10 +94,17 @@ public class HolonomicTankKBottt extends KBotTheTank {
             rb_pow /= max;
         }
 
+        if(lb_pow == lf_pow){
+            powerMod=0.5;
+        }
+        else{
+            powerMod=1;
+        }
+
         // Sets the power of each motor to their respective powers
-        robot.LBMotor.setPower(lb_pow * .5);
-        robot.RBMotor.setPower(rb_pow * .5);
-        robot.RFMotor.setPower(rf_pow * .5);
-        robot.LFMotor.setPower(lf_pow * .5);
+        robot.LBMotor.setPower(lb_pow * powerMod);
+        robot.RBMotor.setPower(rb_pow * powerMod);
+        robot.RFMotor.setPower(rf_pow * powerMod);
+        robot.LFMotor.setPower(lf_pow * powerMod);
     }
 }

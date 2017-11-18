@@ -130,7 +130,7 @@ public class KBot {
 
         // Set all motors to zero power
         stopWheelsAndLift();
-        ZeroServos();
+        //ZeroServos();
 
         // configure the wheels so that if we apply +1.0 power to all of the wheels,
         // the robot moves forward
@@ -196,8 +196,8 @@ public class KBot {
     public final void ZeroServos(){
 
         //Setting them to not zero because they hit the chassis
-        LGServo.setPosition(.23);
-        RGServo.setPosition(.85);
+        LGServo.setPosition(.71);
+        RGServo.setPosition(.71);
 
         //LatGmServo.setPosition(1);
         //VertGmServo.setPosition(1);

@@ -1,4 +1,4 @@
-package chawks.teleop;
+package chawks.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
 import chawks.hardware.DrivingDirection;
+import chawks.teleop.AbstractTeleOpBoxy;
 //import chawks.hardware.ShootingController;
 
 //@TeleOp(name = "AndrewTest", group = "TeleOp")

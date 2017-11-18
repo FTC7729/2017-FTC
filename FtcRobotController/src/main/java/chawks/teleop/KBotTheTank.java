@@ -115,11 +115,11 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         final boolean isButtonA = gamepad.a;
 
         if (isButtonA){
-            robot.RGServo.setPosition(1);
-            robot.LGServo.setPosition(0);
+            robot.RGServo.setPosition(.7);
+            robot.LGServo.setPosition(.3);
         } else {
-            robot.RGServo.setPosition(.85);
-            robot.LGServo.setPosition(.23);
+            robot.RGServo.setPosition(.4);
+            robot.LGServo.setPosition(.6);
         }
 
         if (isDpadUp){
