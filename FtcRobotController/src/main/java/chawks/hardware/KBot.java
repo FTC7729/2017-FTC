@@ -203,7 +203,7 @@ public class KBot {
         //VertGmServo.setPosition(1);
     }
 
-    public final void AaaStopEverything(){
+    public final void StopEverything(){
         LBMotor.setPower(0);
         RBMotor.setPower(0);
         LFMotor.setPower(0);

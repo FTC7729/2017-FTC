@@ -1,4 +1,4 @@
-package chawks.Autonomous;
+package chawks.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
