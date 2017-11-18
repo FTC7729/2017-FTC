@@ -10,7 +10,7 @@ import chawks.hardware.DrivingDirection;
 import chawks.hardware.KBot;
 import chawks.hardware.Robot;
 
-@TeleOp(name = "KBOT DA TANK", group = "TeleOp")
+@TeleOp(name = "KBot Tele-Op", group = "TeleOp")
 public class KBotTheTank extends AbstractTeleOp {
 
     public KBotTheTank() {
