@@ -102,9 +102,17 @@ public class HolonomicTankKBottt extends KBotTheTank {
         }
 
         // Sets the power of each motor to their respective powers
+
         robot.LBMotor.setPower(lb_pow * powerMod);
         robot.RBMotor.setPower(rb_pow * powerMod);
         robot.RFMotor.setPower(rf_pow * powerMod);
         robot.LFMotor.setPower(lf_pow * powerMod);
+
+        robot.LBMotor.setPower(lb_pow * .5);
+        robot.RBMotor.setPower(rb_pow * .5);
+        robot.RFMotor.setPower(rf_pow * .5);
+        robot.LFMotor.setPower(lf_pow * .5);
+
+
     }
 }

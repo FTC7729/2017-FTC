@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorColor;
+
 public class Boxy {
     private final WheelConfiguration wheelConfiguration;
     private final ElapsedTime period = new ElapsedTime();
@@ -17,7 +19,7 @@ public class Boxy {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-
+    public SensorColor sensor_color;
 
 
     public Boxy() {

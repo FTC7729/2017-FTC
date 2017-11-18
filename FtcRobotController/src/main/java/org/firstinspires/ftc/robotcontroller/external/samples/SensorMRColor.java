@@ -36,7 +36,6 @@ import android.view.View;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
-
 /*
  *
  * This is an example LinearOpMode that shows how to use
@@ -50,7 +49,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
-//@TeleOp(name = "Sensor: MR Color", group = "Sensor")
+@TeleOp(name = "Sensor: MR Color", group = "Sensor")
 //@Disabled
 public class SensorMRColor extends LinearOpMode {
 
