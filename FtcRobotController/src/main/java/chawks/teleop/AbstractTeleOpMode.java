@@ -3,8 +3,6 @@ package chawks.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import chawks.hardware.Dutchess;
-
 public abstract class AbstractTeleOpMode extends OpMode {
     /**
      * Robot hardware configuration

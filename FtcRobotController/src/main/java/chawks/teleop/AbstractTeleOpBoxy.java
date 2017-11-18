@@ -1,8 +1,6 @@
 package chawks.teleop;
 
-import chawks.hardware.ArmController;
 import chawks.hardware.DrivingDirection;
-import chawks.hardware.ShootingController;
 
 public abstract class AbstractTeleOpBoxy extends AbstractTeleOpModeWithBoxy {
     /**
