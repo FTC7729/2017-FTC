@@ -132,12 +132,12 @@ public class KBotTheTank extends AbstractTeleOpKBot {
             if (rightTrigger >= .2) {
                 robot.RGServo.setPosition(.7);
             } else {
-                robot.RGServo.setPosition(.4);
+                robot.RGServo.setPosition(.32);
             }
             if (leftTrigger >= .2) {
                 robot.LGServo.setPosition(.3);
             } else {
-                robot.LGServo.setPosition(.6);
+                robot.LGServo.setPosition(.68);
             }
         /*}
         if (toggle == 1) {
