@@ -113,14 +113,52 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         final boolean isDpadUp = gamepad.dpad_up;
         final boolean isDpadDown = gamepad.dpad_down;
         final boolean isButtonA = gamepad.a;
+        final boolean isButtonB = gamepad.b;
+        final boolean isButtonX = gamepad.x;
+        final boolean isButtonY = gamepad.y;
+        final double rightTrigger = gamepad.right_trigger;
+        final double leftTrigger = gamepad.left_trigger;
+        /*int toggle = 0;
+        if (isButtonB) {
+            if(toggle == 0) {
+                toggle++;
+            }
+            if (toggle == 1) {
+                toggle--;
+            }
+        }*/
+        //if (toggle == 0) {
 
-        if (isButtonA){
-            robot.RGServo.setPosition(.7);
-            robot.LGServo.setPosition(.3);
-        } else {
-            robot.RGServo.setPosition(.4);
-            robot.LGServo.setPosition(.6);
-        }
+            if (rightTrigger >= .2) {
+                robot.RGServo.setPosition(.7);
+            } else {
+                robot.RGServo.setPosition(.32);
+            }
+            if (leftTrigger >= .2) {
+                robot.LGServo.setPosition(.3);
+            } else {
+                robot.LGServo.setPosition(.68);
+            }
+        /*}
+        if (toggle == 1) {
+            if (isButtonA){
+                robot.RGServo.setPosition(.7);
+                robot.LGServo.setPosition(.3);
+            } else {
+                robot.RGServo.setPosition(.4);
+                robot.LGServo.setPosition(.6);
+            }
+            if (isButtonX) {
+                robot.LGServo.setPosition(.3);
+            } else {
+                robot.LGServo.setPosition(.6);
+            }
+            if (isButtonY) {
+                robot.RGServo.setPosition(.7);
+            } else {
+                robot.RGServo.setPosition(.4);
+            }
+        }*/
 
         if (isDpadUp){
             robot.LiftM.setPower(.5);
