@@ -57,8 +57,9 @@ public class NavXMicro extends LinearOpMode{
             }
             rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-            telemetry.addData("Heading","%s degrees", degrees);
-            telemetry.addData("Target", "%s degrees", target);
+            telemetry.addData("Heading"," %s degrees", degrees);
+            telemetry.addData("Target", " %s degrees", target);
+            telemetry.addData("Turn Type", " ABSOLUTE");
             heading = formatAngle(angles.angleUnit, angles.firstAngle);
             if (isBoxy) {
                 if (degrees > target + 2) {
@@ -119,8 +120,9 @@ public class NavXMicro extends LinearOpMode{
             }
             rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-            telemetry.addData("Heading","%s degrees", degrees);
-            telemetry.addData("Target", "%s degrees", target);
+            telemetry.addData("Heading"," %s degrees", degrees);
+            telemetry.addData("Target", " %s degrees", target);
+            telemetry.addData("Turn Type", " %s", turnType);
             heading = formatAngle(angles.angleUnit, angles.firstAngle);
             if (isBoxy) {
                 if (degrees > target + 2) {
