@@ -1,6 +1,5 @@
 package chawks.hardware;
 
-
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
@@ -20,6 +19,7 @@ public class NavXMicro extends LinearOpMode{
     Boxy boxy;
     KBot kbot;
     double degrees;
+    //Needed to not make this class abstract
     public void runOpMode() {}
     public NavXMicro(Boxy bot) {
         boxy = bot;

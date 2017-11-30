@@ -15,6 +15,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import chawks.hardware.Boxy;
+import chawks.hardware.NavXMicro;
+import chawks.hardware.TurnType;
 @Autonomous(name="BlueAllianceStone2", group="safezone")
 public class BlueAllianceStone2 extends LinearOpMode {
     IntegratingGyroscope gyro;
