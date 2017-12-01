@@ -24,7 +24,7 @@ public class BlueAllianceStone1 extends LinearOpMode {
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
     Boxy         robot   = new Boxy();
-    NavXMicro Navx = new NavXMicro(robot);
+    NavXMicro Navx = new NavXMicro();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.1;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
@@ -69,7 +69,7 @@ public class BlueAllianceStone1 extends LinearOpMode {
                 robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
-       /* navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+        navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
@@ -82,8 +82,8 @@ public class BlueAllianceStone1 extends LinearOpMode {
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         telemetry.clear(); telemetry.update();
-        */
-       Navx.initAndCalibrate(hardwareMap);
+
+      // Navx.initAndCalibrate(hardwareMap);
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
         telemetry.log().clear();
@@ -91,8 +91,8 @@ public class BlueAllianceStone1 extends LinearOpMode {
         encoderDrive(.5,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-7,-7,-7,-7,4);
-        Navx.turn(90.0, 0.1);
-       // navxTurn(90.0);
+       // Navx.turn(90.0, 0.1, robot);
+        navxTurn(90.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -162,7 +162,7 @@ public class BlueAllianceStone1 extends LinearOpMode {
         return String.format("%.3f", rate);
     }
 
-    /*
+
     String formatAngle(AngleUnit angleUnit, double angle) {
         return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
     }
@@ -217,5 +217,5 @@ public class BlueAllianceStone1 extends LinearOpMode {
         sleep(1500);
         telemetry.log().clear();
     }
-    */
+
 }
