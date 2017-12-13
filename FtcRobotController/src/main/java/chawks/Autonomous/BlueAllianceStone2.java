@@ -19,6 +19,7 @@ import chawks.hardware.NavXMicro;
 import chawks.hardware.TurnType;
 @Autonomous(name="BlueAllianceStone2", group="safezone")
 public class BlueAllianceStone2 extends LinearOpMode {
+    NavXMicro navx = new NavXMicro();
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
@@ -74,7 +75,7 @@ public class BlueAllianceStone2 extends LinearOpMode {
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
         // Wait until the gyro calibration is complete
-        timer.reset();
+       /* timer.reset();
         while (navxMicro.isCalibrating())  {
             telemetry.addData("calibrating", "%s", Math.round(timer.seconds())%2==0 ? "|.." : "..|");
             telemetry.update();
@@ -82,7 +83,8 @@ public class BlueAllianceStone2 extends LinearOpMode {
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         telemetry.clear(); telemetry.update();
-
+*/
+       navx.initAndCalibrate(hardwareMap);
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
 
@@ -90,8 +92,8 @@ public class BlueAllianceStone2 extends LinearOpMode {
         encoderDrive(.75,.5,-.5,.5,-.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-6,-6,-6,-6,4);
-
-        navxTurn(0.0);
+        navx.turn(0.0,0.2,robot);
+        //navxTurn(0.0);
 
 
         telemetry.addData("Path", "Complete");
