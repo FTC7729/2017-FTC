@@ -24,7 +24,7 @@ public class RedAllianceStone2 extends LinearOpMode {
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
     Boxy         robot   = new Boxy();
-    NavXMicro navx = new NavXMicro(robot);
+    NavXMicro navx = new NavXMicro();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
@@ -69,7 +69,7 @@ public class RedAllianceStone2 extends LinearOpMode {
                 robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
-      /*  navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+        navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
@@ -82,17 +82,17 @@ public class RedAllianceStone2 extends LinearOpMode {
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         telemetry.clear(); telemetry.update();
-        */
+
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
-        navx.initAndCalibrate(hardwareMap);
+        //navx.initAndCalibrate(hardwareMap);
         waitForStart();
 
         //Start Code after here
         encoderDrive(.75,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-5,-5,-5,-5,4);
-        //navxTurn(0.0);
-        navx.turn(0.0, 0.2);
+        navxTurn(0.0);
+        //navx.turn(0.0, 0.2, robot);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
@@ -158,7 +158,7 @@ public class RedAllianceStone2 extends LinearOpMode {
 
         }
     }
-  /*  String formatRate(float rate) {
+    String formatRate(float rate) {
         return String.format("%.3f", rate);
     }
 
@@ -210,5 +210,5 @@ public class RedAllianceStone2 extends LinearOpMode {
         sleep(1500);
         telemetry.log().clear();
     }
-    */
+
 }
