@@ -30,6 +30,7 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         final boolean isDPADUp = gamepad1.dpad_up;
         final boolean isDPADDown = gamepad1.dpad_down;
 
+
         // switch driving directions
         if (isButtonX) {
             drivingDirection = DrivingDirection.FORWARD;
@@ -80,7 +81,6 @@ public class KBotTheTank extends AbstractTeleOpKBot {
             robot.RBMotor.setPower(-rightPower);
             return;
 
-
         }
 
 
@@ -105,6 +105,8 @@ public class KBotTheTank extends AbstractTeleOpKBot {
         robot.LFMotor.setPower(leftPower);
         robot.RFMotor.setPower(rightPower);
         robot.RBMotor.setPower(rightPower);
+
+
     }
 
     @Override

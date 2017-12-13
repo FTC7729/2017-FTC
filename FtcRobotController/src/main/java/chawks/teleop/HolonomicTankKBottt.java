@@ -94,6 +94,8 @@ public class HolonomicTankKBottt extends KBotTheTank {
             rb_pow /= max;
         }
 
+
+
         if(lb_pow == lf_pow){
             powerMod=0.5;
         }
