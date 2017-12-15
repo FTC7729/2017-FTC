@@ -6,57 +6,53 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcontroller.external.samples.ConceptVuMarkIdentification;
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+
 import chawks.hardware.Boxy;
-
-/**
- * This file illustrates the concept of driving a path based on encoder counts.
- * It uses the common Pushbot hardware class to define the drive on the robot.
- * The code is structured as a LinearOpMode
- *
- * The code REQUIRES that you DO have encoders on the wheels,
- *   otherwise you would use: PushbotAutoDriveByTime;
- *
- *  This code ALSO requires that the drive Motors have been configured such that a positive
- *  power command moves them forwards, and causes the encoders to count UP.
- *
- *   The desired path in this example is:
- *   - Drive forward for 48 inches
- *   - Spin right for 12 Inches
- *   - Drive Backwards for 24 inches
- *   - Stop and close the claw.
- *
- *  The code is written using a method called: encoderDrive(speed, leftInches, rightInches, timeoutS)
- *  that performs the actual movement.
- *  This methods assumes that each movement is relative to the last stopping place.
- *  There are other ways to perform encoder based moves, but this method is probably the simplest.
- *  This code uses the RUN_TO_POSITION mode to enable the Motor controllers to generate the run profile
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
-
-//@Autonomous(name="AndrewTest?", group="Pushbot")
+@Autonomous(name="AndrewTest?", group="Test")
 //Disabled
 public class AndrewTestAuto extends LinearOpMode {
 
     /* Declare OpMode members. */
     Boxy robot   = new Boxy();   // Use a Pushbot's hardware
+    VuforiaLocalizer vuforia;
     @Override
     public void runOpMode() throws InterruptedException {
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+        parameters.vuforiaLicenseKey = "ASnFTXP/////AAAAGRItdPBpVU1Cpwf91MmRjZMgfHIOvk3JXTWDk0vMQBy7gb8tEtUF5L9G5d0CKMb8No6Y5ApK7vd+ROqL4fksIKpNGCyJwxc3vuVq3fUW13KV6mXl4/0/VmT/L03tOKjIds5v1ImaEz+7lQXqG0HCdcsDs5x0XtEBYKTgisFuzDZwmKTK3EXgRFl2kpf1ILJUEEbFMOskgRKUSTpXwWM3tDeix7B1Mu6fIafsL8VOvDuc1fzuJAHMO+rNL+yGjmrO2f421OzZgVYJxk6NbMJI5I6cbF12/L7LaTgMXnJ0oiKkJDc/QJY6m1u6/HNaP/kTOwqcT/mSRirXwZZUEx65qJ+x0/rOJa14+y5Zr5HutD7m";
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+        VuforiaTrackable relicTemplate = relicTrackables.get(0);
+        relicTemplate.setName("relicVuMarkTemplate");
+        relicTrackables.activate();
         waitForStart();
         robot.init(hardwareMap);
 
-        TurnLeftTime(DRIVE_POWER,1150);
-        DriveFowardTime(DRIVE_POWER,1500);
-        /*//For facing the jewel, red alliance
-        StrafeLeftTime(DRIVE_POWER,2000);
-        Thread.sleep(1000);
-        //For facing jewel, blue alliance
-        StrafeRightTime(DRIVE_POWER,2000);
-        /*DriveFowardTime(DRIVE_POWER, SLEEP_TIME);
-        //1000 is
-        TurnRightTime(DRIVE_POWER,SLEEP_TIME);
-        StopRobot();*/
+
+        telemetry.addData(">", "Press Play to start");
+        telemetry.update();
+        waitForStart();
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        while (opModeIsActive()) {
+            if (vuMark == RelicRecoveryVuMark.LEFT) {
+                DriveFowardTime(-1,1);
+                StrafeLeftTime(1,1);
+            }
+            if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                DriveFowardTime(-1,1);
+                StrafeRightTime(1,1);
+            }
+            if (vuMark == RelicRecoveryVuMark.CENTER) {
+                DriveFowardTime(-1,1);
+            }
+        }
 
     }
     double DRIVE_POWER = 1;
