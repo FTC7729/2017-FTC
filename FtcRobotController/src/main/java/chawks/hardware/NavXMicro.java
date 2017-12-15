@@ -16,14 +16,15 @@ import chawks.hardware.KBot;
 import chawks.hardware.TurnType;
 
 public class NavXMicro extends LinearOpMode{
-    Boxy boxy;
-    KBot kbot;
     double degrees;
     //Needed to not make this class abstract
     public void runOpMode() {}
     NavxMicroNavigationSensor navxMicro;
     IntegratingGyroscope gyro;
     ElapsedTime timer = new ElapsedTime();
+    public NavXMicro() {
+
+    }
     public void initAndCalibrate(HardwareMap hardwareMap) throws InterruptedException {
         navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
@@ -53,20 +54,20 @@ public class NavXMicro extends LinearOpMode{
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
             heading = formatAngle(angles.angleUnit, angles.firstAngle);
                 if (degrees > target + 2) {
-                    boxy.RBMotor.setPower(-speed);
-                    boxy.RFMotor.setPower(-speed);
-                    boxy.LFMotor.setPower(speed);
-                    boxy.LBMotor.setPower(speed);
+                    bot.RBMotor.setPower(-speed);
+                    bot.RFMotor.setPower(-speed);
+                    bot.LFMotor.setPower(speed);
+                    bot.LBMotor.setPower(speed);
                 } else if (degrees < target - 2) {
-                    boxy.RBMotor.setPower(speed);
-                    boxy.RFMotor.setPower(speed);
-                    boxy.LFMotor.setPower(-speed);
-                    boxy.LBMotor.setPower(-speed);
+                    bot.RBMotor.setPower(speed);
+                    bot.RFMotor.setPower(speed);
+                    bot.LFMotor.setPower(-speed);
+                    bot.LBMotor.setPower(-speed);
                 } else {
-                    boxy.RBMotor.setPower(0);
-                    boxy.RFMotor.setPower(0);
-                    boxy.LFMotor.setPower(0);
-                    boxy.LBMotor.setPower(0);
+                    bot.RBMotor.setPower(0);
+                    bot.RFMotor.setPower(0);
+                    bot.LFMotor.setPower(0);
+                    bot.LBMotor.setPower(0);
                 }
             idle();
         }
