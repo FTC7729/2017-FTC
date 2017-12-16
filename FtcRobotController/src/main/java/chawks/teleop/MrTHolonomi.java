@@ -25,7 +25,7 @@ public class MrTHolonomi extends KBotTheTank {
         robot.LFMotor.setPower((-v3)/2);
         robot.RFMotor.setPower((-v4)/2);
         robot.LBMotor.setPower((-v1)/2);
-        robot.RBMotor.setPower((-v2)/2);
+            robot.RBMotor.setPower((-v2)/2);
     }
 
     public void handleGamePad2(Gamepad gamepad) {
