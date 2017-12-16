@@ -9,12 +9,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
 import chawks.hardware.Boxy;
+import chawks.hardware.KBot;
+
 @Autonomous(name="AndrewTest?", group="Test")
 //Disabled
 public class AndrewTest extends LinearOpMode {
 
     /* Declare OpMode members. */
-    Boxy robot   = new Boxy();   // Use a Pushbot's hardware
+    KBot robot   = new KBot();   // Use a Pushbot's hardware
     @Override
     public void runOpMode() throws InterruptedException {
         telemetry.addData(">", "Press Play to start");
@@ -22,10 +24,12 @@ public class AndrewTest extends LinearOpMode {
         waitForStart();
         robot.init(hardwareMap);
 
-
+        GrabberClose();
+        LiftMove(1,1);
         DriveFowardTime(.5,1);
         StrafeLeftTime(.5,1);
         DriveFowardTime(.5,1);
+        LiftMove(-1,1);
     }
     double DRIVE_POWER = 1;
     long SLEEP_TIME = 1000;
@@ -34,6 +38,17 @@ public class AndrewTest extends LinearOpMode {
         StrafeLeft(power);
         Thread.sleep(time);
         StopRobot();
+    }
+    public void LiftMove(double power, long time) throws InterruptedException
+    {
+        robot.LiftM.setPower(power);
+        Thread.sleep(time);
+    }
+
+    public void GrabberClose()
+    {
+        robot.RGServo.setPosition(.7);
+        robot.LGServo.setPosition(.3);
     }
     public void StrafeLeft(double power)
     {

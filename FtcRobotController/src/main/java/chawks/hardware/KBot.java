@@ -19,7 +19,6 @@ public class KBot {
     public DcMotor RFMotor;
     public DcMotor RBMotor;
     public DcMotor LiftM;
-
     public Servo LGServo;
     public Servo RGServo;
     //public Servo LatGmServo;

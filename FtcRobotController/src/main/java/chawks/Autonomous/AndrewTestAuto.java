@@ -97,9 +97,14 @@ public class AndrewTestAuto extends LinearOpMode {
                     robot.LBMotor.setPower(-1);
                     robot.RBMotor.setPower(-1);
                 }
+
             }
             else {
                 telemetry.addData("VuMark", "not visible");
+                robot.LFMotor.setPower(0);
+                robot.RFMotor.setPower(0);
+                robot.LBMotor.setPower(0);
+                robot.RBMotor.setPower(0);
             }
 
             telemetry.update();
