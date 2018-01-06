@@ -5,6 +5,7 @@ package chawks.hardware;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -19,6 +20,9 @@ public class nextgen {
     public DcMotor Elevate;
     public DcMotor Glyph_Collect_Righty;
     public DcMotor Glyph_Collect_Lefty;
+
+    public DigitalChannel Hi_Switch;
+
 
     //public DcMotor LiftM;
     //public Servo LGServo;
@@ -122,6 +126,7 @@ public class nextgen {
 
        Glyph_Collect_Righty = hardwareMap.dcMotor.get("Glyph_Collect_Righty");
         Glyph_Collect_Lefty = hardwareMap.dcMotor.get("Glyph_Collect_Lefty");
+        Hi_Switch = hardwareMap.digitalChannel.get("Hi_Switch");
 
         //LatGmServo = hardwareMap.servo.get("LatGmServo");
         //VertGmServo = hardwareMap.servo.get("VertGmServo");
