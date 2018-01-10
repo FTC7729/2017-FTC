@@ -1,5 +1,7 @@
 package chawks.tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.lasarobotics.vision.android.Cameras;
 import org.lasarobotics.vision.detection.ColorBlobDetector;
 import org.lasarobotics.vision.ftc.resq.Beacon;
@@ -19,6 +21,7 @@ import org.opencv.core.Size;
  * Please note that you cannot use any Vision Extensions in a ManualVisionOpMode, but you
  * can still call the extensions' init(), loop(), and frame() methods if you want to use them,
  */
+@TeleOp(name="Manual Vision Sample",group="OpenCV")
 public class ManualVisionSample extends ManualVisionOpMode {
 
     private static final ColorHSV lowerBoundRed = new ColorHSV((int) (305 / 360.0 * 255.0), (int) (0.200 * 255.0), (int) (0.300 * 255.0));
