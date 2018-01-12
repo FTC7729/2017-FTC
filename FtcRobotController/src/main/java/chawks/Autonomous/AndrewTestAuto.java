@@ -92,7 +92,7 @@ public class AndrewTestAuto extends LinearOpMode{
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("VuMark", "%s visible", vuMark);
                 if (vuMark == RelicRecoveryVuMark.LEFT) {
-                    telemetry.addData("VuMark", "Left", vuMark);
+                    telemetry.addData ("VuMark", "Left", vuMark);
                     //Strafe Left
                     encoderDrive(.5,-2,2,2,-2,5);
                     break;
@@ -109,8 +109,7 @@ public class AndrewTestAuto extends LinearOpMode{
                     encoderDrive(.5,2,2,2,2,5);
                     break;
                 }
-            }
-            else {
+            } else {
                 telemetry.addData("VuMark", "not visible");
                 robot.LFMotor.setPower(0);
                 robot.RFMotor.setPower(0);
