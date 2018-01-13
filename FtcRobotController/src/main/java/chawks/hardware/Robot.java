@@ -60,23 +60,6 @@ public class Robot {
     }
     */
 
-    public String getNameOfWheel(DcMotor motor) {
-        if(motor==LBMotor) {
-            return "leia";
-        }
-        else if(motor==RBMotor) {
-            return "luke";
-        }
-        else if(motor==LFMotor) {
-            return "R2-D2";
-        }
-        else if(motor==RFMotor) {
-            return "C3PO";
-        } else {
-            return "";
-        }
-    }
-
     /**
      * Returns a list of continuous rotation servos
      *
@@ -96,16 +79,16 @@ public class Robot {
      */
     public void init(HardwareMap hardwareMap) {
         // grab wheels
-        LBMotor = hardwareMap.dcMotor.get("Leia");
-        RBMotor = hardwareMap.dcMotor.get("Luke");
+        LBMotor = hardwareMap.dcMotor.get("Luke");
+        RBMotor = hardwareMap.dcMotor.get("Leia");
         LFMotor = hardwareMap.dcMotor.get("R2-D2");
         RFMotor = hardwareMap.dcMotor.get("C3PO");
 
         stopAllWheels();
         LFMotor.setDirection(DcMotor.Direction.FORWARD);
         LBMotor.setDirection(DcMotor.Direction.FORWARD);
-        RFMotor.setDirection(DcMotor.Direction.REVERSE);
-        RBMotor.setDirection(DcMotor.Direction.REVERSE);
+        RFMotor.setDirection(DcMotor.Direction.FORWARD);
+        RBMotor.setDirection(DcMotor.Direction.FORWARD);
 
         //I think it need to be run with encoder
         setWheelsToRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
