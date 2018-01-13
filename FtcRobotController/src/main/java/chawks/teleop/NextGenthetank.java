@@ -144,13 +144,15 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
                 robot.LGServo.setPosition(.3);
             } else {
                 robot.LGServo.setPosition(.6);
-            }
+            */
             if (isButtonY) {
-                robot.RGServo.setPosition(.7);
+                robot.Glyph_Collect_Lefty.setPower(.7);
+                robot.Glyph_Collect_Righty.setPower(.7);
             } else {
-                robot.RGServo.setPosition(.4);
+                robot.Glyph_Collect_Lefty.setPower(0);
+                robot.Glyph_Collect_Righty.setPower(0);
             }
-        }*/
+
 
         if (isDpadUp){
             robot.Elevate.setPower(.5);
