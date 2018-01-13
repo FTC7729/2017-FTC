@@ -9,17 +9,14 @@ public abstract class AbstractTeleOp extends OpMode {
     /**
      * Robot hardware configuration
      */
-    protected final Robot robot;
-
-    public AbstractTeleOp(Robot robot) {
-        this.robot = robot;
-    }
+    protected Robot robot;
 
     /**
      * This code is run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
+        robot = new Robot();
         robot.init(hardwareMap);
         telemetry.addData("Say", "Let's Go C-HAWKS!");
     }

@@ -1,5 +1,7 @@
 package chawks.Autonomous;
 
+import android.graphics.Point;
+
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -13,7 +15,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-abstract class AbstractSafeZoneAutonomous extends LinearOpMode {
+abstract class AbstractAutonomous extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
@@ -30,6 +32,30 @@ abstract class AbstractSafeZoneAutonomous extends LinearOpMode {
     static final double     TURN_SPEED              = 0.5;
     static final double     FORWARD_SPEED           = 0.6;
     static final double     BACKWARDS_SPEED         = -0.6;
+
+    public MovementValues convertAngle(int degrees) {
+        if (degrees >= -90 && degrees <= 180) {
+            int temp = degrees + 90;
+            degrees = temp;
+        } else if (degrees >= -180 && degrees <= -90) {
+            int temp = degrees - 270;
+            degrees = temp * -1;
+        } else {
+            if (degrees >= 0) {
+                return convertAngle(degrees - 360);
+            } else {
+                return convertAngle(degrees + 360);
+            }
+        }
+
+        double tempx = Math.cos(degrees);
+        double tempy = Math.sin(degrees);
+        double x = ((int) (tempx * 100)) / 100;
+        double y = ((int) (tempy * 100)) / 100;
+
+        MovementValues range = new MovementValues(x, y);
+        return range;
+    }
 
     @Override
     public void runOpMode() throws InterruptedException {

@@ -15,13 +15,6 @@ public class Robot {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    public DcMotor LiftM;
-
-    public Servo LGServo;
-    public Servo RGServo;
-
-
-
 
     public Robot() {
         // these settings are for AndyMark Motor Encoder with Mecanum wheels
@@ -69,19 +62,17 @@ public class Robot {
 
     public String getNameOfWheel(DcMotor motor) {
         if(motor==LBMotor) {
-            return "LBMotor";
+            return "leia";
         }
         else if(motor==RBMotor) {
-            return "RBMotor";
+            return "luke";
         }
         else if(motor==LFMotor) {
-            return "LFMotor";
+            return "R2-D2";
         }
         else if(motor==RFMotor) {
-            return "RFMotor";
-        }
-
-        else {
+            return "C3PO";
+        } else {
             return "";
         }
     }
@@ -105,41 +96,26 @@ public class Robot {
      */
     public void init(HardwareMap hardwareMap) {
         // grab wheels
-        LBMotor = hardwareMap.dcMotor.get("LBMotor");
-        RBMotor = hardwareMap.dcMotor.get("RBMotor");
-        LFMotor = hardwareMap.dcMotor.get("LFMotor");
-        RFMotor = hardwareMap.dcMotor.get("RFMotor");
+        LBMotor = hardwareMap.dcMotor.get("Leia");
+        RBMotor = hardwareMap.dcMotor.get("Luke");
+        LFMotor = hardwareMap.dcMotor.get("R2-D2");
+        RFMotor = hardwareMap.dcMotor.get("C3PO");
 
-        LiftM = hardwareMap.dcMotor.get("LiftM");
-        stopWheelsAndLift();
-        setupServos(hardwareMap);
+        stopAllWheels();
         LFMotor.setDirection(DcMotor.Direction.FORWARD);
         LBMotor.setDirection(DcMotor.Direction.FORWARD);
         RFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        //  |  <---- Arrow       NOT SURE IF CORRECT
-        // \/                 BE SURE TO TEST
-        LiftM.setDirection(DcMotor.Direction.FORWARD);
-
-
         //I think it need to be run with encoder
         setWheelsToRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
-    public void setupServos(HardwareMap hardwareMap) {}
-
     public final void setWheelsToRunMode(DcMotor.RunMode runMode) {
-      //  Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
-      //  for (DcMotor motor : geheels()) {
         LBMotor.setMode(runMode);
         RBMotor.setMode(runMode);
         LFMotor.setMode(runMode);
         RFMotor.setMode(runMode);
-
-        //LiftM.setMode(runMode);
-
-      //  }
     }
 
 
@@ -149,36 +125,17 @@ public class Robot {
     }
 
     public final void setPowerAllWheels(double power) {
-        //for (DcMotor motor : getWheels()) {
             LBMotor.setPower(power);
             RBMotor.setPower(power);
             LFMotor.setPower(power);
             RFMotor.setPower(power);
-
-        //}
     }
 
     public final void stopWheelsAndLift() {
-        //for (DcMotor motor : getWheelsAndSpinner()) {
-            LBMotor.setPower(0);
-            RBMotor.setPower(0);
-            LFMotor.setPower(0);
-            RFMotor.setPower(0);
-
-            LiftM.setPower(0);
-
-
-        //}
-    }
-
-    public final void ZeroServos(){
-
-        //Setting them to not zero because they hit the chassis
-        LGServo.setPosition(.23);
-        RGServo.setPosition(.85);
-
-        //LatGmServo.setPosition(1);
-        //VertGmServo.setPosition(1);
+        LBMotor.setPower(0);
+        RBMotor.setPower(0);
+        LFMotor.setPower(0);
+        RFMotor.setPower(0);
     }
 
     public final void StopEverything(){
@@ -186,12 +143,9 @@ public class Robot {
         RBMotor.setPower(0);
         LFMotor.setPower(0);
         RFMotor.setPower(0);
-
-        LiftM.setPower(0);
     }
 
     public final boolean areWheelsStopped() {
-        //for (DcMotor motor : getWheels()) {
             if (LBMotor.getPower() != 0) {
                 return false;
             }
@@ -205,7 +159,6 @@ public class Robot {
                 return false;
             }
 
-        //}
         return true;
     }
 }

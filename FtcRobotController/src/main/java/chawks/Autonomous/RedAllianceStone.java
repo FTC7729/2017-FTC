@@ -3,7 +3,7 @@ package chawks.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous(name="RedAllianceStone1", group="safezone")
-public class RedAllianceStone1 extends AbstractSafeZoneAutonomous {
+public class RedAllianceStone extends AbstractAutonomous {
 
     public void movement() {
         //Start Code after here
