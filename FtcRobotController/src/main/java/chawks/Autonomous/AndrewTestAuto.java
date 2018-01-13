@@ -89,40 +89,33 @@ public class AndrewTestAuto extends LinearOpMode{
                 stop();
             }
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-            if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
-                telemetry.addData("VuMark", "%s visible", vuMark);
-                if (vuMark == RelicRecoveryVuMark.LEFT) {
-                    telemetry.addData ("VuMark", "Left", vuMark);
-                    //Strafe Left
-                    encoderDrive(.5,-2,2,2,-2,5);
-                    break;
-                }
-                if (vuMark == RelicRecoveryVuMark.RIGHT) {
-                    telemetry.addData("VuMark", "Right", vuMark);
-                    //Strafe right
-                    encoderDrive(.5,2,-2,-2,2,5);
-                    break;
-                }
-                if (vuMark == RelicRecoveryVuMark.CENTER) {
-                    telemetry.addData("VuMark", "Center", vuMark);
-                    //Strafe forward
-                    encoderDrive(.5,2,2,2,2,5);
-                    break;
-                }
-            } else {
+            if (vuMark == RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("VuMark", "not visible");
                 robot.LFMotor.setPower(0);
                 robot.RFMotor.setPower(0);
                 robot.LBMotor.setPower(0);
                 robot.RBMotor.setPower(0);
-
+            } else {
+                telemetry.addData("VuMark", "%s visible", vuMark);
+                if (vuMark == RelicRecoveryVuMark.LEFT) {
+                    telemetry.addData("VuMark", "Left", vuMark);
+                    //Strafe Left
+                    encoderDrive(.5, -2, 2, 2, -2, 5);
+                }
+                if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                    telemetry.addData("VuMark", "Right", vuMark);
+                    //Strafe right
+                    encoderDrive(.5, 2, -2, -2, 2, 5);
+                }
+                if (vuMark == RelicRecoveryVuMark.CENTER) {
+                    telemetry.addData("VuMark", "Center", vuMark);
+                    //Strafe forward
+                    encoderDrive(.5, 2, 2, 2, 2, 5);
+                }
+                telemetry.update();
             }
-
-            telemetry.update();
         }
     }
-    double DRIVE_POWER = 1;
-    long SLEEP_TIME = 1000;
     public void StrafeLeftTime(double power, long time) throws InterruptedException
     {
         StrafeLeft(power);
