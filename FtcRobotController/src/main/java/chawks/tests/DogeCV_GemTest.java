@@ -122,19 +122,10 @@ public class DogeCV_GemTest extends LinearOpMode
             telemetry.addData("Last Order", "Jewel Order: " + jewelDetector.getLastOrder().toString()); // Last Known Result
 
 
-            if (jewelDetector.getCurrentOrder().toString().equals( "BLUE_RED")) {
 
-                int yes = 1;
-                telemetry.addData("Yes", "Yes");
-                telemetry.update();
-                //encoderDrive(.5,-2,2,2,-2,5);
-                //robot.LFMotor.setPower(1);
-                //robot.LBMotor.setP0ower(1);
-            } else if (jewelDetector.getCurrentOrder().toString().equals(  "RED_BLUE")) {
-                //robot.LFMotor.setPower(-1);
-                //encoderDrive(-.5,2,-2,-2,2,5);
-            }
             if (jewelDetector.getCurrentOrder().toString().equals("BLUE_RED")) {
+                telemetry.addData("Blue", "Red");
+                telemetry.update();
                 order = "b-r";
                 break;
                // encoderDrive(.5,-2,2,2,-2,5);
@@ -142,7 +133,7 @@ public class DogeCV_GemTest extends LinearOpMode
                 //robot.LBMotor.setPower(1);
             } else if (jewelDetector.getCurrentOrder().toString().equals("RED_BLUE")) {
                 //robot.LFMotor.setPower(-1);
-                telemetry.addData("no","no");
+                telemetry.addData("Red","Blue");
                 telemetry.update();
                 order = "r-b";
                 break;
