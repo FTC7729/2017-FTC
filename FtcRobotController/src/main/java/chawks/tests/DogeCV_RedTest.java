@@ -155,6 +155,7 @@ public class DogeCV_RedTest extends LinearOpMode
             arm_pos -= INCREMENT;
             arm.setPosition(arm_pos);
         }
+        sleep(250);
         pivot_pos = pivot.getPosition();
         if (order.equals("b-r")) {
             while (pivot_pos > PIVOT_LEFT) {
@@ -167,6 +168,9 @@ public class DogeCV_RedTest extends LinearOpMode
                 pivot.setPosition(pivot_pos);
             }
         }
+        sleep(250);
+        arm.setPosition(ARM_START);
+        pivot.setPosition(PIVOT_START);
     }
 
    /* public void encoderDrive(double speed, double leftInches, double rightInches, double leftBackInches, double rightBackInches, double timeoutS) {
