@@ -25,7 +25,7 @@ public class DogeCV_RedTest extends LinearOpMode
 {
     final double INCREMENT = 0.009;
     final double PIVOT_START = 0.39;
-    final double PIVOT_LEFT = 0.23;
+    final double PIVOT_LEFT = 0.20;
     final double PIVOT_RIGHT = 0.55;
     final double ARM_DROP = 0.05;
     final double ARM_START = 1.0;
