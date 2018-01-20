@@ -125,19 +125,19 @@ public class AndrewTestAuto extends LinearOpMode{
         if (glyphPlacement == 1) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,6.75,-6.75,6.75,-6.75,10);
+            encoderDrive(.5,-6.75,6.75,-6.75,6.75,10);
             encoderDrive(.5,14.5,14.5,14.5,14.5,10);
         }
         if (glyphPlacement == 2) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,6.75,-6.75,6.75,-6.75,10);
+            encoderDrive(.5,-6.75,6.75,-6.75,6.75,10);
             encoderDrive(.5,22,22,22,22,10);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,6.75,-6.75,6.75,-6.75,10);
+            encoderDrive(.5,-6.75,6.75,-6.75,6.75,10);
             encoderDrive(.5,29.5,29.5,29.5,29.5,10);
         }
     }
