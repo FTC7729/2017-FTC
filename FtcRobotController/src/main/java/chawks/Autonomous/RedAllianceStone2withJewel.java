@@ -89,6 +89,7 @@ public class RedAllianceStone2withJewel extends LinearOpMode {
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
         // Wait until the gyro calibration is complete
+        // navx calibration
         timer.reset();
         while (navxMicro.isCalibrating())  {
             telemetry.addData("calibrating", "%s", Math.round(timer.seconds())%2==0 ? "|.." : "..|");
@@ -97,7 +98,7 @@ public class RedAllianceStone2withJewel extends LinearOpMode {
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         telemetry.clear(); telemetry.update();
-
+        //DogeCV start here
         jewelDetector = new JewelDetector();
         jewelDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
 
@@ -160,6 +161,7 @@ public class RedAllianceStone2withJewel extends LinearOpMode {
                 // robot.RBMotor.setPower(0);
             }
         }
+        // DogeCV can stop using the camera here
         arm_pos = arm.getPosition();
         while (arm_pos > ARM_DROP) {
             arm_pos -= INCREMENT;
@@ -182,6 +184,7 @@ public class RedAllianceStone2withJewel extends LinearOpMode {
         arm.setPosition(ARM_START);
         pivot.setPosition(PIVOT_START);
         sleep(500);
+        //end jewel arm sequence
         navxTurn(90.0);
         //Start Code after here
         encoderDrive(.75,-.5,.5,-.5,.5,4);
