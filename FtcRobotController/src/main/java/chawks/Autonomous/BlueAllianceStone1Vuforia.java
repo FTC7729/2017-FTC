@@ -7,13 +7,19 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import chawks.hardware.Boxy;
+import chawks.hardware.KBot;
 import chawks.hardware.NavXMicro;
 
 @Autonomous(name="BlueAllianceStone1 with vuforia", group="safezone")
@@ -22,10 +28,12 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    Boxy         robot   = new Boxy();
+    KBot robot   = new KBot();
     NavXMicro Navx = new NavXMicro();
+    VuforiaLocalizer vuforia;
+    OpenGLMatrix lastLocation = null;
     private ElapsedTime     runtime = new ElapsedTime();
-    static final double     BOT_SPEED = 0.1;
+    static final double     BOT_SPEED = 0.5;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
@@ -85,18 +93,129 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
 
       // Navx.initAndCalibrate(hardwareMap);
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
-        waitForStart();
+            int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+            VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+            parameters.vuforiaLicenseKey = "ASnFTXP/////AAAAGRItdPBpVU1Cpwf91MmRjZMgfHIOvk3JXTWDk0vMQBy7gb8tEtUF5L9G5d0CKMb8No6Y5ApK7vd+ROqL4fksIKpNGCyJwxc3vuVq3fUW13KV6mXl4/0/VmT/L03tOKjIds5v1ImaEz+7lQXqG0HCdcsDs5x0XtEBYKTgisFuzDZwmKTK3EXgRFl2kpf1ILJUEEbFMOskgRKUSTpXwWM3tDeix7B1Mu6fIafsL8VOvDuc1fzuJAHMO+rNL+yGjmrO2f421OzZgVYJxk6NbMJI5I6cbF12/L7LaTgMXnJ0oiKkJDc/QJY6m1u6/HNaP/kTOwqcT/mSRirXwZZUEx65qJ+x0/rOJa14+y5Zr5HutD7m";
+            parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+            this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+            VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+            VuforiaTrackable relicTemplate = relicTrackables.get(0);
+            relicTemplate.setName("relicVuMarkTemplate"); // can help in debugging; otherwise not necessary
+
+            telemetry.addData(">", "Press Play to start");
+            telemetry.update();
+
+            waitForStart();
         telemetry.log().clear();
         //Start Code after here
-        encoderDrive(.5,-.5,.5,-.5,.5,4);
+        //encoderDrive(.5,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
-        encoderDrive(.5,-7,-7,-7,-7,4);
-       // Navx.turn(90.0, 0.1, robot);
-        navxTurn(90.0);
+        //encoderDrive(.5,-7,-7,-7,-7,4);
+        //Navx.turn(90.0, 0.1, robot);
+        //navxTurn(90.0);
+            int glyphPlacement = 0;
+            robot.init(hardwareMap);
+            relicTrackables.activate();
 
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-    }
+            while (opModeIsActive()) {
+                if (!opModeIsActive()) {
+                    stop();
+                }
+                RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+                if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+                    telemetry.addData("VuMark", "%s visible", vuMark);
+                    if (vuMark == RelicRecoveryVuMark.LEFT) {
+                        telemetry.addData("VuMark", "Left", vuMark);
+                        //Strafe Left
+                        glyphPlacement = 1;
+                        break;
+                    }
+                    if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                        telemetry.addData("VuMark", "Right", vuMark);
+                        //Strafe right
+                        glyphPlacement = 2;
+                        break;
+                    }
+                    if (vuMark == RelicRecoveryVuMark.CENTER) {
+                        telemetry.addData("VuMark", "Center", vuMark);
+                        //Strafe forward
+                        glyphPlacement = 3;
+                        break;
+                    }
+                }
+                else {
+                    telemetry.addData("VuMark", "not visible");
+                    robot.LFMotor.setPower(0);
+                    robot.RFMotor.setPower(0);
+                    robot.LBMotor.setPower(0);
+                    robot.RBMotor.setPower(0);
+
+                }
+
+                telemetry.update();
+            }
+        /*
+        ▓▓▓▓
+        ▒▒▒▓▓
+        ▒▒▒▒▒▓
+        ▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▓▓▓
+        ▒▓▓▓▓▓▓░░░▓
+        ▒▓░░░░▓░░░░▓
+        ▓░░░░░░▓░▓░▓
+        ▓░░░░░░▓░░░▓
+        ▓░░▓░░░▓▓▓▓
+        ▒▓░░░░▓▒▒▒▒▓
+        ▒▒▓▓▓▓▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▒▓▓▓▓
+        ▒▒▒▒▒▓▓▓▒▒▒▒▓
+        ▒▒▒▒▓▒▒▒▒▒▒▒▒▓
+        ▒▒▒▓▒▒▒▒▒▒▒▒▒▓
+        ▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓
+        ▒▓▒▓▒▒▒▒▒▒▒▒▒▓
+        ▒▓▒▓▓▓▓▓▓▓▓▓▓
+        ▒▓▒▒▒▒▒▒▒▓
+        ▒▒▓▒▒▒▒▒▓
+        */
+            if (glyphPlacement == 1) {
+                telemetry.update();
+                //closeLift();
+                //moveLiftAmount(-.5,200);
+                navxTurn(90.0);
+                encoderDrive(.5,4,4,4,4,4);
+                //Strafe Left
+                navxTurn(90.0);
+            }
+            if (glyphPlacement == 2) {
+                telemetry.update();
+                closeLift();
+                moveLiftAmount(-.5,200);
+                encoderDrive(.5,4,4,4,4,4);
+                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
+                encoderDrive(.5,7,7,7,7,4);
+                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
+            }
+            if (glyphPlacement == 3) {
+                telemetry.update();
+                closeLift();
+                moveLiftAmount(-.5,200);
+                encoderDrive(.5,4,4,4,4,4);
+                encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
+                encoderDrive(.5,7,7,7,7,4);
+                encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
+            }
+            while(opModeIsActive()) {
+                if (!opModeIsActive()) {
+                    moveLiftAmount(.5,200);
+                }
+            }
+            telemetry.addData("Path", "Complete");
+            telemetry.update();
+        }
+
+
 
     public void encoderDrive(double speed, double leftInches, double rightInches, double leftBackInches, double rightBackInches, double timeoutS) {
         int newLeftTarget;
@@ -178,7 +297,19 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         degrees = stuff;
     }
 
-
+    public void moveLiftAmount (double power,long time)  {
+        robot.LiftM.setPower(power);
+        sleep(time);
+        robot.LiftM.setPower(0);
+    }
+    public void closeLift () {
+        robot.RGServo.setPosition(.7);
+        robot.LGServo.setPosition(.3);
+    }
+    public void openLift () {
+        robot.RGServo.setPosition(.32);
+        robot.LGServo.setPosition(.68);
+    }
    void navxTurn(double target) {
         AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
         Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
