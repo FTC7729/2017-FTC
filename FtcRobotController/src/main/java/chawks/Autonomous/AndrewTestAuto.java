@@ -122,91 +122,60 @@ public class AndrewTestAuto extends LinearOpMode{
 
             telemetry.update();
         }
+        /*
+        ▓▓▓▓
+        ▒▒▒▓▓
+        ▒▒▒▒▒▓
+        ▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▓▓▓
+        ▒▓▓▓▓▓▓░░░▓
+        ▒▓░░░░▓░░░░▓
+        ▓░░░░░░▓░▓░▓
+        ▓░░░░░░▓░░░▓
+        ▓░░▓░░░▓▓▓▓
+        ▒▓░░░░▓▒▒▒▒▓
+        ▒▒▓▓▓▓▒▒▒▒▒▓
+        ▒▒▒▒▒▒▒▒▓▓▓▓
+        ▒▒▒▒▒▓▓▓▒▒▒▒▓
+        ▒▒▒▒▓▒▒▒▒▒▒▒▒▓
+        ▒▒▒▓▒▒▒▒▒▒▒▒▒▓
+        ▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓
+        ▒▓▒▓▒▒▒▒▒▒▒▒▒▓
+        ▒▓▒▓▓▓▓▓▓▓▓▓▓
+        ▒▓▒▒▒▒▒▒▒▓
+        ▒▒▓▒▒▒▒▒▓
+        */
         if (glyphPlacement == 1) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,-3.25,3.25,-3.25,3.25,10);
-            encoderDrive(.5,7,7,7,7,4);
+            moveLiftAmount(-.5,200);
+            encoderDrive(.1,-4,-4,4,4,10);
         }
         if (glyphPlacement == 2) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,-3.25,3.25,-3.25,3.25,10);
+            moveLiftAmount(-.5,200);
+            encoderDrive(.5,4,4,4,4,4);
+            encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
             encoderDrive(.5,7,7,7,7,4);
+            encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
-            encoderDrive(.5,-3.25,3.25,-3.25,3.25,10);
+            moveLiftAmount(-.5,200);
+            encoderDrive(.5,4,4,4,4,4);
+            encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
             encoderDrive(.5,7,7,7,7,4);
+            encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
         }
     }
-    double DRIVE_POWER = 1;
-    long SLEEP_TIME = 1000;
-    public void StrafeLeftTime(double power, long time) throws InterruptedException
-    {
-        StrafeLeft(power);
-        Thread.sleep(time);
-        StopRobot();
-    }
-    public void StrafeLeft(double power)
-    {
-        robot.RFMotor.setPower(power);
-        robot.RBMotor.setPower(-power);
-        robot.LFMotor.setPower(-power);
-        robot.LBMotor.setPower(power);
-    }
-    public void StrafeRightTime(double power, long time) throws InterruptedException
-    {
-        StrafeRight(power);
-        Thread.sleep(time);
-        StopRobot();
-    }
-    public void StrafeRight(double power)
-    {
-        robot.RFMotor.setPower(-power);
-        robot.RBMotor.setPower(power);
-        robot.LFMotor.setPower(power);
-        robot.LBMotor.setPower(-power);
-    }
-    public void DriveFowardTime(double power, long time) throws InterruptedException
-    {
-        DriveFoward(power);
-        Thread.sleep(time);
-        StopRobot();
-    }
-    public void DriveFoward(double power)
-    {
-        robot.LFMotor.setPower(power);
-        robot.RFMotor.setPower(power);
-        robot.LBMotor.setPower(power);
-        robot.RBMotor.setPower(power);
-    }
-    public void TurnLeftTime(double power,long time) throws InterruptedException
-    {
-        TurnLeft(power);
-        Thread.sleep(time);
-        StopRobot();
-    }
-    public void TurnLeft(double power)
-    {
-        robot.LFMotor.setPower(power);
-        robot.LBMotor.setPower(power);
-        robot.RFMotor.setPower(-power);
-        robot.RBMotor.setPower(-power);
-    }
-    public void TurnRightTime(double power, long time) throws InterruptedException
-    {
-        TurnRight(power);
-        Thread.sleep(time);
-        StopRobot();
-    }
-    public void TurnRight(double power)
-    {
-        robot.RFMotor.setPower(power);
-        robot.RBMotor.setPower(power);
-        robot.LFMotor.setPower(-power);
-        robot.LBMotor.setPower(-power);
+    public void moveLiftAmount (double power,long time)  {
+        robot.LiftM.setPower(power);
+        sleep(time);
+        robot.LiftM.setPower(0);
     }
     public void closeLift () {
         robot.RGServo.setPosition(.7);
@@ -215,9 +184,6 @@ public class AndrewTestAuto extends LinearOpMode{
     public void openLift () {
         robot.RGServo.setPosition(.32);
         robot.LGServo.setPosition(.68);
-    }
-    public void StopRobot () {
-        DriveFoward(0);
     }
     public void encoderDrive(double speed, double leftInches, double rightInches, double leftBackInches, double rightBackInches, double timeoutS) {
         int newLeftTarget;
