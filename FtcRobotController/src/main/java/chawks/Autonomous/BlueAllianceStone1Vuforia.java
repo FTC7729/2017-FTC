@@ -122,7 +122,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                     stop();
                 }
                 RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-              
+
 
                   if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                     telemetry.addData("VuMark", "%s visible", vuMark);
