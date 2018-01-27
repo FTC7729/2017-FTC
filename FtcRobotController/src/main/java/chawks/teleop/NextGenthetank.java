@@ -3,13 +3,19 @@ package chawks.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
 @TeleOp(name = "nextgen DA TANK", group = "TeleOp")
 public class NextGenthetank extends AbstractTeleOpNextGen {
+    //A Digital Input.
+    DigitalChannel MRLimitSwitch;
 
+    //CDI. Using this, we can read any digital sensor on this CDI without creating an instance for each sensor.
+    DeviceInterfaceModule cdi;
 
     public float STRAFE_SPEED = 1.0F; //setting to a higher speed
 
@@ -110,7 +116,8 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
 
     @Override
     public void handleGamePad2(Gamepad gamepad) {//
-
+        MRLimitSwitch = hardwareMap.digitalChannel.get("limit");
+        cdi = hardwareMap.deviceInterfaceModule.get("Device Interface Module 1");
         final boolean isDpadUp = gamepad.dpad_up;
         final boolean isDpadDown = gamepad.dpad_down;
         final boolean isButtonA = gamepad.a;
@@ -119,6 +126,8 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
         final boolean isButtonY = gamepad.y;
         final double rightTrigger = gamepad.right_trigger;
         final double leftTrigger = gamepad.left_trigger;
+        final double COLLECTOR_SPEED = 0.7;
+        final double LIFT_TILT_SPEED = 0.3;
         /*int toggle = 0;
         if (isButtonB) {
             if(toggle == 0) {
@@ -145,25 +154,28 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
             } else {
                 robot.LGServo.setPosition(.6);
             */
+
+            //make sure to change lefty and righty values after confirming directions
             if (isButtonY) {
-                robot.Glyph_Collect_Lefty.setPower(.7);
-                robot.Glyph_Collect_Righty.setPower(.7);
+                robot.Glyph_Collect_Lefty.setPower(COLLECTOR_SPEED);
+                robot.Glyph_Collect_Righty.setPower(-COLLECTOR_SPEED);
             } else {
                 robot.Glyph_Collect_Lefty.setPower(0);
                 robot.Glyph_Collect_Righty.setPower(0);
             }
         if (isButtonX) {
-            robot.Lift_Tilt.setPower(.3);
-
+            robot.Lift_Tilt.setPower(LIFT_TILT_SPEED);
+        } else if (isButtonB) {
+            robot.Lift_Tilt.setPower(-LIFT_TILT_SPEED);
         } else {
             robot.Lift_Tilt.setPower(0);
-
         }
 
 
-        if (isDpadUp){
+
+        if (isDpadUp && !MRLimitSwitch.getState()){
             robot.Elevate.setPower(.5);
-        }else if (isDpadDown){
+        }else if (isDpadDown && !MRLimitSwitch.getState()){
                 robot.Elevate.setPower(-.5);
         }else{
             robot.Elevate.setPower(0);
