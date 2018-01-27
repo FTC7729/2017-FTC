@@ -33,7 +33,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
     VuforiaLocalizer vuforia;
     OpenGLMatrix lastLocation = null;
     private ElapsedTime     runtime = new ElapsedTime();
-    static final double     BOT_SPEED = 0.5;
+    static final double     BOT_SPEED = 0.1;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
@@ -114,7 +114,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         //Navx.turn(90.0, 0.1, robot);
         //navxTurn(90.0);
             int glyphPlacement = 0;
-            robot.init(hardwareMap);
+            //robot.init(hardwareMap);
             relicTrackables.activate();
 
             while (opModeIsActive()) {
@@ -122,11 +122,14 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                     stop();
                 }
                 RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-                if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+              
+
+                  if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                     telemetry.addData("VuMark", "%s visible", vuMark);
                     if (vuMark == RelicRecoveryVuMark.LEFT) {
                         telemetry.addData("VuMark", "Left", vuMark);
                         //Strafe Left
+                        navxTurn(90.0);
                         glyphPlacement = 1;
                         break;
                     }
@@ -183,7 +186,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                 telemetry.update();
                 //closeLift();
                 //moveLiftAmount(-.5,200);
-                navxTurn(90.0);
+                //navxTurn(90.0);
                 encoderDrive(.5,4,4,4,4,4);
                 //Strafe Left
                 navxTurn(90.0);
@@ -348,7 +351,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         sleep(1500);
         telemetry.log().clear();
     }
-    void navxTurn (double target, String turnType) {
+    /*void navxTurn (double target, String turnType) {
         AngularVelocity rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
         Orientation angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
@@ -387,6 +390,6 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         telemetry.addData("Done Turning","");
         sleep(1500);
         telemetry.log().clear();
-    }
+    }*/
 
 }
