@@ -167,12 +167,12 @@ public class BlueAllianceStone2withJewel extends LinearOpMode {
         }
         sleep(250);
         pivot_pos = pivot.getPosition();
-        if (order.equals("b-r")) {
+        if (order.equals("r-b")) {
             while (pivot_pos > PIVOT_LEFT) {
                 pivot_pos -= INCREMENT * 1.5;
                 pivot.setPosition(pivot_pos);
             }
-        } else if (order.equals("r-b")) {
+        } else if (order.equals("b-r")) {
             while (pivot_pos < PIVOT_RIGHT) {
                 pivot_pos += INCREMENT * 1.5;
                 pivot.setPosition(pivot_pos);
