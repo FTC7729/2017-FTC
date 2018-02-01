@@ -107,6 +107,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
 
             waitForStart();
         telemetry.log().clear();
+        openLift();
         //Start Code after here
         //encoderDrive(.5,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
@@ -122,14 +123,14 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                     stop();
                 }
                 RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-                navxTurn(90.0);
+                //avxTurn(90.0);
 
                   if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                     telemetry.addData("VuMark", "%s visible", vuMark);
                     if (vuMark == RelicRecoveryVuMark.LEFT) {
                         telemetry.addData("VuMark", "Left", vuMark);
                         //Strafe Left
-                        navxTurn(90.0);
+                        //navxTurn(90.0);
                         glyphPlacement = 1;
                         break;
                     }
@@ -157,39 +158,16 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
 
                 telemetry.update();
             }
-        /*
-        ▓▓▓▓
-        ▒▒▒▓▓
-        ▒▒▒▒▒▓
-        ▒▒▒▒▒▒▓
-        ▒▒▒▒▒▒▓
-        ▒▒▒▒▒▒▒▓
-        ▒▒▒▒▒▒▒▓▓▓
-        ▒▓▓▓▓▓▓░░░▓
-        ▒▓░░░░▓░░░░▓
-        ▓░░░░░░▓░▓░▓
-        ▓░░░░░░▓░░░▓
-        ▓░░▓░░░▓▓▓▓
-        ▒▓░░░░▓▒▒▒▒▓
-        ▒▒▓▓▓▓▒▒▒▒▒▓
-        ▒▒▒▒▒▒▒▒▓▓▓▓
-        ▒▒▒▒▒▓▓▓▒▒▒▒▓
-        ▒▒▒▒▓▒▒▒▒▒▒▒▒▓
-        ▒▒▒▓▒▒▒▒▒▒▒▒▒▓
-        ▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓
-        ▒▓▒▓▒▒▒▒▒▒▒▒▒▓
-        ▒▓▒▓▓▓▓▓▓▓▓▓▓
-        ▒▓▒▒▒▒▒▒▒▓
-        ▒▒▓▒▒▒▒▒▓
-        */
             if (glyphPlacement == 1) {
                 telemetry.update();
-                //closeLift();
-                //moveLiftAmount(-.5,200);
-                //navxTurn(90.0);
-                encoderDrive(.5,4,4,4,4,4);
+                closeLift();
+                moveLiftAmount(-1,200);
+                navxTurn(90);
+                encoderDrive(.5,6,6,6,6,4);
+                sleep(1000);
+                navxTurn(180);
+                openLift();
                 //Strafe Left
-                navxTurn(90.0);
             }
             if (glyphPlacement == 2) {
                 telemetry.update();
@@ -209,6 +187,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                 encoderDrive(.5,7,7,7,7,4);
                 encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
             }
+
             while(opModeIsActive()) {
                 if (!opModeIsActive()) {
                     moveLiftAmount(.5,200);
@@ -306,7 +285,9 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         robot.LiftM.setPower(0);
     }
     public void closeLift () {
+        //was .7
         robot.RGServo.setPosition(.7);
+        //was .3
         robot.LGServo.setPosition(.3);
     }
     public void openLift () {
