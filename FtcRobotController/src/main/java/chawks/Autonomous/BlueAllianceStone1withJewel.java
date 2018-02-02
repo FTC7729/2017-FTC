@@ -161,7 +161,9 @@ public class BlueAllianceStone1withJewel extends LinearOpMode {
                 // robot.RBMotor.setPower(0);
             }
         }
+
         //DogeCV can stop using the camera here
+
         arm_pos = arm.getPosition();
         //move arm here
         while (arm_pos > ARM_DROP) {
@@ -181,6 +183,7 @@ public class BlueAllianceStone1withJewel extends LinearOpMode {
                 pivot.setPosition(pivot_pos);
             }
         }
+        jewelDetector.disable();
         sleep(250);
         arm.setPosition(ARM_START);
         pivot.setPosition(PIVOT_START);
