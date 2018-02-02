@@ -180,6 +180,7 @@ public class RedAllianceStone2withJewel extends LinearOpMode {
                 pivot.setPosition(pivot_pos);
             }
         }
+        jewelDetector.disable();
         sleep(250);
         arm.setPosition(ARM_START);
         pivot.setPosition(PIVOT_START);
