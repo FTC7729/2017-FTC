@@ -27,7 +27,8 @@ public class BlueAllianceStone1 extends LinearOpMode {
     NavXMicro Navx = new NavXMicro();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.1;
-    static final double     COUNTS_PER_MOTOR_REV    = 280 ;    // eg: TETRIX Motor Encoder
+    static final double     COUNTS_PER_MOTOR_REV    = 280 ;    // eg: NEVEREST 40 Motor Encoder
+    static final double     ROTATIONS_PER_MINUTE    = 160 ;
     static final double     DRIVE_GEAR_REDUCTION    = 1.5 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 3.93701 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
@@ -54,6 +55,11 @@ public class BlueAllianceStone1 extends LinearOpMode {
         robot.RFMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.LBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.RBMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        robot.LFMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.RFMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.LBMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.RBMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         idle();
 
