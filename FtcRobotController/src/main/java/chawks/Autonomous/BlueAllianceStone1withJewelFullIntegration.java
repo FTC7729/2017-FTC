@@ -24,7 +24,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import chawks.hardware.Boxy;
 
-@Autonomous(name="BlueAllianceStone1gem", group="safezone")
+@Autonomous(name="BlueAllianceStone1gemVuf", group="safezone")
 public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
@@ -55,8 +55,8 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
     double arm_pos;
     double pivot_pos;
 
-    Servo pivot;
-    Servo arm;
+   // Servo pivot;
+    //Servo arm;
 
     private JewelDetector jewelDetector = null;
 
@@ -122,8 +122,8 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         //start using camera here DogeCV
         jewelDetector.enable();
 
-        pivot = hardwareMap.get(Servo.class, "pivot");
-        arm = hardwareMap.get(Servo.class, "arm");
+       // pivot = hardwareMap.get(Servo.class, "pivot");
+        //arm = hardwareMap.get(Servo.class, "arm");
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 
@@ -133,8 +133,8 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
 
-        arm.setPosition(ARM_START);
-        pivot.setPosition(PIVOT_START);
+        //arm.setPosition(ARM_START);
+        //pivot.setPosition(PIVOT_START);
         String order = null;
 
         //IMPORTANT: Change this string value so that you know other stuff before actually loading
@@ -177,29 +177,41 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
 
         //DogeCV can stop using the camera here
 
-        arm_pos = arm.getPosition();
+        //arm_pos = arm.getPosition();
         //move arm here
-        while (arm_pos > ARM_DROP) {
+       /* while (arm_pos > ARM_DROP) {
             arm_pos -= INCREMENT;
             arm.setPosition(arm_pos);
-        }
+        }*/
         sleep(250);
-        pivot_pos = pivot.getPosition();
+        //pivot_pos = pivot.getPosition();
         if (order.equals("r-b")) {
-            while (pivot_pos > PIVOT_LEFT) {
+            telemetry.addLine("Order: Red-Blue");
+            telemetry.addLine();
+            telemetry.addLine("Jewel arm would go 'left' in relation");
+            telemetry.addLine("to where the phone is facing");
+            /*while (pivot_pos > PIVOT_LEFT) {
                 pivot_pos -= INCREMENT * 1.5;
                 pivot.setPosition(pivot_pos);
-            }
+            }*/
         } else if (order.equals("b-r")) {
-            while (pivot_pos < PIVOT_RIGHT) {
-                pivot_pos += INCREMENT * 1.5;
-                pivot.setPosition(pivot_pos);
-            }
+            telemetry.addLine("Order: Blue-Red");
+            telemetry.addLine();
+            telemetry.addLine("Jewel arm would go 'right' in relation");
+            telemetry.addLine("to where the phone is facing");
+            //while (pivot_pos < PIVOT_RIGHT) {
+             //   pivot_pos += INCREMENT * 1.5;
+             //   pivot.setPosition(pivot_pos);
+           // }
         }
+        telemetry.update();
+        sleep(1300);
+        telemetry.clear();
+        //DogeCV camera disabled here
         jewelDetector.disable();
         sleep(250);
-        arm.setPosition(ARM_START);
-        pivot.setPosition(PIVOT_START);
+        //arm.setPosition(ARM_START);
+        //pivot.setPosition(PIVOT_START);
         sleep(500);
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
         parameters.vuforiaLicenseKey = "ASnFTXP/////AAAAGRItdPBpVU1Cpwf91MmRjZMgfHIOvk3JXTWDk0vMQBy7gb8tEtUF5L9G5d0CKMb8No6Y5ApK7vd+ROqL4fksIKpNGCyJwxc3vuVq3fUW13KV6mXl4/0/VmT/L03tOKjIds5v1ImaEz+7lQXqG0HCdcsDs5x0XtEBYKTgisFuzDZwmKTK3EXgRFl2kpf1ILJUEEbFMOskgRKUSTpXwWM3tDeix7B1Mu6fIafsL8VOvDuc1fzuJAHMO+rNL+yGjmrO2f421OzZgVYJxk6NbMJI5I6cbF12/L7LaTgMXnJ0oiKkJDc/QJY6m1u6/HNaP/kTOwqcT/mSRirXwZZUEx65qJ+x0/rOJa14+y5Zr5HutD7m";
