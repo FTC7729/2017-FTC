@@ -9,19 +9,14 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class nextgen {
+public class Boxd {
     private final WheelConfiguration wheelConfiguration;
     private final ElapsedTime period = new ElapsedTime();
     public DcMotor LFMotor;
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    public DcMotor Lift_Tilt;
-    public DcMotor Elevate;
-    public DcMotor Glyph_Collect_Righty;
-    public DcMotor Glyph_Collect_Lefty;
 
-    public DigitalChannel LimitSwitch;
 
 
     //public DcMotor LiftM;
@@ -33,7 +28,7 @@ public class nextgen {
 
 
 
-    public nextgen() {
+    public Boxd() {
         // these settings are for AndyMark Motor Encoder with Mecanum wheels
         // see: http://www.handhgraphicsorlando.com/STEM/BabyBot_DriveEncoderB.pdf
         final int countsPerMotorRev = 1120;
@@ -120,13 +115,7 @@ public class nextgen {
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
-        Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
 
-       Elevate = hardwareMap.dcMotor.get("Elevate");
-
-       Glyph_Collect_Righty = hardwareMap.dcMotor.get("Glyph_Collect_Righty");
-        Glyph_Collect_Lefty = hardwareMap.dcMotor.get("Glyph_Collect_Lefty");
-        LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
 
         //LatGmServo = hardwareMap.servo.get("LatGmServo");
         //VertGmServo = hardwareMap.servo.get("VertGmServo");
@@ -147,10 +136,7 @@ public class nextgen {
         RFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        Lift_Tilt.setDirection(DcMotor.Direction.FORWARD);
-        Elevate.setDirection(DcMotor.Direction.FORWARD);
-        Glyph_Collect_Righty.setDirection(DcMotor.Direction.REVERSE);
-        Glyph_Collect_Lefty.setDirection(DcMotor.Direction.REVERSE);
+
         //  |  <---- Arrow       NOT SURE IF CORRECT
         // \/                 BE SURE TO TEST
         //LiftM.setDirection(DcMotor.Direction.FORWARD);
@@ -164,8 +150,8 @@ public class nextgen {
     }
 
     public final void setWheelsToRunMode(DcMotor.RunMode runMode) {
-      //  Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
-      //  for (DcMotor motor : geheels()) {
+        //  Preconditions.checkState(isWheelsStopped(), "Should not change run mode without stopping wheels first");
+        //  for (DcMotor motor : geheels()) {
         LBMotor.setMode(runMode);
         RBMotor.setMode(runMode);
         LFMotor.setMode(runMode);
@@ -173,7 +159,7 @@ public class nextgen {
 
         //LiftM.setMode(runMode);
 
-      //  }
+        //  }
     }
 
 
@@ -184,22 +170,22 @@ public class nextgen {
 
     public final void setPowerAllWheels(double power) {
         //for (DcMotor motor : getWheels()) {
-            LBMotor.setPower(power);
-            RBMotor.setPower(power);
-            LFMotor.setPower(power);
-            RFMotor.setPower(power);
+        LBMotor.setPower(power);
+        RBMotor.setPower(power);
+        LFMotor.setPower(power);
+        RFMotor.setPower(power);
 
         //}
     }
 
     public final void stopWheelsAndLift() {
         //for (DcMotor motor : getWheelsAndSpinner()) {
-            LBMotor.setPower(0);
-            RBMotor.setPower(0);
-            LFMotor.setPower(0);
-            RFMotor.setPower(0);
+        LBMotor.setPower(0);
+        RBMotor.setPower(0);
+        LFMotor.setPower(0);
+        RFMotor.setPower(0);
 
-           // LiftM.setPower(0);
+        // LiftM.setPower(0);
 
 
         //}
@@ -208,8 +194,8 @@ public class nextgen {
     public final void ZeroServos(){
 
         //Setting them to not zero because they hit the chassis
-       // LGServo.setPosition(.71);
-       // RGServo.setPosition(.71);
+        // LGServo.setPosition(.71);
+        // RGServo.setPosition(.71);
 
         //LatGmServo.setPosition(1);
         //VertGmServo.setPosition(1);
@@ -221,15 +207,11 @@ public class nextgen {
         LFMotor.setPower(0);
         RFMotor.setPower(0);
 
-        Lift_Tilt.setPower(0);
-        Elevate.setPower(0);
-        Glyph_Collect_Righty.setPower(0);
-        Glyph_Collect_Lefty.setPower(0);
 
-     //   LiftM.setPower(0);
+        //   LiftM.setPower(0);
 
-      //  LGServo.setPosition(LGServo.getPosition());
-      //  RGServo.setPosition(RGServo.getPosition());
+        //  LGServo.setPosition(LGServo.getPosition());
+        //  RGServo.setPosition(RGServo.getPosition());
 
         //LatGmServo.setPosition(LatGmServo.getPosition());
         //VertGmServo.setPosition(VertGmServo.getPosition());
@@ -237,18 +219,18 @@ public class nextgen {
 
     public final boolean areWheelsStopped() {
         //for (DcMotor motor : getWheels()) {
-            if (LBMotor.getPower() != 0) {
-                return false;
-            }
-            if (RBMotor.getPower() != 0) {
-                return false;
-            }
-            if (LFMotor.getPower() != 0) {
-                return false;
-            }
-            if (RFMotor.getPower() != 0) {
-                return false;
-            }
+        if (LBMotor.getPower() != 0) {
+            return false;
+        }
+        if (RBMotor.getPower() != 0) {
+            return false;
+        }
+        if (LFMotor.getPower() != 0) {
+            return false;
+        }
+        if (RFMotor.getPower() != 0) {
+            return false;
+        }
 
         //}
         return true;
