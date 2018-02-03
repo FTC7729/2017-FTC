@@ -161,22 +161,33 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
             if (glyphPlacement == 1) {
                 telemetry.update();
                 closeLift();
-                moveLiftAmount(-1,200);
+                moveLiftAmount(1,500);
                 navxTurn(90);
-                encoderDrive(.5,6,6,6,6,4);
+                encoderDrive(.5,-5.5,-7.5,-5.5,-5.5,4);
                 sleep(1000);
-                navxTurn(180);
+                navxTurn(179);
+                encoderDrive(.5,-1,-1,-1,-1,4);
                 openLift();
+                encoderDrive(.5,.5,.5,.5,.5,4);
+                closeLift();
+                moveLiftAmount(-1,500);
+                encoderDrive(.5,-.75,-.75,-.75,-.75,4);
                 //Strafe Left
             }
             if (glyphPlacement == 2) {
                 telemetry.update();
                 closeLift();
-                moveLiftAmount(-.5,200);
-                encoderDrive(.5,4,4,4,4,4);
-                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
-                encoderDrive(.5,7,7,7,7,4);
-                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
+                moveLiftAmount(1,500);
+                navxTurn(90);
+                encoderDrive(.5,-5.5,-7.5,-5.5,-5.5,4);
+                sleep(1000);
+                navxTurn(179);
+                encoderDrive(.5,-1,-1,-1,-1,4);
+                openLift();
+                encoderDrive(.5,.5,.5,.5,.5,4);
+                closeLift();
+                moveLiftAmount(-1,500);
+                encoderDrive(.5,-.75,-.75,-.75,-.75,4);
             }
             if (glyphPlacement == 3) {
                 telemetry.update();
@@ -186,12 +197,6 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                 encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
                 encoderDrive(.5,7,7,7,7,4);
                 encoderDrive(.5,-3.35,3.35,-3.35,3.35,10);
-            }
-
-            while(opModeIsActive()) {
-                if (!opModeIsActive()) {
-                    moveLiftAmount(.5,200);
-                }
             }
             telemetry.addData("Path", "Complete");
             telemetry.update();
