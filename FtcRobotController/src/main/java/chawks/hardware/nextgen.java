@@ -16,10 +16,10 @@ public class nextgen {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    public DcMotor Lift_Tilt;
+    //public DcMotor Lift_Tilt;
     public DcMotor Elevate;
-    public DcMotor Glyph_Collect_Righty;
-    public DcMotor Glyph_Collect_Lefty;
+    //public DcMotor Glyph_Collect_Righty;
+    //public DcMotor Glyph_Collect_Lefty;
 
     public DigitalChannel LimitSwitch;
 
@@ -120,13 +120,13 @@ public class nextgen {
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
-        Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
+        //Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
 
-       Elevate = hardwareMap.dcMotor.get("Elevate");
+       //Elevate = hardwareMap.dcMotor.get("Elevate");
 
-       Glyph_Collect_Righty = hardwareMap.dcMotor.get("Glyph_Collect_Righty");
-        Glyph_Collect_Lefty = hardwareMap.dcMotor.get("Glyph_Collect_Lefty");
-        LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
+       //Glyph_Collect_Righty = hardwareMap.dcMotor.get("Glyph_Collect_Righty");
+        //Glyph_Collect_Lefty = hardwareMap.dcMotor.get("Glyph_Collect_Lefty");
+       // LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
 
         //LatGmServo = hardwareMap.servo.get("LatGmServo");
         //VertGmServo = hardwareMap.servo.get("VertGmServo");
@@ -137,7 +137,7 @@ public class nextgen {
 
 
         // Set all motors to zero power
-        stopWheelsAndLift();
+        //stopWheelsAndLift();
         //ZeroServos();
 
         // configure the wheels so that if we apply +1.0 power to all of the wheels,
@@ -147,10 +147,10 @@ public class nextgen {
         RFMotor.setDirection(DcMotor.Direction.REVERSE);
         RBMotor.setDirection(DcMotor.Direction.REVERSE);
 
-        Lift_Tilt.setDirection(DcMotor.Direction.FORWARD);
-        Elevate.setDirection(DcMotor.Direction.FORWARD);
-        Glyph_Collect_Righty.setDirection(DcMotor.Direction.REVERSE);
-        Glyph_Collect_Lefty.setDirection(DcMotor.Direction.REVERSE);
+       // Lift_Tilt.setDirection(DcMotor.Direction.FORWARD);
+       // Elevate.setDirection(DcMotor.Direction.FORWARD);
+       // Glyph_Collect_Righty.setDirection(DcMotor.Direction.REVERSE);
+       // Glyph_Collect_Lefty.setDirection(DcMotor.Direction.REVERSE);
         //  |  <---- Arrow       NOT SURE IF CORRECT
         // \/                 BE SURE TO TEST
         //LiftM.setDirection(DcMotor.Direction.FORWARD);
@@ -221,11 +221,11 @@ public class nextgen {
         LFMotor.setPower(0);
         RFMotor.setPower(0);
 
-        Lift_Tilt.setPower(0);
-        Elevate.setPower(0);
-        Glyph_Collect_Righty.setPower(0);
-        Glyph_Collect_Lefty.setPower(0);
-
+       // Lift_Tilt.setPower(0);
+       // Elevate.setPower(0);
+       // Glyph_Collect_Righty.setPower(0);
+        //Glyph_Collect_Lefty.setPower(0);
+//
      //   LiftM.setPower(0);
 
       //  LGServo.setPosition(LGServo.getPosition());

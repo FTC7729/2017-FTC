@@ -24,8 +24,8 @@ public abstract class AbstractTeleOpModeWithNextGen extends OpMode {
     static final double     TURN_SPEED              = 0.5;
     static final double     FORWARD_SPEED           = 0.6;
     static final double     BACKWARDS_SPEED         = -0.6;
-    boolean IsSwitch;
-    double LiftZero;
+    //boolean IsSwitch;
+    //double LiftZero;
 
     /**
      * This code is run ONCE when the driver hits INIT
@@ -40,7 +40,7 @@ public abstract class AbstractTeleOpModeWithNextGen extends OpMode {
         //READ
         //      Assuming a postive
         //READ
-        while(IsSwitch = false){
+      /*  while(IsSwitch = false){
             robot.Elevate.setPower(0.1);
             IsSwitch = robot.LimitSwitch.getState();
         }
@@ -58,7 +58,7 @@ public abstract class AbstractTeleOpModeWithNextGen extends OpMode {
             robot.Elevate.setPower(-0.1);
         }
 
-        //the real product here is the LiftZero variable
+        *///the real product here is the LiftZero variable
     }
 
     /**
