@@ -290,6 +290,8 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
         degrees = stuff;
     }
 
+
+
     public void moveLiftAmount (double power,long time)  {
         robot.LiftM.setPower(power);
         sleep(time);
