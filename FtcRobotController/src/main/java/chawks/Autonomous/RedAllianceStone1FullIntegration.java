@@ -23,8 +23,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import chawks.hardware.KBot;
 
-@Autonomous(name="Red 2 experimental integration", group="safezone")
-public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
+@Autonomous(name="Red 1 experimental integration", group="safezone")
+public class RedAllianceStone1FullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
@@ -264,57 +264,54 @@ public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
-            navxTurn(90);
-            encoderDrive(.5,-5.25,-5.25,-5.25,-5.25,4);
+            navxTurn(-90);
+            encoderDrive(.5,5.25,5.25,5.25,5.25,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(-178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-.5,-.5,-.5,-.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
             //Strafe Left
         }
         if (glyphPlacement == 2) {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
-            navxTurn(90);
-            encoderDrive(.5,-6,-6,-6,-6,4);
+            navxTurn(-90);
+            encoderDrive(.5,6,6,6,6,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(-178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-.5,-.5,-.5,-.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
-            navxTurn(90);
-            encoderDrive(.5,-5.75,-5.75,-5.75,-5.75,4);
+            navxTurn(-90);
+            encoderDrive(.5,5.75,5.75,5.75,5.75,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(-178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-.5,-.5,-.5,-.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
         }
-        navxTurn(-90.0);
+
         telemetry.log().clear();
         //Start Code after here
-        encoderDrive(.5,.5,-.5,.5,-.5,4);
+        //encoderDrive(.5,.5,-.5,.5,-.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
-        encoderDrive(.5,-6,-6,-6,-6,4);
-        navxTurn(0.0);
-
-
+       // encoderDrive(.5,-6,-6,-6,-6,4);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
