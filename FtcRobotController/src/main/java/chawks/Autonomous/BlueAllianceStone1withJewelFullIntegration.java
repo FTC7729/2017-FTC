@@ -267,15 +267,15 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-5.25,-5.25,-5.25,-5.25,4);
+            encoderDrive(.5,5.25,-5.25,5.25,5.25,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
             encoderDrive(.5,.5,.5,.5,.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
             //Strafe Left
         }
         if (glyphPlacement == 2) {
@@ -283,46 +283,54 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-6,-6,-6,-6,4);
+            encoderDrive(.5,6,6,6,6,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
             encoderDrive(.5,.5,.5,.5,.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-5.75,-5.75,-5.75,-5.75,4);
+            encoderDrive(.5,5.75,5.75,5.75,5.75,4);
             sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            navxTurn(178);
+            encoderDrive(.5,1,1,1,1,4);
             openLift();
             encoderDrive(.5,.5,.5,.5,.5,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,.75,.75,.75,.75,4);
         }
+<<<<<<< 919dbc06de264a7cca9d35cdc131460d732bb61a
 
         /*navxTurn(-90.0);
+=======
+       // navxTurn(-90.0);
+>>>>>>> Finalize integrations of blue and red stone 1
         telemetry.log().clear();
         //Start Code after here
-        encoderDrive(.5,.5,-.5,.5,-.5,4);
+        //encoderDrive(.5,.5,-.5,.5,-.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
+<<<<<<< 919dbc06de264a7cca9d35cdc131460d732bb61a
         encoderDrive(.5,-6,-6,-6,-6,4);
         navxTurn(0.0);*/
 
 
+=======
+        //encoderDrive(.5,-6,-6,-6,-6,4);
+        //navxTurn(0.0);
+>>>>>>> Finalize integrations of blue and red stone 1
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
     }
-
     public void encoderDrive(double speed, double leftInches, double rightInches, double leftBackInches, double rightBackInches, double timeoutS) {
         int newLeftTarget;
         int newRightTarget;
@@ -330,7 +338,6 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         int newRightBackTarget;
 
         if (opModeIsActive()) {
-
             newLeftTarget = robot.LFMotor.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
             newRightTarget = robot.RFMotor.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
             newLeftBackTarget = robot.LBMotor.getCurrentPosition() + (int)(leftBackInches * COUNTS_PER_INCH);
@@ -368,7 +375,6 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
                 );
                 telemetry.update();
             }
-
             // Stop all motion;
             robot.LFMotor.setPower(0);
             robot.RFMotor.setPower(0);
@@ -409,7 +415,6 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             {
                 return;
             }
-
             rates = gyro.getAngularVelocity(AngleUnit.DEGREES);
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
