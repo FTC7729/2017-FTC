@@ -25,8 +25,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import chawks.hardware.KBot;
 import chawks.hardware.Boxy;
 
-@Autonomous(name="BlueAllianceStone1gemVuf", group="safezone")
-public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
+@Autonomous(name="BlueAllianceStone2gemVuf", group="safezone")
+public class BlueAllianceStone2withJewelFullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
@@ -56,7 +56,7 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
     double arm_pos;
     double pivot_pos;
 
-   // Servo pivot;
+    // Servo pivot;
     //Servo arm;
 
     private JewelDetector jewelDetector = null;
@@ -123,7 +123,7 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         //start using camera here DogeCV
         jewelDetector.enable();
 
-       // pivot = hardwareMap.get(Servo.class, "pivot");
+        // pivot = hardwareMap.get(Servo.class, "pivot");
         //arm = hardwareMap.get(Servo.class, "arm");
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -201,9 +201,9 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             telemetry.addLine("Jewel arm would go 'right' in relation");
             telemetry.addLine("to where the phone is facing");
             //while (pivot_pos < PIVOT_RIGHT) {
-             //   pivot_pos += INCREMENT * 1.5;
-             //   pivot.setPosition(pivot_pos);
-           // }
+            //   pivot_pos += INCREMENT * 1.5;
+            //   pivot.setPosition(pivot_pos);
+            // }
         }
         telemetry.update();
         sleep(1300);
@@ -267,46 +267,45 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-5.25,-5.25,-5.25,-5.25,4);
-            sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            encoderDrive(.5,-3,-3,-3,-3,4);
+            navxTurn(180);
+            encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
+            navxTurn(90);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-1,-1,-1,-1,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
-            //Strafe Left
+            encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
         if (glyphPlacement == 2) {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-6,-6,-6,-6,4);
-            sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            encoderDrive(.5,-3,-3,-3,-3,4);
+            navxTurn(180);
+            encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
+            navxTurn(90);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-1,-1,-1,-1,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
             moveLiftAmount(1,500);
             navxTurn(90);
-            encoderDrive(.5,-5.75,-5.75,-5.75,-5.75,4);
-            sleep(1000);
-            navxTurn(179);
-            encoderDrive(.5,-1,-1,-1,-1,4);
+            encoderDrive(.5,-3,-3,-3,-3,4);
+            navxTurn(180);
+            encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
+            navxTurn(90);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5,-1,-1,-1,-1,4);
             closeLift();
             moveLiftAmount(-1,500);
-            encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+            encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
 
         /*navxTurn(-90.0);
