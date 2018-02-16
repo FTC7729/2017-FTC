@@ -308,25 +308,22 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
             moveLiftAmount(-1,500);
             encoderDrive(.5,.75,.75,.75,.75,4);
         }
-<<<<<<< HEAD
-       // navxTurn(-90.0);
-=======
 
-        /*navxTurn(-90.0);
->>>>>>> dfdcdfc6d5bcbedb9e4e4e89f93353331036fc12
+       // navxTurn(-90.0);
+
+        //navxTurn(-90.0);
+
         telemetry.log().clear();
         //Start Code after here
         //encoderDrive(.5,.5,-.5,.5,-.5,4);
-        //speed 5 is too fast, less than 7 dist is too short.
-<<<<<<< HEAD
+        //speed 5 is too fast, less than 7 dist is too short
+        //encoderDrive(.5,-6,-6,-6,-6,4);
+        //navxTurn(0.0)
         //encoderDrive(.5,-6,-6,-6,-6,4);
         //navxTurn(0.0);
-=======
-        encoderDrive(.5,-6,-6,-6,-6,4);
-        navxTurn(0.0);*/
 
 
->>>>>>> dfdcdfc6d5bcbedb9e4e4e89f93353331036fc12
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
