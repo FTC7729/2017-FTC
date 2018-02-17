@@ -18,13 +18,18 @@ public class NextGenHolonomic extends NextGenthetank {
         final double v4 = r * Math.cos(robotAngle) + rightX;
 
 
-        robot.LFMotor.setPower((-v3)/2);
-        robot.RFMotor.setPower((-v4)/2);
-        robot.LBMotor.setPower((-v1)/2);
-        robot.RBMotor.setPower((-v2)/2);
+        robot.LFMotor.setPower(-v3);
+        robot.RFMotor.setPower(-v4);
+        robot.LBMotor.setPower(-v1);
+        robot.RBMotor.setPower(-v2);
     }
 
     public void handleGamePad2(Gamepad gamepad) {
+
+        if(gamepad.b){
+
+        }
+
     }
 
 

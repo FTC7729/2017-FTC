@@ -12,7 +12,7 @@ import chawks.hardware.DrivingDirection;
 @TeleOp(name = "nextgen DA TANK", group = "TeleOp")
 public class NextGenthetank extends AbstractTeleOpNextGen {
     //A Digital Input.
-    DigitalChannel MRLimitSwitch;
+    //DigitalChannel MRLimitSwitch;
 
     //CDI. Using this, we can read any digital sensor on this CDI without creating an instance for each sensor.
     DeviceInterfaceModule cdi;
@@ -116,7 +116,7 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
 
     @Override
     public void handleGamePad2(Gamepad gamepad) {//
-        MRLimitSwitch = hardwareMap.digitalChannel.get("limit");
+      //  MRLimitSwitch = hardwareMap.digitalChannel.get("limit");
         cdi = hardwareMap.deviceInterfaceModule.get("Device Interface Module 1");
         final boolean isDpadUp = gamepad.dpad_up;
         final boolean isDpadDown = gamepad.dpad_down;
@@ -156,13 +156,13 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
             */
 
             //make sure to change lefty and righty values after confirming directions
-           /* if (isButtonY) {
-                robot.Glyph_Collect_Lefty.setPower(COLLECTOR_SPEED);
-                robot.Glyph_Collect_Righty.setPower(-COLLECTOR_SPEED);
+            if (isButtonY) {
+                robot.Intake.setPower(0.5);
+
             } else {
-                robot.Glyph_Collect_Lefty.setPower(0);
-                robot.Glyph_Collect_Righty.setPower(0);
-            }  */
+                robot.Intake.setPower(0);
+
+            }
         /*if (isButtonX) {
             robot.Lift_Tilt.setPower(LIFT_TILT_SPEED);
         } else if (isButtonB) {
@@ -173,13 +173,13 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
 */
 
 
-        if (isDpadUp && !MRLimitSwitch.getState()){
+        /*if (isDpadUp && !MRLimitSwitch.getState()){
             robot.Elevate.setPower(.5);
         }else if (isDpadDown && !MRLimitSwitch.getState()){
                 robot.Elevate.setPower(-.5);
         }else{
             robot.Elevate.setPower(0);
-        }
+        }*/
 
     }//
 
