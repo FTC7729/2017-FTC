@@ -5,6 +5,7 @@ package chawks.hardware;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -16,10 +17,12 @@ public class nextgen {
     public DcMotor LBMotor;
     public DcMotor RFMotor;
     public DcMotor RBMotor;
-    //public DcMotor Lift_Tilt;
+    public DcMotor Lift_Tilt;
     public DcMotor Elevate;
-    //public DcMotor Glyph_Collect_Righty;
-    //public DcMotor Glyph_Collect_Lefty;
+    public DcMotor Intake;
+
+    public Servo LatGmServo;
+    public Servo VertGmServo;
 
     public DigitalChannel LimitSwitch;
 
@@ -120,16 +123,16 @@ public class nextgen {
         LFMotor = hardwareMap.dcMotor.get("LFMotor");
         RFMotor = hardwareMap.dcMotor.get("RFMotor");
 
-        //Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
+        Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
 
-       //Elevate = hardwareMap.dcMotor.get("Elevate");
+       Elevate = hardwareMap.dcMotor.get("Elevate");
 
-       //Glyph_Collect_Righty = hardwareMap.dcMotor.get("Glyph_Collect_Righty");
-        //Glyph_Collect_Lefty = hardwareMap.dcMotor.get("Glyph_Collect_Lefty");
-       // LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
+       Intake = hardwareMap.dcMotor.get("Intake");
 
-        //LatGmServo = hardwareMap.servo.get("LatGmServo");
-        //VertGmServo = hardwareMap.servo.get("VertGmServo");
+       LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
+
+        LatGmServo = hardwareMap.servo.get("LatGmServo");
+        VertGmServo = hardwareMap.servo.get("VertGmServo");
 
 
 
@@ -193,26 +196,21 @@ public class nextgen {
     }
 
     public final void stopWheelsAndLift() {
-        //for (DcMotor motor : getWheelsAndSpinner()) {
+
             LBMotor.setPower(0);
             RBMotor.setPower(0);
             LFMotor.setPower(0);
             RFMotor.setPower(0);
 
-           // LiftM.setPower(0);
 
 
-        //}
     }
 
     public final void ZeroServos(){
 
-        //Setting them to not zero because they hit the chassis
-       // LGServo.setPosition(.71);
-       // RGServo.setPosition(.71);
 
-        //LatGmServo.setPosition(1);
-        //VertGmServo.setPosition(1);
+       LatGmServo.setPosition(1);
+        VertGmServo.setPosition(1);
     }
 
     public final void AaaStopEverything(){
@@ -221,18 +219,12 @@ public class nextgen {
         LFMotor.setPower(0);
         RFMotor.setPower(0);
 
-       // Lift_Tilt.setPower(0);
-       // Elevate.setPower(0);
-       // Glyph_Collect_Righty.setPower(0);
-        //Glyph_Collect_Lefty.setPower(0);
-//
-     //   LiftM.setPower(0);
+        Lift_Tilt.setPower(0);
+        Elevate.setPower(0);
+       Intake.setPower(0);
 
-      //  LGServo.setPosition(LGServo.getPosition());
-      //  RGServo.setPosition(RGServo.getPosition());
-
-        //LatGmServo.setPosition(LatGmServo.getPosition());
-        //VertGmServo.setPosition(VertGmServo.getPosition());
+        LatGmServo.setPosition(LatGmServo.getPosition());
+        VertGmServo.setPosition(VertGmServo.getPosition());
     }
 
     public final boolean areWheelsStopped() {
