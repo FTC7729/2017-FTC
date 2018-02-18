@@ -25,7 +25,7 @@ public class nextgen {
     public Servo VertGmServo;
 
     public DigitalChannel LimitSwitch;
-
+    
 
     //public DcMotor LiftM;
     //public Servo LGServo;
