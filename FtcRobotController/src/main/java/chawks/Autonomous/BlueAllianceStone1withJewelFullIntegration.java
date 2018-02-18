@@ -296,41 +296,18 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
-            moveLiftAmount(1,500);
+            moveLiftAmount(1, 500);
             navxTurn(90);
-            encoderDrive(.5,5.75,5.75,5.75,5.75,4);
+            encoderDrive(.5, 5.75, 5.75, 5.75, 5.75, 4);
             sleep(1000);
             navxTurn(178);
-            encoderDrive(.5,1,1,1,1,4);
+            encoderDrive(.5, 1, 1, 1, 1, 4);
             openLift();
-            encoderDrive(.5,.5,.5,.5,.5,4);
+            encoderDrive(.5, .5, .5, .5, .5, 4);
             closeLift();
-            moveLiftAmount(-1,500);
-            encoderDrive(.5,.75,.75,.75,.75,4);
+            moveLiftAmount(-1, 500);
+            encoderDrive(.5, .75, .75, .75, .75, 4);
         }
-<<<<<<< 919dbc06de264a7cca9d35cdc131460d732bb61a
-
-<<<<<<< c670f0873c0117933a78535eb00a9ed55df46208
-        /*navxTurn(-90.0);
-=======
-       // navxTurn(-90.0);
->>>>>>> Finalize integrations of blue and red stone 1
-=======
-        navxTurn(-90.0);
->>>>>>> FIxed hopefully maybe please fix, please, im begging u
-        telemetry.log().clear();
-        //Start Code after here
-        //encoderDrive(.5,.5,-.5,.5,-.5,4);
-        //speed 5 is too fast, less than 7 dist is too short.
-<<<<<<< 919dbc06de264a7cca9d35cdc131460d732bb61a
-        encoderDrive(.5,-6,-6,-6,-6,4);
-        navxTurn(0.0);
-
-
-=======
-        //encoderDrive(.5,-6,-6,-6,-6,4);
-        //navxTurn(0.0);
->>>>>>> Finalize integrations of blue and red stone 1
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

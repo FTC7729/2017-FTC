@@ -174,13 +174,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
             if (glyphPlacement == 2) {
                 telemetry.update();
                 closeLift();
-<<<<<<< e4e2c28ab42a38e55b02e8e2607e1780e287db76
-                moveLiftAmount(-.5,200);
-                encoderDrive(.5,4,4,4,4,4);
-                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
-                encoderDrive(.5,7,7,7,7,4);
-                encoderDrive(.5,-3.45,3.45,-3.45,3.45,10);
-=======
+
                 moveLiftAmount(1,500);
                 navxTurn(90);
                 encoderDrive(.5,-6,-6,-6,-6,4);
@@ -192,7 +186,7 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                 closeLift();
                 moveLiftAmount(-1,500);
                 encoderDrive(.5,-.75,-.75,-.75,-.75,4);
->>>>>>> Made the Vuforia stuff work
+
             }
             if (glyphPlacement == 3) {
                 telemetry.update();
