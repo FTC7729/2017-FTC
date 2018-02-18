@@ -129,20 +129,31 @@ public class NextGenHolonomicWIthLift extends AbstractTeleOpNextGen {
         final double leftTrigger = gamepad.left_trigger;
         //make sure to change lefty and righty values after confirming directions
         final boolean LimitSwitchElevate = robot.LimitSwitch.getState();
+        final boolean LimitSwitchTilt = robot.LimitSwitchTilt.getState();
+
         if (isButtonY) {
             robot.Intake.setPower(0.5);
 
-        } else {
+        }
+        else if(isButtonA) {
+            robot.Intake.setPower(-0.5);
+        }
+        else {
             robot.Intake.setPower(0);
-
         }
-        if (isButtonX) {
-            robot.Lift_Tilt.setPower(0.5);
-        } else {
-            robot.Lift_Tilt.setPower(0);
-        }
+       if (LimitSwitchTilt == false) {
+            telemetry.addData("Tilt switch triggered", "hi");
+      }
+      if (LimitSwitchTilt == true) {
             if (isButtonB) {
-            robot.Lift_Tilt.setPower(-0.5);
+                robot.Lift_Tilt.setPower(-0.5);
+            } else {
+                robot.Lift_Tilt.setPower(0);
+            }
+        }
+
+        if (isButtonX) {
+            robot.Lift_Tilt.setPower( 0.5);
         } else {
             robot.Lift_Tilt.setPower(0);
         }
@@ -153,10 +164,12 @@ public class NextGenHolonomicWIthLift extends AbstractTeleOpNextGen {
             } else {
                 robot.Elevate.setPower(0);
             }
+
         if (LimitSwitchElevate == false) {
             telemetry.addData("YOU TOUCHDED MA SWITCHED. TRIGGERED","COOL");
         }
-        if (LimitSwitchElevate == true) {
+
+            if (LimitSwitchElevate == true) {
             if (isDpadDown) {
                 robot.Elevate.setPower(-0.5);
             } else {

@@ -25,7 +25,8 @@ public class nextgen {
     public Servo VertGmServo;
 
     public DigitalChannel LimitSwitch;
-    
+    public DigitalChannel LimitSwitchTilt;
+
 
     //public DcMotor LiftM;
     //public Servo LGServo;
@@ -130,7 +131,7 @@ public class nextgen {
        Intake = hardwareMap.dcMotor.get("Intake");
 
        LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
-
+        LimitSwitchTilt = hardwareMap.digitalChannel.get("LimitSwitchTilt");
         LatGmServo = hardwareMap.servo.get("LatGmServo");
         VertGmServo = hardwareMap.servo.get("VertGmServo");
 
