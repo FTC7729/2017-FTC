@@ -173,9 +173,9 @@ public class NextGenthetank extends AbstractTeleOpNextGen {
 
 
         if (isDpadUp){
-            robot.Elevate.setPower(.5);
+            robot.Elevate.setPower(0.5);
         }else if (isDpadDown){
-            robot.Elevate.setPower(-.5);
+            robot.Elevate.setPower(-0.5);
         }else{
             robot.Elevate.setPower(0);
         }
