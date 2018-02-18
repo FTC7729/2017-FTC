@@ -108,7 +108,9 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
             waitForStart();
         telemetry.log().clear();
         openLift();
-        moveLiftAmount(-1,500);
+
+        //moveLiftAmount(-1,500);
+
         //Start Code after here
         //encoderDrive(.5,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
@@ -169,11 +171,18 @@ public class BlueAllianceStone1Vuforia extends LinearOpMode {
                 navxTurn(179);
                 encoderDrive(.5,-1,-1,-1,-1,4);
                 openLift();
+
+                encoderDrive(.5,.5,.5,.5,.5,4);
+                closeLift();
+                moveLiftAmount(-1,500);
+                encoderDrive(.5,-.75,-.75,-.75,-.75,4);
+
                 //Strafe Left
             }
             if (glyphPlacement == 2) {
                 telemetry.update();
                 closeLift();
+
 
                 moveLiftAmount(1,500);
                 navxTurn(90);
