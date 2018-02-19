@@ -27,6 +27,9 @@ public class JewelArmServoTest extends LinearOpMode {
         pivot.setPosition(PIVOT_START);
         arm_pos = ARM_START;
         while (arm_pos > ARM_DROP) {
+            telemetry.addData("Lat position", arm.getPosition());
+            telemetry.addData("vert positron", pivot.getPosition());
+            telemetry.update();
             if(!opModeIsActive()){ break; }
             arm_pos -= INCREMENT;
             arm.setPosition(arm_pos);
