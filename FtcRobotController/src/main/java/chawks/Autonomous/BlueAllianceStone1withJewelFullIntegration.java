@@ -296,6 +296,8 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         if (glyphPlacement == 3) {
             telemetry.update();
             closeLift();
+
+
             moveLiftAmount(1,500);
             navxTurn(90);
             encoderDrive(.5,5.75,5.75,5.75,5.75,4);
@@ -321,6 +323,7 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         //navxTurn(0.0)
         //encoderDrive(.5,-6,-6,-6,-6,4);
         //navxTurn(0.0);
+
 
 
 
@@ -453,4 +456,8 @@ public class BlueAllianceStone1withJewelFullIntegration extends LinearOpMode {
         robot.RGServo.setPosition(.32);
         robot.LGServo.setPosition(.68);
     }
+
+
+
 }
+
