@@ -134,8 +134,8 @@ public class BlueAllianceStone1NextGen extends LinearOpMode {
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
 
-        //arm.setPosition(ARM_START);
-        //pivot.setPosition(PIVOT_START);
+        robot.VertGmServo.setPosition(ARM_START);
+        robot.LatGmServo.setPosition(PIVOT_START);
         String order = null;
 
         //IMPORTANT: Change this string value so that you know other stuff before actually loading
@@ -151,7 +151,7 @@ public class BlueAllianceStone1NextGen extends LinearOpMode {
             if (jewelDetector.getCurrentOrder().toString().equals("BLUE_RED")) {
                 telemetry.addData("Blue", "Red");
                 telemetry.update();
-                order = "b-r";
+                order = "r-b";
                 break;
                 // encoderDrive(.5,-2,2,2,-2,5);
                 //robot.LFMotor.setPower(1);
@@ -160,7 +160,7 @@ public class BlueAllianceStone1NextGen extends LinearOpMode {
                 //robot.LFMotor.setPower(-1);
                 telemetry.addData("Red", "Blue");
                 telemetry.update();
-                order = "r-b";
+                order = "b-r";
                 break;
                 // encoderDrive(-.5,2,-2,-2,2,5);
 
@@ -228,6 +228,10 @@ public class BlueAllianceStone1NextGen extends LinearOpMode {
         }
         telemetry.update();
         sleep(1300);
+        robot.VertGmServo.setPosition(ARM_START);
+        robot.LatGmServo.setPosition(PIVOT_START);
+
+
         telemetry.clear();
         //DogeCV camera disabled here
         jewelDetector.disable();
