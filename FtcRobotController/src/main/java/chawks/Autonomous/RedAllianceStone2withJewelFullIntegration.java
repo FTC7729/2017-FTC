@@ -23,7 +23,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import chawks.hardware.KBot;
 
-@Autonomous(name="BlueAllianceStone2gemVuf", group="safezone")
+@Autonomous(name="RedAllianceStone2gemVuf", group="safezone")
 public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
