@@ -17,6 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import chawks.hardware.Boxy;
+import chawks.hardware.nextgen;
 
 @Autonomous(name="RedAllianceStone1gemNextGen", group="safezone")
 public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
@@ -24,7 +25,7 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    Boxy         robot   = new Boxy();
+    nextgen         robot   = new nextgen();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder

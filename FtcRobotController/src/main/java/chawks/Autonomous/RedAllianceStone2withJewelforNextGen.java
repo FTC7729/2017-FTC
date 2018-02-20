@@ -18,6 +18,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import chawks.hardware.Boxy;
 import chawks.hardware.NavXMicro;
+import chawks.hardware.nextgen;
 
 @Autonomous(name="RedAllianceStone2gemNextGen", group="safezone")
 public class RedAllianceStone2withJewelforNextGen extends LinearOpMode {
@@ -25,7 +26,7 @@ public class RedAllianceStone2withJewelforNextGen extends LinearOpMode {
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    Boxy         robot   = new Boxy();
+    nextgen         robot   = new nextgen();
     NavXMicro navx = new NavXMicro();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
