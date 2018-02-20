@@ -141,10 +141,13 @@ public class NextGenHolonomicWIthLift extends AbstractTeleOpNextGen {
         else {
             robot.Intake.setPower(0);
         }
-       if (LimitSwitchTilt == false) {
+
+
+        if (isButtonX) {
+            robot.Lift_Tilt.setPower( 0.5);
+        } else if (LimitSwitchTilt == false) {
             telemetry.addData("Tilt switch triggered", "hi");
-      }
-      if (LimitSwitchTilt == true) {
+        } else if (LimitSwitchTilt == true) {
             if (isButtonB) {
                 robot.Lift_Tilt.setPower(-0.5);
             } else {
@@ -152,30 +155,19 @@ public class NextGenHolonomicWIthLift extends AbstractTeleOpNextGen {
             }
         }
 
-        if (isButtonX) {
-            robot.Lift_Tilt.setPower( 0.5);
-        } else {
-            robot.Lift_Tilt.setPower(0);
-        }
-
 
             if (isDpadUp) {
                 robot.Elevate.setPower(0.5);
-            } else {
-                robot.Elevate.setPower(0);
-            }
-
-        if (LimitSwitchElevate == false) {
+            } else if (LimitSwitchElevate == false) {
             telemetry.addData("YOU TOUCHDED MA SWITCHED. TRIGGERED","COOL");
-        }
-
-            if (LimitSwitchElevate == true) {
+        } else if (LimitSwitchElevate == true) {
             if (isDpadDown) {
                 robot.Elevate.setPower(-0.5);
             } else {
                 robot.Elevate.setPower(0);
             }
         }
+
 
         /*if (isDpadUp && !MRLimitSwitch.getState()){
             robot.Elevate.setPower(.5);
