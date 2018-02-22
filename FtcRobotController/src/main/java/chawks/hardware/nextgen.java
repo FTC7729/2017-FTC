@@ -126,11 +126,11 @@ public class nextgen {
 
         Lift_Tilt = hardwareMap.dcMotor.get("Lift_Tilt");
 
-       Elevate = hardwareMap.dcMotor.get("Elevate");
+        Elevate = hardwareMap.dcMotor.get("Elevate");
 
-       Intake = hardwareMap.dcMotor.get("Intake");
+        Intake = hardwareMap.dcMotor.get("Intake");
 
-       LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
+        LimitSwitch = hardwareMap.digitalChannel.get("LimitSwitch");
         LimitSwitchTilt = hardwareMap.digitalChannel.get("LimitSwitchTilt");
         LatGmServo = hardwareMap.servo.get("LatGmServo");
         VertGmServo = hardwareMap.servo.get("VertGmServo");
