@@ -1,9 +1,11 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 @TeleOp(name = "NextGenHolonomic ", group = "TeleOp")
+@Disabled
 public class NextGenHolonomic extends NextGenthetank {
 
 //Hello, How Are You
