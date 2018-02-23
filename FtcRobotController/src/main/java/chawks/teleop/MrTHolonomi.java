@@ -1,13 +1,10 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.util.Range;
-
-import chawks.hardware.DrivingDirection;
-import chawks.hardware.KBot;
 @TeleOp(name = "Senior THolonomic", group = "TeleOp")
+@Disabled
 public class MrTHolonomi extends KBotTheTank {
 
 

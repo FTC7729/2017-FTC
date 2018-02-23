@@ -1,5 +1,6 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
@@ -7,6 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import chawks.hardware.DrivingDirection;
 
 @TeleOp(name = "Holonomic Tank KBottt", group = "TeleOp")
+@Disabled
 public class HolonomicTankKBottt extends KBotTheTank {
     /**
      * The value "K" should never equal or be less than 0 as there will be no clockwise movement

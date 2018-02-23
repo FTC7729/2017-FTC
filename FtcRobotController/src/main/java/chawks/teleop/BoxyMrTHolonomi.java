@@ -1,9 +1,11 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 @TeleOp(name = "MrTBoxy ", group = "TeleOp")
+@Disabled
 public class BoxyMrTHolonomi extends BoxyTheTank {
 
 //Hello, How Are You

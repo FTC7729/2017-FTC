@@ -1,7 +1,7 @@
 package chawks.teleop;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
@@ -9,6 +9,7 @@ import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
 @TeleOp(name = "KBOT DA TANK", group = "TeleOp")
+@Disabled
 public class KBotTheTank extends AbstractTeleOpKBot {
 
 

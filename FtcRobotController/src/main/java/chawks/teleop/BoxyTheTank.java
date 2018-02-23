@@ -1,16 +1,16 @@
 package chawks.teleop;
 
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 import chawks.hardware.DrivingDirection;
-import chawks.hardware.Boxy;
 //import chawks.hardware.ShootingController;
 
 @TeleOp(name = "BOXY DA TANK", group = "TeleOp")
+@Disabled
 public class BoxyTheTank extends AbstractTeleOpBoxy {
 
 
