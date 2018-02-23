@@ -2,6 +2,7 @@ package chawks.Autonomous;
 
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
@@ -23,6 +24,7 @@ import chawks.hardware.KBot;
 import chawks.hardware.NavXMicro;
 
 @Autonomous(name="BlueAllianceStone1 with vuforia", group="safezone")
+@Disabled
 public class BlueAllianceStone1Vuforia extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;

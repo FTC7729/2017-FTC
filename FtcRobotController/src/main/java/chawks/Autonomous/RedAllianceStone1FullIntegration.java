@@ -4,6 +4,7 @@ import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
@@ -24,6 +25,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import chawks.hardware.KBot;
 
 @Autonomous(name="Red 1 experimental integration", group="safezone")
+@Disabled
 public class RedAllianceStone1FullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;

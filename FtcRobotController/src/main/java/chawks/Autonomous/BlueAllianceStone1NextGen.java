@@ -4,10 +4,10 @@ import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.hardware.kauailabs.NavxMicroNavigationSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -26,6 +26,7 @@ import chawks.hardware.nextgen;
 
 
 @Autonomous(name="BlueAllianceStone1NextGen", group="NextGen")
+@Disabled
 public class BlueAllianceStone1NextGen extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
