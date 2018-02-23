@@ -50,6 +50,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 //@Disabled //comment this out to enable
 @Autonomous(name = "Concept: Scan Servo", group = "Concept")
+@Disabled
 public class ConceptScanServo extends LinearOpMode {
 
     static final double INCREMENT   = 0.01;     // amount to slew servo each CYCLE_MS cycle

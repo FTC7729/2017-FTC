@@ -16,10 +16,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-import chawks.hardware.Boxy;
 import chawks.hardware.nextgen;
 
-@Autonomous(name="BlueAllianceStone1gemNextGen", group="safezone")
+@Autonomous(name="BlueAllianceStone1gemNextGen", group="BlueAuto")
 public class BlueAllianceStone1withJewelforNextGen extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
