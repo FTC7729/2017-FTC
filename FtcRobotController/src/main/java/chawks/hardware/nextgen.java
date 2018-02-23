@@ -210,8 +210,8 @@ public class nextgen {
     public final void ZeroServos(){
 
 
-       LatGmServo.setPosition(1);
-        VertGmServo.setPosition(1);
+      // LatGmServo.setPosition(1);
+       // VertGmServo.setPosition(1);
     }
 
     public final void AaaStopEverything(){
@@ -224,8 +224,8 @@ public class nextgen {
         Elevate.setPower(0);
        Intake.setPower(0);
 
-        LatGmServo.setPosition(LatGmServo.getPosition());
-        VertGmServo.setPosition(VertGmServo.getPosition());
+       // LatGmServo.setPosition(LatGmServo.getPosition());
+        //VertGmServo.setPosition(VertGmServo.getPosition());
     }
 
     public final boolean areWheelsStopped() {

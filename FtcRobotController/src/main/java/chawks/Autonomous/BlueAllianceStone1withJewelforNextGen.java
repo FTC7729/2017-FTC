@@ -25,7 +25,7 @@ public class BlueAllianceStone1withJewelforNextGen extends LinearOpMode {
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    nextgen         robot   = new nextgen();
+    nextgen robot   = new nextgen();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 280 ;    // eg: NEVEREST 40 Motor Encoder
@@ -49,8 +49,8 @@ public class BlueAllianceStone1withJewelforNextGen extends LinearOpMode {
     double arm_pos;
     double pivot_pos;
 
-    Servo pivot;
-    Servo arm;
+    //Servo pivot;
+    //Servo arm;
 
     private JewelDetector jewelDetector = null;
 
@@ -116,14 +116,14 @@ public class BlueAllianceStone1withJewelforNextGen extends LinearOpMode {
         //start using camera here DogeCV
         jewelDetector.enable();
 
-        pivot = hardwareMap.get(Servo.class, "pivot");
-        arm = hardwareMap.get(Servo.class, "arm");
+        robot.LatGmServo = hardwareMap.get(Servo.class, "LatGmServo");
+        robot.VertGmServo = hardwareMap.get(Servo.class, "VertGmServo");
 
         //ON KBOT WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
 
-        arm.setPosition(ARM_START);
-        pivot.setPosition(PIVOT_START);
+        robot.VertGmServo.setPosition(ARM_START);
+        robot.LatGmServo.setPosition(PIVOT_START);
         String order = null;
 
         //IMPORTANT: Change this string value so that you know other stuff before actually loading
@@ -166,29 +166,29 @@ public class BlueAllianceStone1withJewelforNextGen extends LinearOpMode {
 
         //DogeCV can stop using the camera here
 
-        arm_pos = arm.getPosition();
+        arm_pos = robot.VertGmServo.getPosition();
         //move arm here
         while (arm_pos > ARM_DROP) {
             arm_pos -= INCREMENT;
-            arm.setPosition(arm_pos);
+            robot.VertGmServo.setPosition(arm_pos);
         }
         sleep(250);
-        pivot_pos = pivot.getPosition();
+        pivot_pos = robot.LatGmServo.getPosition();
         if (order.equals("b-r")) {
             while (pivot_pos > PIVOT_LEFT) {
                 pivot_pos -= INCREMENT * 1.5;
-                pivot.setPosition(pivot_pos);
+                robot.LatGmServo.setPosition(pivot_pos);
             }
         } else if (order.equals("r-b")) {
             while (pivot_pos < PIVOT_RIGHT) {
                 pivot_pos += INCREMENT * 1.5;
-                pivot.setPosition(pivot_pos);
+                robot.LatGmServo.setPosition(pivot_pos);
             }
         }
         jewelDetector.disable();
         sleep(250);
-        arm.setPosition(ARM_START);
-        pivot.setPosition(PIVOT_START);
+        robot.VertGmServo.setPosition(ARM_START);
+        robot.LatGmServo.setPosition(PIVOT_START);
         sleep(500);
         navxTurn(-90.0);
         telemetry.log().clear();
