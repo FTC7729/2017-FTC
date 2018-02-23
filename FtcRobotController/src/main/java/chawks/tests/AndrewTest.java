@@ -1,21 +1,16 @@
 package chawks.tests;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 import chawks.teleop.AbstractTeleOpNextGen;
-
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-
-import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
 @TeleOp(name = "nextgen with switchy lift test reset", group = "TeleOp")
+@Disabled
 public class AndrewTest extends AbstractTeleOpNextGen {
     //A Digital Input.
     //DigitalChannel MRLimitSwitch;

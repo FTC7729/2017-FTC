@@ -29,6 +29,7 @@
 package chawks.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -62,6 +63,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 @Autonomous(name="Logan VuMark", group ="Concept")
 //@Disabled
+@Disabled
 public class LoganVuMarkID extends LinearOpMode {
 
     public static final String TAG = "Vuforia VuMark Sample";

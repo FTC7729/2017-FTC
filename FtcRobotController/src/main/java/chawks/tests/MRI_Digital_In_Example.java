@@ -13,6 +13,7 @@ Support is available by emailing support@modernroboticsinc.com
 
 package chawks.tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
@@ -20,6 +21,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 
 @TeleOp(name = "Digital In Example", group = "MRI")
+@Disabled
 //@Disabled
 public class MRI_Digital_In_Example extends LinearOpMode {
 

@@ -1,6 +1,7 @@
 package chawks.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @Autonomous(name="Jewel Arm Test",group="Tests")
+@Disabled
 public class JewelArmServoTest extends LinearOpMode {
     Servo pivot;
     Servo arm;

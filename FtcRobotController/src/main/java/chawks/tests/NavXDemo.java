@@ -17,7 +17,7 @@ import chawks.hardware.Boxy;
 /**
  * Created by ibtro on 2/3/2018.
  */
-@Autonomous(name="NavX Demo",group="demo")
+@Autonomous(name="NavX Demo",group="Test")
 public class NavXDemo extends LinearOpMode {
     Boxy robot = new Boxy();
     IntegratingGyroscope gyro;

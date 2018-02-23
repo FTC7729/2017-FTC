@@ -1,26 +1,19 @@
 
 package chawks.tests;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.detectors.*;
+import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import java.io.IOException;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import chawks.hardware.Boxy;
 
 
 @Autonomous(name="DogeMcCoolRedTest", group="DogeCV")
-
+@Disabled
 public class DogeCV_RedTest extends LinearOpMode {
     final double INCREMENT = 0.009;
     final double PIVOT_START = 0.39;

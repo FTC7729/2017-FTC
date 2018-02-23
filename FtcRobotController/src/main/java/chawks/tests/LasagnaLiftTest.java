@@ -1,10 +1,12 @@
 package chawks.tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import chawks.teleop.NextGenthetank;
 
 @TeleOp(name = "Lasagna Lift Test", group = "TeleOp")
+@Disabled
 public class LasagnaLiftTest extends NextGenthetank {
 
 //Hello, How Are You

@@ -82,6 +82,7 @@ import java.util.List;
 
 @Autonomous(name="GEMid_UNLEASHED UNLEASHED", group ="Concept")
 //@Disabled
+@Disabled
 public class GEMid_UNLEASHED extends LinearOpMode {
 
     public static final String TAG = "Vuforia Navigation Sample";

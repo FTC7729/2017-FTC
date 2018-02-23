@@ -1,21 +1,15 @@
 
 package chawks.tests;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.detectors.*;
+import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import java.io.IOException;
 
 
-@Autonomous(name="DogeCV Jewel Detector", group="DogeCV")
-
+@Autonomous(name="DogeCV Jewel Detector", group="Test")
+///@Disabled
 public class JewelOpMode extends OpMode
 {
     // Declare OpMode members.
