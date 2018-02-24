@@ -86,7 +86,7 @@ public class BlueAllianceStone2withJewelforNextGen extends LinearOpMode {
                 robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
-        navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+        /*navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
@@ -98,7 +98,7 @@ public class BlueAllianceStone2withJewelforNextGen extends LinearOpMode {
             Thread.sleep(50);
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
-        telemetry.clear(); telemetry.update();
+        telemetry.clear(); telemetry.update();*/
 
         jewelDetector = new JewelDetector();
         jewelDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
@@ -185,13 +185,13 @@ public class BlueAllianceStone2withJewelforNextGen extends LinearOpMode {
         robot.VertGmServo.setPosition(ARM_START);
         robot.LatGmServo.setPosition(PIVOT_START);
         sleep(500);
-        navxTurn(-90.0);
+       /* navxTurn(-90.0);
         //Start Code after here
         encoderDrive(.75,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-5,-5,-5,-5,4);
         navxTurn(-90.0);
-        //navx.turn(0.0, 0.2, robot);
+        //navx.turn(0.0, 0.2, robot);*/
         //badudubuhdududooduhduhdoobuhdoodoo
         telemetry.addData("Path", "Complete");
         telemetry.update();
