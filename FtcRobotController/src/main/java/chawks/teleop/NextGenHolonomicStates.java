@@ -145,14 +145,14 @@ public class NextGenHolonomicStates extends AbstractTeleOpNextGen {
         }
 
 
-        if (isDpadUp) {
-            robot.Elevate.setTargetPosition(ELEVATE_HIGH);
+        /*if (isDpadUp) {
             robot.Elevate.setPower(0.5);
         }
         else if (isDpadDown) {
-                robot.Elevate.setTargetPosition(ELEVATE_LOW);
                 robot.Elevate.setPower(-0.5);
-        }
+        } else {
+            robot.Elevate.setPower(0);
+        }*/
 
 
 
