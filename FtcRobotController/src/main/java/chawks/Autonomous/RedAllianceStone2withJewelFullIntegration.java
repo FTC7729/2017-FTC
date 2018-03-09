@@ -22,16 +22,16 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
-import chawks.hardware.KBot;
+import chawks.hardware.nextgen;
 
 @Autonomous(name="RedAllianceStone2gemVuf", group="safezone")
-@Disabled
+//@Disabled
 public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
     IntegratingGyroscope gyro;
     NavxMicroNavigationSensor navxMicro;
     public double degrees;
     ElapsedTime timer = new ElapsedTime();
-    KBot         robot   = new KBot();
+    nextgen         robot   = new nextgen();
     private ElapsedTime     runtime = new ElapsedTime();
     static final double     BOT_SPEED = 0.2;
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
@@ -131,7 +131,7 @@ public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
 
 
 
-        //ON KBOT WAAAAAAAAAAY TOO SPEEDY
+        //ON NextGen WAAAAAAAAAAY TOO SPEEDY
         waitForStart();
 
         //arm.setPosition(ARM_START);
@@ -211,6 +211,7 @@ public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
         //DogeCV camera disabled here
         jewelDetector.disable();
         sleep(250);
+        encoderDrive(.5,1,1,1,1,2);
         //arm.setPosition(ARM_START);
         //pivot.setPosition(PIVOT_START);
         sleep(500);
@@ -264,47 +265,33 @@ public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
         }
         if (glyphPlacement == 1) {
             telemetry.update();
-            closeLift();
-            moveLiftAmount(1,500);
+            encoderDrive(.5,1,1,1,1,2);
             navxTurn(90);
             encoderDrive(.5,-3,-3,-3,-3,4);
             navxTurn(180);
             encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
             navxTurn(90);
-            openLift();
             encoderDrive(.5,-1,-1,-1,-1,4);
-            closeLift();
-            moveLiftAmount(-1,500);
             encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
         if (glyphPlacement == 2) {
             telemetry.update();
-            closeLift();
-            moveLiftAmount(1,500);
             navxTurn(90);
             encoderDrive(.5,-3,-3,-3,-3,4);
             navxTurn(180);
             encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
             navxTurn(90);
-            openLift();
             encoderDrive(.5,-1,-1,-1,-1,4);
-            closeLift();
-            moveLiftAmount(-1,500);
             encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
         if (glyphPlacement == 3) {
             telemetry.update();
-            closeLift();
-            moveLiftAmount(1,500);
             navxTurn(90);
             encoderDrive(.5,-3,-3,-3,-3,4);
             navxTurn(180);
             encoderDrive(.5,-3.25,-3.25,-3.25,-3.25,4);
             navxTurn(90);
-            openLift();
             encoderDrive(.5,-1,-1,-1,-1,4);
-            closeLift();
-            moveLiftAmount(-1,500);
             encoderDrive(.5,1.125,1.125,1.125,1.125,4);
         }
 
@@ -435,19 +422,5 @@ public class RedAllianceStone2withJewelFullIntegration extends LinearOpMode {
         sleep(1500);
         telemetry.log().clear();
     }
-    public void moveLiftAmount (double power,long time)  {
-        robot.LiftM.setPower(power);
-        sleep(time);
-        robot.LiftM.setPower(0);
-    }
-    public void closeLift () {
-        //was .7
-        robot.RGServo.setPosition(.7);
-        //was .3
-        robot.LGServo.setPosition(.3);
-    }
-    public void openLift () {
-        robot.RGServo.setPosition(.32);
-        robot.LGServo.setPosition(.68);
-    }
+
 }

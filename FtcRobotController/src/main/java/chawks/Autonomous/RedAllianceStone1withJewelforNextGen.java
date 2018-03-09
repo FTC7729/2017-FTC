@@ -87,7 +87,7 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
         );
         telemetry.update();
 
-    /*    navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+        navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
@@ -99,7 +99,7 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
             Thread.sleep(50);
         }
         telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
-        telemetry.clear(); telemetry.update();*/
+        telemetry.clear(); telemetry.update();
 
 
         jewelDetector = new JewelDetector();
@@ -186,13 +186,13 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
         robot.VertGmServo.setPosition(ARM_START);
         robot.LatGmServo.setPosition(PIVOT_START);
         sleep(500);
-        /*navxTurn(90.0);
+        navxTurn(90.0);
         telemetry.log().clear();
         //Start Code after here
         encoderDrive(.5,.5,-.5,.5,-.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-6,-6,-6,-6,4);
-        navxTurn(0.0);*/
+        //navxTurn(0.0);
 
 
         telemetry.addData("Path", "Complete");
@@ -280,7 +280,7 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
 
         String heading = formatAngle(angles.angleUnit, angles.firstAngle);
 
-        while (degrees > target + 2 || degrees < target - 2) {
+        while (degrees > target + 3 || degrees < target - 3) {
             if (!opModeIsActive())
             {
                 return;
@@ -289,12 +289,12 @@ public class RedAllianceStone1withJewelforNextGen extends LinearOpMode {
             angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
             heading = formatAngle(angles.angleUnit, angles.firstAngle);
-            if (degrees > target + 2) {
+            if (degrees > target + 3) {
                 robot.RBMotor.setPower(-BOT_SPEED);
                 robot.RFMotor.setPower(-BOT_SPEED);
                 robot.LFMotor.setPower(BOT_SPEED);
                 robot.LBMotor.setPower(BOT_SPEED);
-            } else if (degrees < target - 2) {
+            } else if (degrees < target - 3) {
                 robot.RBMotor.setPower(BOT_SPEED);
                 robot.RFMotor.setPower(BOT_SPEED);
                 robot.LFMotor.setPower(-BOT_SPEED);

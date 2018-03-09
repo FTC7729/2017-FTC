@@ -86,7 +86,7 @@ public class RedAllianceStone2withJewelforNextGen extends LinearOpMode {
                 robot.RBMotor.getCurrentPosition()
         );
         telemetry.update();
-       /*navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
+       navxMicro = hardwareMap.get(NavxMicroNavigationSensor.class, "navx");
         gyro = (IntegratingGyroscope)navxMicro;
         telemetry.log().add("Gyro Calibrating. Do Not Move!");
 
@@ -97,7 +97,7 @@ public class RedAllianceStone2withJewelforNextGen extends LinearOpMode {
             telemetry.addData("calibrating", "%s", Math.round(timer.seconds())%2==0 ? "|.." : "..|");
             telemetry.update();
             Thread.sleep(50);
-        }*/
+        }
         //telemetry.log().clear(); telemetry.log().add("Gyro Calibrated. Press Start.");
         //telemetry.clear(); telemetry.update();
         //DogeCV start here
@@ -188,12 +188,12 @@ public class RedAllianceStone2withJewelforNextGen extends LinearOpMode {
         robot.LatGmServo.setPosition(PIVOT_START);
         sleep(500);
         //end jewel arm sequence
-       /* navxTurn(90.0);
+        navxTurn(90.0);
         //Start Code after here
         encoderDrive(.75,-.5,.5,-.5,.5,4);
         //speed 5 is too fast, less than 7 dist is too short.
         encoderDrive(.5,-5,-5,-5,-5,4);
-        navxTurn(90.0); */
+        navxTurn(90.0);
         //navx.turn(0.0, 0.2, robot);
 
         telemetry.addData("Path", "Complete");
