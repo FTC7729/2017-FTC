@@ -9,7 +9,7 @@ import chawks.hardware.DrivingDirection;
 //import chawks.hardware.ShootingController;
 
 @TeleOp(name = "KBOT DA TANK", group = "TeleOp")
-@Disabled
+
 public class KBotTheTank extends AbstractTeleOpKBot {
 
 
@@ -56,10 +56,10 @@ public class KBotTheTank extends AbstractTeleOpKBot {
                     rightPower = -STRAFE_SPEED;
                     break;
             }
-            robot.LFMotor.setPower(leftPower);
-            robot.RFMotor.setPower(rightPower);
-            robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
+            robot.LFMotor.setPower(leftPower/4);
+            robot.RFMotor.setPower(rightPower/4);
+            robot.LBMotor.setPower(-leftPower/4);
+            robot.RBMotor.setPower(-rightPower/4);
             return;
         } else if (isDPADRight) {
             float leftPower;
@@ -76,10 +76,10 @@ public class KBotTheTank extends AbstractTeleOpKBot {
                     break;
             }
 
-            robot.LFMotor.setPower(leftPower);
-            robot.RFMotor.setPower(rightPower);
-            robot.LBMotor.setPower(-leftPower);
-            robot.RBMotor.setPower(-rightPower);
+            robot.LFMotor.setPower(leftPower/4);
+            robot.RFMotor.setPower(rightPower/4);
+            robot.LBMotor.setPower(-leftPower/4);
+            robot.RBMotor.setPower(-rightPower/4);
             return;
 
         }
@@ -102,10 +102,10 @@ public class KBotTheTank extends AbstractTeleOpKBot {
                 break;
         }
 
-        robot.LBMotor.setPower(leftPower);
-        robot.LFMotor.setPower(leftPower);
-        robot.RFMotor.setPower(rightPower);
-        robot.RBMotor.setPower(rightPower);
+        robot.LBMotor.setPower(leftPower/4);
+        robot.LFMotor.setPower(leftPower/4);
+        robot.RFMotor.setPower(rightPower/4);
+        robot.RBMotor.setPower(rightPower/4);
 
 
     }

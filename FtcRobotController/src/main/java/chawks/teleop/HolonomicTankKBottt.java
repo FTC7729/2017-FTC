@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import chawks.hardware.DrivingDirection;
 
 @TeleOp(name = "Holonomic Tank KBottt", group = "TeleOp")
-@Disabled
+
 public class HolonomicTankKBottt extends KBotTheTank {
     /**
      * The value "K" should never equal or be less than 0 as there will be no clockwise movement
